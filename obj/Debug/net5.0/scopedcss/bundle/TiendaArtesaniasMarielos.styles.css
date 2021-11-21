@@ -1,0 +1,134 @@
+/* _content/TiendaArtesaniasMarielos/Shared/MainLayout.razor.rz.scp.css */
+.page[b-bbqsljxh4b] {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.main[b-bbqsljxh4b] {
+    flex: 1;
+}
+
+.sidebar[b-bbqsljxh4b] {
+    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+}
+
+.top-row[b-bbqsljxh4b] {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d6d5d5;
+    justify-content: flex-end;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+}
+
+    .top-row[b-bbqsljxh4b]  a, .top-row .btn-link[b-bbqsljxh4b] {
+        white-space: nowrap;
+        margin-left: 1.5rem;
+    }
+
+    .top-row a:first-child[b-bbqsljxh4b] {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+@media (max-width: 640.98px) {
+    .top-row:not(.auth)[b-bbqsljxh4b] {
+        display: none;
+    }
+
+    .top-row.auth[b-bbqsljxh4b] {
+        justify-content: space-between;
+    }
+
+    .top-row a[b-bbqsljxh4b], .top-row .btn-link[b-bbqsljxh4b] {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 641px) {
+    .page[b-bbqsljxh4b] {
+        flex-direction: row;
+    }
+
+    .sidebar[b-bbqsljxh4b] {
+        width: 250px;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .top-row[b-bbqsljxh4b] {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    .main > div[b-bbqsljxh4b] {
+        padding-left: 2rem !important;
+        padding-right: 1.5rem !important;
+    }
+}
+/* _content/TiendaArtesaniasMarielos/Shared/NavMenu.razor.rz.scp.css */
+.navbar-toggler[b-zw3jrgfpip] {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.top-row[b-zw3jrgfpip] {
+    height: 3.5rem;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.navbar-brand[b-zw3jrgfpip] {
+    font-size: 1.1rem;
+}
+
+.oi[b-zw3jrgfpip] {
+    width: 2rem;
+    font-size: 1.1rem;
+    vertical-align: text-top;
+    top: -2px;
+}
+
+.nav-item[b-zw3jrgfpip] {
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+}
+
+    .nav-item:first-of-type[b-zw3jrgfpip] {
+        padding-top: 1rem;
+    }
+
+    .nav-item:last-of-type[b-zw3jrgfpip] {
+        padding-bottom: 1rem;
+    }
+
+    .nav-item[b-zw3jrgfpip]  a {
+        color: #d7d7d7;
+        border-radius: 4px;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        line-height: 3rem;
+    }
+
+.nav-item[b-zw3jrgfpip]  a.active {
+    background-color: rgba(255,255,255,0.25);
+    color: white;
+}
+
+.nav-item[b-zw3jrgfpip]  a:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+}
+
+@media (min-width: 641px) {
+    .navbar-toggler[b-zw3jrgfpip] {
+        display: none;
+    }
+
+    .collapse[b-zw3jrgfpip] {
+        /* Never collapse the sidebar for wide screens */
+        display: block;
+    }
+}

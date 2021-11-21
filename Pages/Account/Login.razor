@@ -1,0 +1,96 @@
+﻿@page "/login"
+@*@layout UnauthorizedLayaout*@
+
+
+<div class="container">
+    <div class="col-md-6 offset-md-3">
+
+        <div class="card">
+            <div class="card-header">
+                <h4>Artesanias Marielos</h4>
+            </div>
+
+            <div>
+                <div class="card-body">
+                    <EditForm Model="Model" OnValidSubmit="LoginUser">
+                        <DataAnnotationsValidator/>
+
+
+                        <h4 class="card-title text-center">Iniciar Sesión</h4>
+                        <div class="col-md-12 mb-3">
+                            <label>Usuario</label>
+                            <input type="text" placeholder="Escriba su nombre de usuario" class="form-control" @bind="Model.Usuario" />
+                            <ValidationMessage For="(()=>Model.Usuario)"/>
+                        </div>
+
+
+                        <div class="col-md-12 mb-3">
+                            <label>Contraseña</label>
+                            <input type="password" placeholder="Escriba la contraseña" class="form-control" @bind="Model.Password" />
+                            <ValidationMessage For="(()=>Model.Password)"/>
+                        </div>
+
+
+                        <div class="col-md-12 mb-3">
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1"
+                                       @bind="Model.Recordar">
+                                <label class="form-check-label" for="exampleCheck1">Mantener sesión abierta </label>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <button type="submit" class="btn btn-primary btn-block">Iniciar</button>
+                        </div> 
+
+                    </EditForm>
+
+                    <div class="col-md-12 mb-3">
+                        <a href="/recoverpassword">¿Olvidaste tu contraseña?</a>
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                        <hr />
+                    </div>
+
+                   <div class="col-md-12 mb-3">
+                      <h5>¿Aún no tienes cuenta?</h5>
+                   </div>
+                        
+
+                        <div class="col-md-12 mb-3">
+                            <a href="RegistrarUsuario"
+                               class="btn btn-success btn-block">Registrarte Ahora</a>
+                        </div>
+
+                    </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<ToastContainer/>
+
+@inject UsuariosService usuarioService
+@inject IToaster toaster
+
+@code {
+
+    public LoginUsuarioModel Model { get; set; } = new LoginUsuarioModel();
+
+    protected void LoginUser()
+    {
+        var res = usuarioService.Login(Model);
+
+        if (!res.IsSuccess)
+        {
+            toaster.Error(res.Message, "Error");
+        }
+        else
+        {
+            toaster.Success(res.Message, "Todo Bien");
+        }
+    }
+}

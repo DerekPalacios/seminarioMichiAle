@@ -1,0 +1,373 @@
+﻿@page "/articulos"
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <h4>Articulos</h4>
+        </div>
+        <div class="card-body">
+            <EditForm Model="Articulo" OnValidSubmit="AgregarProducto">
+                <DataAnnotationsValidator />
+                <div class="row">
+                    <div class="col-4">
+                        <label>Categoría</label>
+                        <select class="form-control" @onchange="AlCamabiarCategoriaSeleccionada">
+                            @if (ListaCategorias != null)
+                            {
+                                @foreach (var cat in ListaCategorias)
+                                {
+                                    <option value="@cat.IdCategoria">@cat.Nombre_Categoria</option>
+                                }
+                            }
+                        </select>
+                        <ValidationMessage For="(() => Articulo.TA_IdCategoria)" />
+                    </div>
+                    <div class="col-4">
+                        <label>Talla o Medida</label>
+                        <select class="form-control" @onchange="AlCamabiarTallaMSeleccionada">
+                            @if (ListaTallaMedida != null)
+                            {
+                                @foreach (var cat in ListaTallaMedida)
+                                {
+                                    <option value="@cat.IdTalla_Medida">@cat.Descripcion</option>
+                                }
+                            }
+                        </select>
+                        <ValidationMessage For="(() => Articulo.TA_IdTalla_Medida)" />
+                    </div>
+                    <div class="col-4">
+                        <label>Genero</label>
+                        <select class="form-control" @onchange="AlCamabiarGeneroSeleccionada">
+                            @if (ListaGeneros != null)
+                            {
+                                @foreach (var cat in ListaGeneros)
+                                {
+                                    <option value="@cat.IdGenero">@cat.Nombre_Genero</option>
+                                }
+                            }
+                        </select>
+                        <ValidationMessage For="(() => Articulo.TA_IdGenero)" />
+                    </div>
+                    <div class="col-4">
+                        <label>Etapa</label>
+                        <select class="form-control" @onchange="AlCamabiarEtapaSeleccionada">
+                            @if (ListaEtapas != null)
+                            {
+                                @foreach (var cat in ListaEtapas)
+                                {
+                                    <option value="@cat.IdEtapa">@cat.Nombre_Etapa</option>
+                                }
+                            }
+                        </select>
+                        <ValidationMessage For="(() => Articulo.TA_IdEtapa)" />
+                    </div>
+                    <div class="col-4">
+                        <label>Tipo de Material</label>
+                        <select class="form-control" @onchange="AlCamabiarMaterialSeleccionada">
+                            @if (ListaMateriales != null)
+                            {
+                                @foreach (var cat in ListaMateriales)
+                                {
+                                    <option value="@cat.IdMaterial">@cat.Nombre_Material</option>
+                                }
+                            }
+                        </select>
+                        <ValidationMessage For="(() => Articulo.TA_IdMaterial)" />
+                    </div>
+                    <div class="col-8">
+                        <label>Nombre</label>
+                        <input type="text" class="form-control" @bind="Articulo.Nombre" />
+                        <ValidationMessage For="(() => Articulo.Nombre)" />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-2">
+                        <label>Codigo</label>
+                        <input type="text" class="form-control" @bind="Articulo.Codigo" />
+                        <ValidationMessage For="(() => Articulo.Codigo)" />
+                    </div>
+                    <div class="col-2">
+                        <label>Stock</label>
+                        <input type="number" class="form-control" @bind="Articulo.Stock" />
+                    </div>
+                    <div class="col-2">
+                        <label>Stock Minimo</label>
+                        <input type="number" class="form-control" @bind="Articulo.StockMinimo" />
+                    </div>
+                    <div class="col-3">
+                        <label>Costo</label>
+                        <input type="number" class="form-control" @bind="Articulo.PrecioCompra" />
+                        <ValidationMessage For="(() => Articulo.PrecioCompra)" />
+                    </div>
+                    <div class="col-5">
+                        <label>Precio</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" @bind="Articulo.PrecioVenta" />
+                            <ValidationMessage For="(() => Articulo.PrecioVenta)" />
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary">Agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </EditForm>
+            @*<div class="row">
+                <div class="col-12">
+                    <table class="table table-bordered table-sm">
+                        <thead>
+                            <tr>
+                                <th>Ref</th>
+                                <th>Nombre</th>
+                                <th>Stock</th>
+                                <th>Costo</th>
+                                <th>Precio</th>
+                                <th>Margen</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var producto in ListaProductos)
+                            {
+
+                                <tr>
+                                    <td>
+                                        <input type="text" class="form-control" @bind="producto.Referencia" />
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" @bind="producto.Nombre" />
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" @bind="producto.Stock" />
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" @bind="producto.Costo" />
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" @bind="producto.Precio" />
+                                    </td>
+                                    <td>@producto.Margen</td>
+                                    <td>
+                                        <button type="button" class="btn btn-success"
+                                                @onclick="(() => GuardarProducto(producto))">
+
+                                            <i class="fa fa-save"></i>
+                                        </button>
+
+                                        <button type="button" class="btn btn-danger"
+                                                @onclick="(() => EliminarProducto(producto))">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>*@
+        </div>
+    </div>
+</div>
+
+<ToastContainer />
+
+@inject CategoriasService categoriaService
+@inject TallaMedidaService tallaMedidaService
+@inject GenerosService generoService
+@inject MaterialesService materialService
+@inject EtapasService etapaService
+@inject ArticuloService articuloService
+
+@inject IToaster toaster
+@inject SweetAlertService swal
+
+@code {
+
+    public ArticuloModel Articulo { get; set; } = new ArticuloModel();
+
+    public List<CategoriaModel> ListaCategorias { get; set; }
+    public List<TallaMedidaModel> ListaTallaMedida { get; set; }
+    public List<GeneroModel> ListaGeneros { get; set; }
+    public List<EtapaModel> ListaEtapas { get; set; }
+    public List<MaterialModel> ListaMateriales { get; set; }
+
+    public List<ArticuloModel> ListaProductos { get; set; } = new List<ArticuloModel>();
+
+    protected override void OnInitialized()
+    {
+        ListaCategorias = categoriaService.ListaCategorias();
+        ListaTallaMedida = tallaMedidaService.ListaTallaMedida();
+        ListaGeneros = generoService.ListaGeneros();
+        ListaEtapas = etapaService.ListaEtapas();
+        ListaMateriales = materialService.ListaMateriales();
+
+        CargarProductos();
+    }
+
+    protected void CargarProductos(int? idCategoria = null)
+    {
+        if (idCategoria == null)
+        {
+            ListaProductos = articuloService.ListaArticulos();
+        }
+        else
+        {
+            ListaProductos = articuloService.ListaArticulos(Convert.ToInt32(idCategoria));
+
+        }
+
+    }
+
+
+
+    protected void AgregarProducto()
+    {
+        var res = articuloService.Crear(Articulo);
+
+        if (res.IsSuccess)
+        {
+            toaster.Success(res.Message, "OK");
+
+            var prod = (ArticuloModel)res.Objeto;
+            //var prod = res.Objeto as ProductoModel;
+
+            ListaProductos.Add(prod);
+            Articulo = new ArticuloModel();
+
+            //CargarProductos(); No recomendada
+
+        }
+        else
+        {
+            toaster.Error(res.Message, "Error");
+        }
+    }
+
+    protected void AlCamabiarCategoriaSeleccionada(ChangeEventArgs e)
+    {
+        Articulo.TA_IdCategoria = Convert.ToInt32(e.Value);
+
+        CargarProductos(Articulo.TA_IdCategoria
+            );
+
+
+    }
+
+    protected void AlCamabiarTallaMSeleccionada(ChangeEventArgs e)
+    {
+        Articulo.TA_IdTalla_Medida = Convert.ToInt32(e.Value);
+
+        CargarProductos(Articulo.TA_IdTalla_Medida
+            );
+
+
+    }
+
+    protected void AlCamabiarGeneroSeleccionada(ChangeEventArgs e)
+    {
+        Articulo.TA_IdGenero = Convert.ToInt32(e.Value);
+
+        CargarProductos(Articulo.TA_IdGenero
+            );
+
+
+    }
+    protected void AlCamabiarMaterialSeleccionada(ChangeEventArgs e)
+    {
+        Articulo.TA_IdMaterial = Convert.ToInt32(e.Value);
+
+        CargarProductos(Articulo.TA_IdMaterial
+            );
+
+
+    }
+    protected void AlCamabiarEtapaSeleccionada(ChangeEventArgs e)
+    {
+        Articulo.TA_IdEtapa = Convert.ToInt32(e.Value);
+
+        CargarProductos(Articulo.TA_IdEtapa
+            );
+
+
+    }
+
+
+    //protected async Task EliminarProducto(ProductoModel producto)
+    //{
+    //    var confirm = await swal.FireAsync(new SweetAlertOptions
+    //    {
+    //        Title = "¿Confirma que desea eliminar este producto?",
+    //        Text = "No podrá revertir esta operación",
+    //        ShowConfirmButton = true,
+    //        ShowCancelButton = true,
+    //        ConfirmButtonText = "De acuerdo",
+    //        CancelButtonText = "Cancelar"
+    //    });
+
+    //    if (!confirm.IsConfirmed)
+    //    {
+    //        return;
+    //    }
+
+    //    var res = productoService.Eliminar(producto.Id);
+
+    //    if (res.IsSuccess)
+    //    {
+    //        toaster.Success(res.Message, "OK");
+    //        ListaProductos.Remove(producto);
+    //    }
+    //    else
+    //    {
+    //        toaster.Error(res.Message, "Erro");
+    //    }
+    //}
+
+    //protected void GuardarProducto(ProductoModel producto)
+    //{
+    //    if (string.IsNullOrEmpty(producto.Referencia))
+    //    {
+    //        toaster.Error("Debe escribir la referencia del producto", "Error");
+    //        return;
+    //    }
+
+    //    if (string.IsNullOrEmpty(producto.Nombre) || producto.Nombre.Length < 5)
+    //    {
+    //        toaster.Error("El nombre del producto debe ser mayor a 5 caracteres", "Error");
+    //        return;
+    //    }
+
+    //    if (producto.Stock == null)
+    //    {
+    //        toaster.Error("Debe escribir el nombre valor del stok", "Error");
+    //        return;
+    //    }
+
+    //    if (string.IsNullOrEmpty(producto.Costo.ToString()))
+    //    {
+    //        toaster.Error("Debe escribir el costo del producto", "Error");
+    //        return;
+    //    }
+
+        @*if (string.IsNullOrEmpty(producto.Precio.ToString()))
+        {
+            toaster.Error("Debe escribir el precio del producto", "Error");
+            return;
+        }
+
+
+        var res = productoService.Modificar(producto);
+
+        if (res.IsSuccess)
+        {
+            toaster.Success(res.Message, "OK");
+        }
+        else
+    {
+        toaster.Error(res.Message, "Erro");
+    }
+    }*@
+
+    }

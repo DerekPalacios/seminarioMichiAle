@@ -1,0 +1,137 @@
+﻿@page "/etapa"
+
+@attribute [Authorize]
+
+<div class="container">
+    <div class="row mb-3">
+        <div class="col">
+            <div class="input-group">
+                <input type="text" class="form-control" @bind="Model.Nombre_Etapa" />
+                <div class="input-group-append">
+                    <button class="btn btn-primary" @onclick="AgregarEtapa">Agregar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Descripción</th>
+                        <th>Articulos</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var cat in ListaEtapas)
+                    {
+                        <tr>
+                            <td>
+                                <input type="text" class="form-control" @bind="cat.Nombre_Etapa" />
+                            </td>
+                            <td>@cat.CantidadArticulos</td>
+                            <td>
+                                <button class="btn btn-success" @onclick="(()=>ModificarEtapa(cat))">Guardar</button>
+                                <button class="btn btn-danger" @onclick="(()=>EliminarEtapa(cat.IdEtapa))">Eliminar</button>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<ToastContainer />
+
+@inject EtapasService etapaService
+@inject IToaster toaster
+@inject SweetAlertService swal
+
+@code {
+    public EtapaModel Model { get; set; } = new EtapaModel();
+
+    public List<EtapaModel> ListaEtapas { get; set; } = new List<EtapaModel>();
+
+    protected override void OnInitialized()
+    {
+        CargarEtapa();
+        //otros metodos
+    }
+
+    protected void CargarEtapa()
+    {
+        var result = etapaService.ListaEtapas();
+        ListaEtapas = result;
+    }
+
+    protected void AgregarEtapa()
+    {
+        var result = etapaService.Crear(Model);
+        if (result.IsSuccess)
+        {
+            Model.IdEtapa = result.Code;
+            Model.CantidadArticulos = 0;
+
+
+
+            ListaEtapas.Add(Model);
+
+            Model = new EtapaModel();
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+
+    }
+
+    protected void ModificarEtapa(EtapaModel etapa)
+    {
+        var result = etapaService.Modificar(etapa);
+        if (result.IsSuccess)
+        {
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+
+    }
+
+    protected async Task EliminarEtapa(int idetapa)
+    {
+        var res = await swal.FireAsync(new SweetAlertOptions
+        {
+            Title = "¿Confirma que desea eliminar este dato?",
+            Text = "Si la elimina, no podrá recuperarlo",
+            ShowConfirmButton = true,
+            ConfirmButtonText = "Si, eliminar",
+            ShowCancelButton = true,
+            CancelButtonText = "No, no lo elimine"
+        });
+
+        if (!res.IsConfirmed)
+        {
+            return;
+        }
+
+        var result = etapaService.Eliminar(idetapa);
+
+        if (result.IsSuccess)
+        {
+            CargarEtapa();
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+
+
+    }
+}

@@ -1,0 +1,35 @@
+﻿@page "/"
+
+
+
+
+
+
+<h4>Bienvenido a la Tienda Artesanías Marielos</h4>
+
+
+
+
+
+
+
+
+
+
+
+@*@using TiendaArtesaniasMarielos.Data.Services*@
+
+@*@inject RolesService rolesService
+
+
+
+<button class="btn btn-primary" @onclick="ListaRoles">Lista de Roles</button>
+
+@code{
+
+    protected void ListaRoles()
+    {
+        var list = rolesService.ListaRoles();
+    }
+
+}*@

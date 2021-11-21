@@ -1,0 +1,137 @@
+﻿@page "/tallaMedida"
+
+@attribute [Authorize]
+
+<div class="container">
+    <div class="row mb-3">
+        <div class="col">
+            <div class="input-group">
+                <input type="text" class="form-control" @bind="Model.Descripcion" />
+                <div class="input-group-append">
+                    <button class="btn btn-primary" @onclick="AgregarTallaMedida">Agregar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Talla o Medida</th>
+                        <th>Articulos</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var cat in ListaTallaMedida)
+                    {
+                        <tr>
+                            <td>
+                                <input type="text" class="form-control" @bind="cat.Descripcion" />
+                            </td>
+                            <td>@cat.CantidadArticulos</td>
+                            <td>
+                                <button class="btn btn-success" @onclick="(()=>ModificarTallaMedida(cat))">Guardar</button>
+                                <button class="btn btn-danger" @onclick="(()=>EliminarTallaMedida(cat.IdTalla_Medida))">Eliminar</button>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<ToastContainer />
+
+@inject TallaMedidaService tallaMedidaService
+@inject IToaster toaster
+@inject SweetAlertService swal
+
+@code {
+    public TallaMedidaModel Model { get; set; } = new TallaMedidaModel();
+
+    public List<TallaMedidaModel> ListaTallaMedida { get; set; } = new List<TallaMedidaModel>();
+
+    protected override void OnInitialized()
+    {
+        CargarTallaMedida();
+        //otros metodos
+    }
+
+    protected void CargarTallaMedida()
+    {
+        var result = tallaMedidaService.ListaTallaMedida();
+        ListaTallaMedida = result;
+    }
+
+    protected void AgregarTallaMedida()
+    {
+        var result = tallaMedidaService.Crear(Model);
+        if (result.IsSuccess)
+        {
+            Model.IdTalla_Medida = result.Code;
+            Model.CantidadArticulos = 0;
+
+
+
+            ListaTallaMedida.Add(Model);
+
+            Model = new TallaMedidaModel();
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+
+    }
+
+    protected void ModificarTallaMedida(TallaMedidaModel tallaMedida)
+    {
+        var result = tallaMedidaService.Modificar(tallaMedida);
+        if (result.IsSuccess)
+        {
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+
+    }
+
+    protected async Task EliminarTallaMedida(int idtallaMedida)
+    {
+        var res = await swal.FireAsync(new SweetAlertOptions
+        {
+            Title = "¿Confirma que desea eliminar este dato?",
+            Text = "Si la elimina, no podrá recuperarlo",
+            ShowConfirmButton = true,
+            ConfirmButtonText = "Si, eliminar",
+            ShowCancelButton = true,
+            CancelButtonText = "No, no lo elimine"
+        });
+
+        if (!res.IsConfirmed)
+        {
+            return;
+        }
+
+        var result = tallaMedidaService.Eliminar(idtallaMedida);
+
+        if (result.IsSuccess)
+        {
+            CargarTallaMedida();
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+
+
+    }
+}

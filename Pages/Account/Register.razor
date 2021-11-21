@@ -1,0 +1,145 @@
+﻿@page "/RegistrarUsuario"
+
+@*@layout UnauthorizedLayaout*@
+
+
+
+<div class="container">
+    <div class="col-md-6 offset-md-3">
+
+        <div class="card">
+            <div class="card-header">
+                <h4>Artesanias Marielos</h4>
+            </div>
+
+            <div>
+                <div class="card-body">
+                    <EditForm Model="Model" OnValidSubmit="Registrar">
+                        <DataAnnotationsValidator/>
+
+                        <h4 class="card-title text-center">Registro de Usuario</h4>
+                        <div class="col-md-12 mb-3">
+                            <label>Nombres y Apellidos</label>
+                            <input type="text" placeholder="Escriba sus Nombres y Apellidos" class="form-control" @bind="Model.Nombre_Apellido" />
+                            <ValidationMessage For="@(()=>Model.Nombre_Apellido)"/>
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label>Usuario</label>
+                            <input type="text" placeholder="Escriba un nombre de usuario" class="form-control" @onchange="ValidarNombreUsuario" />
+                            <ValidationMessage For="@(()=>Model.Nombre_Usuario)" />
+
+                            @if (MostrarMensaje)
+                            {
+                                <span class="text-danger">El usuario que intenta registrar ya existe</span>
+                            }
+
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label>
+                                Rol:
+                                <InputSelect @bind-Value="Model.TU_IdRol">
+                                    <option value="">Select Rol ...</option>
+                                    <option value="Administrador">Administrador</option>
+                                    <option value="Vendedor">Vendedor</option>
+                                </InputSelect>
+                            </label>
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label>Contraseña</label>
+                            <input type="password" placeholder="Escriba la contraseña" class="form-control" @bind="Model.Clave" />
+                            <ValidationMessage For="@(()=>Model.Clave)" />
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label>Confirmar Contraseña</label>
+                            <input type="password" placeholder="Confirme la contraseña" class="form-control" @bind="Model.ConfirmarClave" />
+                            <ValidationMessage For="@(()=>Model.ConfirmarClave)" />
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Registrarme
+                            </button>
+
+                        </div>
+
+                    </EditForm>
+                    <div class="col-md-12 mb-3">
+                        <hr />
+                    </div>
+
+
+                    <div class="col-md-12 mb-3">
+                        <h5>¿Ya tienes una Cuenta?</h5>
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                        <a href="login"
+                           class="btn btn-success btn-block">Iniciar Sesión Ahora</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@inject UsuariosService service
+@inject SweetAlertService swal
+@inject NavigationManager navigation
+
+@code {
+
+    public bool MostrarMensaje { get; set; } = false;
+
+    public Usuario Model { get; set; } = new Usuario
+    {
+      TU_IdRol = 1,
+    };
+
+    protected async void Registrar()
+    {
+        var res = service.Registrar(Model);
+
+        if (res.IsSuccess)
+        {
+            var result = await swal.FireAsync(new SweetAlertOptions
+            {
+                ShowCloseButton = true,
+                Title = "Todo Bien",
+                Text = res.Message,
+                Icon = SweetAlertIcon.Success,
+
+            });
+
+            navigation.NavigateTo("/login");
+        }
+
+        else
+        {
+            var result = await swal.FireAsync(new SweetAlertOptions
+            {
+                ShowCloseButton = true,
+                Title = "Error",
+                Text = res.Message,
+                Icon = SweetAlertIcon.Error,
+
+            });
+        }
+    }
+
+    protected  void ValidarNombreUsuario(ChangeEventArgs e)
+    {
+        var res = service.ValidarNombreUsuario(e.Value.ToString());
+
+        MostrarMensaje = res.IsSuccess;
+
+        Model.Nombre_Usuario = e.Value.ToString();
+    }
+
+}

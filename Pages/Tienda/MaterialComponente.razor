@@ -1,0 +1,139 @@
+﻿@page "/materiales"
+
+
+@attribute [Authorize]
+
+<div class="container">
+    <div class="row mb-3">
+        <div class="col">
+            <div class="input-group">
+                <input type="text" class="form-control" @bind="Model.Nombre_Material" />
+                <div class="input-group-append">
+                    <button class="btn btn-primary" @onclick="AgregarMaterial">Agregar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nombre del material</th>
+                        <th>Artículos</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var mat in ListaMateriales)
+                    {
+                        <tr>
+                            <td>
+                                <input type="text" class="form-control" @bind="mat.Nombre_Material" />
+                            </td>
+                            <td>@mat.CantidadProductos</td>
+                            <td>
+                                <button class="btn btn-success" @onclick="(()=>ModificarMaterial(mat))">Guardar</button>
+                                <button class="btn btn-danger" @onclick="(()=>EliminarMaterial(mat.IdMaterial))">Eliminar</button>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<ToastContainer />
+
+@inject MaterialesService materialesService
+
+@inject IToaster toaster
+
+@inject SweetAlertService swal
+
+@code {
+
+    public MaterialModel Model { get; set; } = new MaterialModel();
+
+    public List<MaterialModel> ListaMateriales { get; set; } = new List<MaterialModel>();
+
+    protected override void OnInitialized()
+    {
+        CargarMateriales();
+        //otros metodos
+    }
+
+    protected void CargarMateriales()
+    {
+        var result = materialesService.ListaMateriales();
+        ListaMateriales = result;
+    }
+
+    protected void AgregarMaterial()
+    {
+        var result = materialesService.Crear(Model);
+        if (result.IsSuccess)
+        {
+            Model.IdMaterial = result.Code;
+            Model.CantidadProductos = 0;
+
+            ListaMateriales.Add(Model);
+
+            Model = new MaterialModel();
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+
+    }
+
+
+
+    protected void ModificarMaterial(MaterialModel material)
+    {
+        var result = materialesService.Modificar(material);
+        if (result.IsSuccess)
+        {
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+
+    }
+
+    protected async Task EliminarMaterial(int idMaterial)
+    {
+        var res = await swal.FireAsync(new SweetAlertOptions
+        {
+            Title = "¿Confirma que desea eliminar este material?",
+            Text = "Si lo elimina, no podrá recuperarlo",
+            ShowConfirmButton = true,
+            ConfirmButtonText = "Si, eliminar",
+            ShowCancelButton = true,
+            CancelButtonText = "No, eliminar"
+        });
+
+        if (!res.IsConfirmed)
+        {
+            return;
+        }
+
+        var result = materialesService.Eliminar(idMaterial);
+
+        if (result.IsSuccess)
+        {
+            CargarMateriales();
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+    }
+}
