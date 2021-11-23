@@ -11,7 +11,7 @@
                 <div class="row">
                     <div class="col-4">
                         <label>Categoría</label>
-                        <select class="form-control" @onchange="AlCamabiarCategoriaSeleccionada">
+                        <select class="form-control" @bind="Articulo.TA_IdCategoria">
                             @if (ListaCategorias != null)
                             {
                                 @foreach (var cat in ListaCategorias)
@@ -24,7 +24,7 @@
                     </div>
                     <div class="col-4">
                         <label>Talla o Medida</label>
-                        <select class="form-control" @onchange="AlCamabiarTallaMSeleccionada">
+                        <select class="form-control" @bind="Articulo.TA_IdTalla_Medida">
                             @if (ListaTallaMedida != null)
                             {
                                 @foreach (var cat in ListaTallaMedida)
@@ -33,11 +33,10 @@
                                 }
                             }
                         </select>
-                        <ValidationMessage For="(() => Articulo.TA_IdTalla_Medida)" />
                     </div>
                     <div class="col-4">
                         <label>Genero</label>
-                        <select class="form-control" @onchange="AlCamabiarGeneroSeleccionada">
+                        <select class="form-control" @bind="Articulo.TA_IdGenero">
                             @if (ListaGeneros != null)
                             {
                                 @foreach (var cat in ListaGeneros)
@@ -46,11 +45,10 @@
                                 }
                             }
                         </select>
-                        <ValidationMessage For="(() => Articulo.TA_IdGenero)" />
                     </div>
                     <div class="col-4">
                         <label>Etapa</label>
-                        <select class="form-control" @onchange="AlCamabiarEtapaSeleccionada">
+                        <select class="form-control" @bind="Articulo.TA_IdEtapa">
                             @if (ListaEtapas != null)
                             {
                                 @foreach (var cat in ListaEtapas)
@@ -59,11 +57,10 @@
                                 }
                             }
                         </select>
-                        <ValidationMessage For="(() => Articulo.TA_IdEtapa)" />
                     </div>
                     <div class="col-4">
                         <label>Tipo de Material</label>
-                        <select class="form-control" @onchange="AlCamabiarMaterialSeleccionada">
+                        <select class="form-control" @bind="Articulo.TA_IdMaterial">
                             @if (ListaMateriales != null)
                             {
                                 @foreach (var cat in ListaMateriales)
@@ -72,7 +69,6 @@
                                 }
                             }
                         </select>
-                        <ValidationMessage For="(() => Articulo.TA_IdMaterial)" />
                     </div>
                     <div class="col-8">
                         <label>Nombre</label>
@@ -113,61 +109,65 @@
                 </div>
 
             </EditForm>
-            @*<div class="row">
+            <div class="row">
                 <div class="col-12">
                     <table class="table table-bordered table-sm">
                         <thead>
                             <tr>
-                                <th>Ref</th>
+                                <th>Codigo</th>
                                 <th>Nombre</th>
                                 <th>Stock</th>
+                                <th>Stock Minimo</th>
                                 <th>Costo</th>
                                 <th>Precio</th>
                                 <th>Margen</th>
-                                <th>Opciones</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var producto in ListaProductos)
+                            @foreach (var producto in ListaArticulos)
                             {
 
-                                <tr>
-                                    <td>
-                                        <input type="text" class="form-control" @bind="producto.Referencia" />
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control" @bind="producto.Nombre" />
-                                    </td>
-                                    <td>
-                                        <input type="number" class="form-control" @bind="producto.Stock" />
-                                    </td>
-                                    <td>
-                                        <input type="number" class="form-control" @bind="producto.Costo" />
-                                    </td>
-                                    <td>
-                                        <input type="number" class="form-control" @bind="producto.Precio" />
-                                    </td>
-                                    <td>@producto.Margen</td>
-                                    <td>
-                                        <button type="button" class="btn btn-success"
-                                                @onclick="(() => GuardarProducto(producto))">
+                            <tr>
+                                <td>
+                                    <input type="text" class="form-control" @bind="producto.Codigo" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" @bind="producto.Nombre" />
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control" @bind="producto.Stock" />
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control" @bind="producto.StockMinimo" />
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control" @bind="producto.PrecioCompra" />
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control" @bind="producto.PrecioVenta" />
+                                </td>
+                                <td>@producto.Margen</td>
+                                <td>
+                                    <button type="button" class="btn btn-success"
+                                            @onclick="(() => GuardarProducto(producto))">
 
-                                            <i class="fa fa-save"></i>
-                                        </button>
+                                        <i class="fa fa-save"></i>
+                                    </button>
 
-                                        <button type="button" class="btn btn-danger"
-                                                @onclick="(() => EliminarProducto(producto))">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
+                                    <button type="button" class="btn btn-danger"
+                                            @onclick="(() => EliminarProducto(producto))">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>
 
 
                 </div>
-            </div>*@
+            </div>
         </div>
     </div>
 </div>
@@ -194,7 +194,7 @@
     public List<EtapaModel> ListaEtapas { get; set; }
     public List<MaterialModel> ListaMateriales { get; set; }
 
-    public List<ArticuloModel> ListaProductos { get; set; } = new List<ArticuloModel>();
+    public List<ArticuloModel> ListaArticulos { get; set; } = new List<ArticuloModel>();
 
     protected override void OnInitialized()
     {
@@ -207,17 +207,22 @@
         CargarProductos();
     }
 
-    protected void CargarProductos(int? idCategoria = null)
+    protected void CargarProductos(/*int? idCategoria = null*/)
     {
-        if (idCategoria == null)
-        {
-            ListaProductos = articuloService.ListaArticulos();
-        }
-        else
-        {
-            ListaProductos = articuloService.ListaArticulos(Convert.ToInt32(idCategoria));
 
-        }
+
+        var result = articuloService.ListaArticulos();
+        ListaArticulos = result;
+
+        //if (idCategoria == null)
+        //{
+        //ListaProductos = articuloService.ListaArticulos();
+        //    }
+        //else
+        //{
+        //    ListaProductos = articuloService.ListaArticulos(Convert.ToInt32(idCategoria));
+
+        //}
 
     }
 
@@ -229,13 +234,15 @@
 
         if (res.IsSuccess)
         {
-            toaster.Success(res.Message, "OK");
+            Articulo.IdArticulo = res.Code;
 
-            var prod = (ArticuloModel)res.Objeto;
+            //var prod = (ArticuloModel)res.Objeto;
             //var prod = res.Objeto as ProductoModel;
 
-            ListaProductos.Add(prod);
+            ListaArticulos.Add(Articulo);
+
             Articulo = new ArticuloModel();
+            toaster.Success(res.Message, "OK");
 
             //CargarProductos(); No recomendada
 
@@ -246,128 +253,91 @@
         }
     }
 
-    protected void AlCamabiarCategoriaSeleccionada(ChangeEventArgs e)
-    {
-        Articulo.TA_IdCategoria = Convert.ToInt32(e.Value);
-
-        CargarProductos(Articulo.TA_IdCategoria
-            );
-
-
-    }
-
-    protected void AlCamabiarTallaMSeleccionada(ChangeEventArgs e)
-    {
-        Articulo.TA_IdTalla_Medida = Convert.ToInt32(e.Value);
-
-        CargarProductos(Articulo.TA_IdTalla_Medida
-            );
-
-
-    }
-
-    protected void AlCamabiarGeneroSeleccionada(ChangeEventArgs e)
-    {
-        Articulo.TA_IdGenero = Convert.ToInt32(e.Value);
-
-        CargarProductos(Articulo.TA_IdGenero
-            );
-
-
-    }
-    protected void AlCamabiarMaterialSeleccionada(ChangeEventArgs e)
-    {
-        Articulo.TA_IdMaterial = Convert.ToInt32(e.Value);
-
-        CargarProductos(Articulo.TA_IdMaterial
-            );
-
-
-    }
-    protected void AlCamabiarEtapaSeleccionada(ChangeEventArgs e)
-    {
-        Articulo.TA_IdEtapa = Convert.ToInt32(e.Value);
-
-        CargarProductos(Articulo.TA_IdEtapa
-            );
-
-
-    }
-
-
-    //protected async Task EliminarProducto(ProductoModel producto)
+    //protected void AlcambiarCategoriaSeleccionada(ChangeEventArgs e)
     //{
-    //    var confirm = await swal.FireAsync(new SweetAlertOptions
-    //    {
-    //        Title = "¿Confirma que desea eliminar este producto?",
-    //        Text = "No podrá revertir esta operación",
-    //        ShowConfirmButton = true,
-    //        ShowCancelButton = true,
-    //        ConfirmButtonText = "De acuerdo",
-    //        CancelButtonText = "Cancelar"
-    //    });
+    //    Articulo.TA_IdCategoria = Convert.ToInt32(e.Value);
 
-    //    if (!confirm.IsConfirmed)
-    //    {
-    //        return;
-    //    }
+    //    CargarProductos(Articulo.TA_IdCategoria
+    //        );
 
-    //    var res = productoService.Eliminar(producto.Id);
 
-    //    if (res.IsSuccess)
-    //    {
-    //        toaster.Success(res.Message, "OK");
-    //        ListaProductos.Remove(producto);
-    //    }
-    //    else
-    //    {
-    //        toaster.Error(res.Message, "Erro");
-    //    }
     //}
 
-    //protected void GuardarProducto(ProductoModel producto)
-    //{
-    //    if (string.IsNullOrEmpty(producto.Referencia))
-    //    {
-    //        toaster.Error("Debe escribir la referencia del producto", "Error");
-    //        return;
-    //    }
 
-    //    if (string.IsNullOrEmpty(producto.Nombre) || producto.Nombre.Length < 5)
-    //    {
-    //        toaster.Error("El nombre del producto debe ser mayor a 5 caracteres", "Error");
-    //        return;
-    //    }
+    protected async Task EliminarProducto(ArticuloModel producto)
+    {
+        var confirm = await swal.FireAsync(new SweetAlertOptions
+        {
+            Title = "¿Confirma que desea eliminar este articulo?",
+            Text = "No podrá revertir esta operación",
+            ShowConfirmButton = true,
+            ShowCancelButton = true,
+            ConfirmButtonText = "De acuerdo",
+            CancelButtonText = "Cancelar"
+        });
 
-    //    if (producto.Stock == null)
-    //    {
-    //        toaster.Error("Debe escribir el nombre valor del stok", "Error");
-    //        return;
-    //    }
+        if (!confirm.IsConfirmed)
+        {
+            return;
+        }
 
-    //    if (string.IsNullOrEmpty(producto.Costo.ToString()))
-    //    {
-    //        toaster.Error("Debe escribir el costo del producto", "Error");
-    //        return;
-    //    }
+        var res = articuloService.Eliminar(producto.IdArticulo);
 
-        @*if (string.IsNullOrEmpty(producto.Precio.ToString()))
+        if (res.IsSuccess)
+        {
+            toaster.Success(res.Message, "OK");
+            ListaArticulos.Remove(producto);
+        }
+        else
+        {
+            toaster.Error(res.Message, "Error");
+        }
+    }
+
+    protected void GuardarProducto(ArticuloModel producto)
+    {
+        if (string.IsNullOrEmpty(producto.Codigo))
+        {
+            toaster.Error("Debe escribir el codigo del producto", "Error");
+            return;
+        }
+
+        if (string.IsNullOrEmpty(producto.Nombre) || producto.Nombre.Length < 5)
+        {
+            toaster.Error("El nombre del articulo debe ser mayor a 5 caracteres", "Error");
+            return;
+        }
+
+        if (string.IsNullOrEmpty(producto.Stock.ToString()))
+        {
+            toaster.Error("Debe escribir el nombre valor del stock", "Error");
+            return;
+        }
+
+        if (string.IsNullOrEmpty(producto.PrecioCompra.ToString()))
+        {
+            toaster.Error("Debe escribir el costo del producto", "Error");
+            return;
+        }
+
+        if (string.IsNullOrEmpty(producto.PrecioVenta.ToString()))
         {
             toaster.Error("Debe escribir el precio del producto", "Error");
             return;
         }
 
 
-        var res = productoService.Modificar(producto);
+        var res = articuloService.Modificar(producto);
 
         if (res.IsSuccess)
         {
             toaster.Success(res.Message, "OK");
         }
         else
-    {
-        toaster.Error(res.Message, "Erro");
+        {
+            toaster.Error(res.Message, "Error");
+
+        }
     }
-    }*@
 
     }

@@ -10,13 +10,13 @@ namespace TiendaArtesaniasMarielos.Data.Entities
         public int IdVenta { get; set; }
         public string NumVenta { get; set; }
         public int TV_IdCliente { get; set; }
-        public int TV_IdUsuario { get; set; }
-        public DateTime Fecha { get; set; }
-        public float IVA { get; set; }
-        public decimal Total { get; set; }
+        //public int TV_IdUsuario { get; set; }
+        public DateTime FechaVenta { get; set; }
+        //public float IVA { get; set; }
+        //public decimal Total { get; set; }
 
         public virtual Cliente Cliente { get; set; }
 
-        public virtual ICollection<DetalleVenta>DetalleVentas { get; set; }
+        public virtual ICollection<DetalleVenta> DetalleVentas { get; set; }
     }
 }

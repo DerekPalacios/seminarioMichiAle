@@ -27,7 +27,7 @@ namespace TiendaArtesaniasMarielos.Data.Services
             {
                 IdCategoria = x.IdCategoria,
                 Nombre_Categoria = x.Nombre_Categoria,
-                CantidadProductos = 0
+                CantidadProductos = x.Articulos.Count,
             }).ToList();
 
             return lista;
@@ -45,7 +45,7 @@ namespace TiendaArtesaniasMarielos.Data.Services
             {
                 IdCategoria = x.IdCategoria,
                 Nombre_Categoria = x.Nombre_Categoria,
-                CantidadProductos = 0
+                CantidadProductos = x.Articulos.Count,
 
             }).FirstOrDefault();
 

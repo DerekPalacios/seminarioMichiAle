@@ -1,0 +1,275 @@
+﻿@page "/facturas/{IdVenta:int}"
+
+@page "/facturas/add"
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="float-right">
+                <a href="/facturas" class="btn btn-secondary">Volver</a>
+            </div>
+            <h4>Factura</h4>
+        </div>
+        <div class="card-body">
+
+            <EditForm Model="Model" OnValidSubmit="GuardarFactura">
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <label>Fecha</label>
+                        <input type="date" class="form-control" @bind="Model.FechaVenta" />
+                    </div>
+                    <div class="col-md-3">
+                        <label>Número de Venta</label>
+                        <input type="number" class="form-control" @bind="Model.NumVenta" />
+                    </div>
+                    <div class="col-md-6">
+                        <label>Cliente</label>
+                        <div class="input-group">
+                            <select class="form-control" @bind="Model.TV_IdCliente">
+                                @if (ListaClientes != null)
+                                {
+                                    @foreach (var item in ListaClientes)
+                                    {
+                                        <option value="@item.IdCliente">@item.NombreCompleto</option>
+                                    }
+                                }
+                            </select>
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-success"> Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>          
+            </EditForm>
+            <hr />
+        @if (ItemFactura.TDV_IdVenta != -1)
+        {
+
+                            <div class="row mb-3">
+                                <div class="col-md-2">
+                                    <label>Buscar</label>
+                                    <input type="text" class="form-control" @onchange="BuscarArticulo" />
+                                </div>
+                                <div class="col-md-10">
+                        <EditForm Model="ItemFactura" OnValidSubmit="AgregarItemFactura">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label>Codigo</label>
+                                    <span class="form-control">@ItemFactura.Codigo</span>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Articulo</label>
+                                    <span class="form-control">@ItemFactura.NombreArticulo</span>
+                                </div>
+                                <div class="col-md-2">
+                                    <label>Cantidad</label>
+                                    <input type="number" class="form-control" @bind="ItemFactura.Cantidad" />
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Precio</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" @bind="ItemFactura.PrecioUnidad" />
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-primary"> Agregar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </EditForm>
+
+                                </div>
+                            </div>
+
+
+                <div class="row">
+                    <div class="col-12">
+
+                        <table class="table table-bordered table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Codigo</th>
+                                    <th>Nombre</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio</th>
+                                    <th>Total</th>
+                                    <th>Marge</th>
+                                    <th>Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Items)
+                                {
+                                    <tr>
+                                        <td>@item.Codigo</td>
+                                        <td>@item.NombreArticulo</td>
+                                        <td class="text-right">
+                                            <input type="number" class="form-control" @bind="item.Cantidad" />
+                                        </td>
+                                        <td class="text-right">
+                                            <input type="number" class="form-control" @bind="item.PrecioUnidad" />
+                                        </td>
+                                        <td class="text-right">@item.Subtotal.ToString("c2")</td>
+                                        <td class="text-right">@item.Margen.ToString("c2")</td>
+                                        <th>
+                                            <button class="btn btn-danger" @onclick="(() => EliminarArticulo(item))"><i class="fa fa-trash"></i></button>
+                                        </th>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th colspan="4" class="text-right">TOTAL</th>
+                                    <th class="text-right">@Model.Total.ToString("c2")</th>
+                                    <th class="text-right">@Model.Ganancia.ToString("c2")</th>
+
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+        }
+        </div>
+    </div>
+</div>
+<ToastContainer />
+
+@inject VentasService facturaService
+@inject ClienteService clientesService
+@inject ArticuloService productoService
+
+@inject IToaster toaster
+
+@code {
+
+    [Parameter]
+    public int? IdVenta { get; set; }
+
+    public VentaModel Model { get; set; }
+    public ItemFacturaModel ItemFactura { get; set; } = new ItemFacturaModel();
+
+    public List<ClienteModel> ListaClientes { get; set; }
+
+    protected override void OnInitialized()
+    {
+        CargarFactura();
+
+        ListaClientes = clientesService.ListaClientes();
+    }
+
+    protected void CargarFactura()
+    {
+        if (IdVenta == null)
+        {
+            Model = new VentaModel()
+            {
+                IdVenta = -1,
+                FechaVenta = DateTime.Now,
+
+            };
+            ItemFactura.TDV_IdVenta = -1;
+        }
+        else
+        {
+            Model = facturaService.Factura(Convert.ToInt32(IdVenta));
+            ItemFactura.TDV_IdVenta = Convert.ToInt32(IdVenta);
+        }
+    }
+
+    protected void GuardarFactura()
+    {
+        var res = new MsgResult();
+
+        if (Model.IdVenta != -1)
+        {
+            res = CrearFactura();
+
+            if (res.IsSuccess)
+            {
+                Model.IdVenta = res.Code;
+                ItemFactura.TDV_IdVenta = res.Code;
+            }
+        }
+        else
+        {
+            res = ModificarFactura();
+        }
+
+        if (res.IsSuccess)
+        {
+            toaster.Success(res.Message, "OK");
+
+        }
+        else
+        {
+            toaster.Error(res.Message, "Error");
+        }
+    }
+
+    protected MsgResult CrearFactura()
+    {
+        return facturaService.Crear(Model);
+    }
+
+    protected MsgResult ModificarFactura()
+    {
+        return facturaService.Modificar(Model);
+    }
+
+    protected void BuscarArticulo(ChangeEventArgs e)
+    {
+        if (string.IsNullOrEmpty(e.Value.ToString()))
+        {
+            return;
+        }
+
+        var producto = productoService.Articulo(e.Value.ToString());
+        if (producto == null)
+        {
+            toaster.Info("Articulo no encontrado", "Info");
+            return;
+        }
+
+        ItemFactura = new ItemFacturaModel
+        {
+            TDV_IdVenta = Model.IdVenta,
+            Codigo = producto.Codigo,
+            TDV_IdArticulo = producto.IdArticulo,
+            NombreArticulo = producto.Nombre,
+            PrecioCompra = producto.PrecioCompra,
+            Cantidad = 1,
+            PrecioUnidad = producto.PrecioVenta,
+
+        };
+    }
+
+    protected void AgregarItemFactura()
+    {
+        var res = facturaService.AgregarProducto(ItemFactura);
+        if (res.IsSuccess)
+        {
+            ItemFactura.IdDetalleVenta = res.Code;
+            Model.Items.Add(ItemFactura);
+            ItemFactura = new ItemFacturaModel();
+        }
+        else
+        {
+            toaster.Error(res.Message, "Error");
+        }
+    }
+
+    protected void EliminarArticulo(ItemFacturaModel item)
+    {
+        var res = facturaService.EliminarProducto(item);
+        if (res.IsSuccess)
+        {
+            toaster.Success(res.Message, "OK");
+            Model.Items.Remove(item);
+        }
+        else
+        {
+            toaster.Error(res.Message, "OK");
+        }
+    }
+
+}

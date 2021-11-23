@@ -137,7 +137,7 @@ using Sotsera.Blazor.Toaster;
     public List<EtapaModel> ListaEtapas { get; set; }
     public List<MaterialModel> ListaMateriales { get; set; }
 
-    public List<ArticuloModel> ListaProductos { get; set; } = new List<ArticuloModel>();
+    public List<ArticuloModel> ListaArticulos { get; set; } = new List<ArticuloModel>();
 
     protected override void OnInitialized()
     {
@@ -150,17 +150,22 @@ using Sotsera.Blazor.Toaster;
         CargarProductos();
     }
 
-    protected void CargarProductos(int? idCategoria = null)
+    protected void CargarProductos(/*int? idCategoria = null*/)
     {
-        if (idCategoria == null)
-        {
-            ListaProductos = articuloService.ListaArticulos();
-        }
-        else
-        {
-            ListaProductos = articuloService.ListaArticulos(Convert.ToInt32(idCategoria));
 
-        }
+
+        var result = articuloService.ListaArticulos();
+        ListaArticulos = result;
+
+        //if (idCategoria == null)
+        //{
+        //ListaProductos = articuloService.ListaArticulos();
+        //    }
+        //else
+        //{
+        //    ListaProductos = articuloService.ListaArticulos(Convert.ToInt32(idCategoria));
+
+        //}
 
     }
 
@@ -172,13 +177,15 @@ using Sotsera.Blazor.Toaster;
 
         if (res.IsSuccess)
         {
-            toaster.Success(res.Message, "OK");
+            Articulo.IdArticulo = res.Code;
 
-            var prod = (ArticuloModel)res.Objeto;
+            //var prod = (ArticuloModel)res.Objeto;
             //var prod = res.Objeto as ProductoModel;
 
-            ListaProductos.Add(prod);
+            ListaArticulos.Add(Articulo);
+
             Articulo = new ArticuloModel();
+            toaster.Success(res.Message, "OK");
 
             //CargarProductos(); No recomendada
 
@@ -189,112 +196,94 @@ using Sotsera.Blazor.Toaster;
         }
     }
 
-    protected void AlCamabiarCategoriaSeleccionada(ChangeEventArgs e)
-    {
-        Articulo.TA_IdCategoria = Convert.ToInt32(e.Value);
-
-        CargarProductos(Articulo.TA_IdCategoria
-            );
-
-
-    }
-
-    protected void AlCamabiarTallaMSeleccionada(ChangeEventArgs e)
-    {
-        Articulo.TA_IdTalla_Medida = Convert.ToInt32(e.Value);
-
-        CargarProductos(Articulo.TA_IdTalla_Medida
-            );
-
-
-    }
-
-    protected void AlCamabiarGeneroSeleccionada(ChangeEventArgs e)
-    {
-        Articulo.TA_IdGenero = Convert.ToInt32(e.Value);
-
-        CargarProductos(Articulo.TA_IdGenero
-            );
-
-
-    }
-    protected void AlCamabiarMaterialSeleccionada(ChangeEventArgs e)
-    {
-        Articulo.TA_IdMaterial = Convert.ToInt32(e.Value);
-
-        CargarProductos(Articulo.TA_IdMaterial
-            );
-
-
-    }
-    protected void AlCamabiarEtapaSeleccionada(ChangeEventArgs e)
-    {
-        Articulo.TA_IdEtapa = Convert.ToInt32(e.Value);
-
-        CargarProductos(Articulo.TA_IdEtapa
-            );
-
-
-    }
-
-
-    //protected async Task EliminarProducto(ProductoModel producto)
+    //protected void AlcambiarCategoriaSeleccionada(ChangeEventArgs e)
     //{
-    //    var confirm = await swal.FireAsync(new SweetAlertOptions
-    //    {
-    //        Title = "¿Confirma que desea eliminar este producto?",
-    //        Text = "No podrá revertir esta operación",
-    //        ShowConfirmButton = true,
-    //        ShowCancelButton = true,
-    //        ConfirmButtonText = "De acuerdo",
-    //        CancelButtonText = "Cancelar"
-    //    });
+    //    Articulo.TA_IdCategoria = Convert.ToInt32(e.Value);
 
-    //    if (!confirm.IsConfirmed)
-    //    {
-    //        return;
-    //    }
+    //    CargarProductos(Articulo.TA_IdCategoria
+    //        );
 
-    //    var res = productoService.Eliminar(producto.Id);
 
-    //    if (res.IsSuccess)
-    //    {
-    //        toaster.Success(res.Message, "OK");
-    //        ListaProductos.Remove(producto);
-    //    }
-    //    else
-    //    {
-    //        toaster.Error(res.Message, "Erro");
-    //    }
     //}
 
-    //protected void GuardarProducto(ProductoModel producto)
-    //{
-    //    if (string.IsNullOrEmpty(producto.Referencia))
-    //    {
-    //        toaster.Error("Debe escribir la referencia del producto", "Error");
-    //        return;
-    //    }
 
-    //    if (string.IsNullOrEmpty(producto.Nombre) || producto.Nombre.Length < 5)
-    //    {
-    //        toaster.Error("El nombre del producto debe ser mayor a 5 caracteres", "Error");
-    //        return;
-    //    }
+    protected async Task EliminarProducto(ArticuloModel producto)
+    {
+        var confirm = await swal.FireAsync(new SweetAlertOptions
+        {
+            Title = "¿Confirma que desea eliminar este articulo?",
+            Text = "No podrá revertir esta operación",
+            ShowConfirmButton = true,
+            ShowCancelButton = true,
+            ConfirmButtonText = "De acuerdo",
+            CancelButtonText = "Cancelar"
+        });
 
-    //    if (producto.Stock == null)
-    //    {
-    //        toaster.Error("Debe escribir el nombre valor del stok", "Error");
-    //        return;
-    //    }
+        if (!confirm.IsConfirmed)
+        {
+            return;
+        }
 
-    //    if (string.IsNullOrEmpty(producto.Costo.ToString()))
-    //    {
-    //        toaster.Error("Debe escribir el costo del producto", "Error");
-    //        return;
-    //    }
+        var res = articuloService.Eliminar(producto.IdArticulo);
 
-        
+        if (res.IsSuccess)
+        {
+            toaster.Success(res.Message, "OK");
+            ListaArticulos.Remove(producto);
+        }
+        else
+        {
+            toaster.Error(res.Message, "Error");
+        }
+    }
+
+    protected void GuardarProducto(ArticuloModel producto)
+    {
+        if (string.IsNullOrEmpty(producto.Codigo))
+        {
+            toaster.Error("Debe escribir el codigo del producto", "Error");
+            return;
+        }
+
+        if (string.IsNullOrEmpty(producto.Nombre) || producto.Nombre.Length < 5)
+        {
+            toaster.Error("El nombre del articulo debe ser mayor a 5 caracteres", "Error");
+            return;
+        }
+
+        if (string.IsNullOrEmpty(producto.Stock.ToString()))
+        {
+            toaster.Error("Debe escribir el nombre valor del stock", "Error");
+            return;
+        }
+
+        if (string.IsNullOrEmpty(producto.PrecioCompra.ToString()))
+        {
+            toaster.Error("Debe escribir el costo del producto", "Error");
+            return;
+        }
+
+        if (string.IsNullOrEmpty(producto.PrecioVenta.ToString()))
+        {
+            toaster.Error("Debe escribir el precio del producto", "Error");
+            return;
+        }
+
+
+        var res = articuloService.Modificar(producto);
+
+        if (res.IsSuccess)
+        {
+            toaster.Success(res.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(res.Message, "Error");
+
+        }
+    }
+
+    
 
 #line default
 #line hidden

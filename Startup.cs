@@ -46,6 +46,8 @@ namespace TiendaArtesaniasMarielos
             services.AddTransient<GenerosService>();
             services.AddTransient<MaterialesService>();
             services.AddTransient<ArticuloService>();
+            services.AddTransient<ClienteService>();
+            services.AddTransient<VentasService>();
 
             //Terceros
             services.AddSweetAlert2();

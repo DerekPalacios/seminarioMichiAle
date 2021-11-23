@@ -22,68 +22,70 @@ namespace TiendaArtesaniasMarielos.Data.Services
                .Select(x=> new ArticuloModel
                {
                    IdArticulo = x.IdArticulo,
-                   TA_IdCategoria = x.TA_IdCategoria,
                    Codigo = x.Codigo,
                    Nombre = x.Nombre,
                    Stock = x.Stock,
                    StockMinimo = x.StockMinimo,
                    PrecioCompra = x.PrecioCompra,
                    PrecioVenta = x.PrecioVenta,
-                   TA_IdEtapa = x.TA_IdEtapa,
-                   TA_IdGenero = x.TA_IdGenero,
-                   TA_IdMaterial = x.TA_IdMaterial,
-                   TA_IdTalla_Medida = x.TA_IdTalla_Medida,
-               }).ToList();
-
-            return model;
-
-        }
-
-        public List<ArticuloModel> ListaArticulos(int idCategoria)
-        {
-            var model = _context.TblArticulo
-                .Where(x=>x.TA_IdCategoria == idCategoria)
-               .Select(x => new ArticuloModel
-               {
-                   IdArticulo = x.IdArticulo,
                    TA_IdCategoria = x.TA_IdCategoria,
-                   Codigo = x.Codigo,
-                   Nombre = x.Nombre,
-                   Stock = x.Stock,
-                   StockMinimo = x.StockMinimo,
-                   PrecioCompra = x.PrecioCompra,
-                   PrecioVenta = x.PrecioVenta,
+                   TA_IdTalla_Medida = x.TA_IdTalla_Medida,
                    TA_IdEtapa = x.TA_IdEtapa,
                    TA_IdGenero = x.TA_IdGenero,
                    TA_IdMaterial = x.TA_IdMaterial,
-                   TA_IdTalla_Medida = x.TA_IdTalla_Medida,
                }).ToList();
 
             return model;
 
         }
+
+        //public List<ArticuloModel> ListaArticulos(int idCategoria)
+        //{
+        //    var model = _context.TblArticulo
+        //        .Where(x=>x.TA_IdCategoria == idCategoria)
+        //       .Select(x => new ArticuloModel
+        //       {
+        //           IdArticulo = x.IdArticulo,
+        //           Codigo = x.Codigo,
+        //           Nombre = x.Nombre,
+        //           Stock = x.Stock,
+        //           StockMinimo = x.StockMinimo,
+        //           PrecioCompra = x.PrecioCompra,
+        //           PrecioVenta = x.PrecioVenta,
+        //           TA_IdCategoria = x.TA_IdCategoria,
+        //           TA_IdTalla_Medida = x.TA_IdTalla_Medida,
+        //           TA_IdEtapa = x.TA_IdEtapa,
+        //           TA_IdGenero = x.TA_IdGenero,
+        //           TA_IdMaterial = x.TA_IdMaterial,
+        //       }).ToList();
+
+        //    return model;
+
+        //}
+
+
 
         public ArticuloModel Articulo(int idarticulo)
         {
             var model = _context.TblArticulo
                 .Where(x => x.IdArticulo == idarticulo)
                 .Select(x => new ArticuloModel
-              {
-                  IdArticulo = x.IdArticulo,
-                  TA_IdCategoria = x.TA_IdCategoria,
-                  Codigo = x.Codigo,
-                  Nombre = x.Nombre,
-                  Stock = x.Stock,
-                  StockMinimo = x.StockMinimo,
-                  PrecioCompra = x.PrecioCompra,
-                  PrecioVenta = x.PrecioVenta,
-                  TA_IdEtapa = x.TA_IdEtapa,
-                  TA_IdGenero = x.TA_IdGenero,
-                  TA_IdMaterial = x.TA_IdMaterial,
-                  TA_IdTalla_Medida = x.TA_IdTalla_Medida,
+                {
+                    IdArticulo = x.IdArticulo,
+                    Codigo = x.Codigo,
+                    Nombre = x.Nombre,
+                    Stock = x.Stock,
+                    StockMinimo = x.StockMinimo,
+                    PrecioCompra = x.PrecioCompra,
+                    PrecioVenta = x.PrecioVenta,
+                    TA_IdCategoria = x.TA_IdCategoria,
+                    TA_IdTalla_Medida = x.TA_IdTalla_Medida,
+                    TA_IdEtapa = x.TA_IdEtapa,
+                    TA_IdGenero = x.TA_IdGenero,
+                    TA_IdMaterial = x.TA_IdMaterial,
 
 
-              }).FirstOrDefault();
+                }).FirstOrDefault();
 
             return model;
         }
@@ -94,17 +96,18 @@ namespace TiendaArtesaniasMarielos.Data.Services
                 .Where(x => x.Codigo.Contains(busqueda) || x.Nombre.Contains(busqueda))
                 .Select(x => new ArticuloModel
                 {
-                    TA_IdCategoria = x.TA_IdCategoria,
+                    IdArticulo = x.IdArticulo,
                     Codigo = x.Codigo,
                     Nombre = x.Nombre,
                     Stock = x.Stock,
                     StockMinimo = x.StockMinimo,
                     PrecioCompra = x.PrecioCompra,
                     PrecioVenta = x.PrecioVenta,
+                    TA_IdCategoria = x.TA_IdCategoria,
+                    TA_IdTalla_Medida = x.TA_IdTalla_Medida,
                     TA_IdEtapa = x.TA_IdEtapa,
                     TA_IdGenero = x.TA_IdGenero,
                     TA_IdMaterial = x.TA_IdMaterial,
-                    TA_IdTalla_Medida = x.TA_IdTalla_Medida,
 
                 }).FirstOrDefault();
 
@@ -127,17 +130,20 @@ namespace TiendaArtesaniasMarielos.Data.Services
 
             entity = new Articulo
             {
-                TA_IdCategoria = model.TA_IdCategoria,
                 Codigo = model.Codigo,
                 Nombre = model.Nombre,
                 Stock = model.Stock,
                 StockMinimo = model.StockMinimo,
                 PrecioCompra = model.PrecioCompra,
                 PrecioVenta = model.PrecioVenta,
+                TA_IdCategoria = model.TA_IdCategoria,
+                TA_IdTalla_Medida = model.TA_IdTalla_Medida,
                 TA_IdEtapa = model.TA_IdEtapa,
                 TA_IdGenero = model.TA_IdGenero,
                 TA_IdMaterial = model.TA_IdMaterial,
-                TA_IdTalla_Medida = model.TA_IdTalla_Medida,
+               
+           
+               
             };
 
             _context.TblArticulo.Add(entity);
@@ -169,7 +175,7 @@ namespace TiendaArtesaniasMarielos.Data.Services
 
             var entity = _context.TblArticulo.FirstOrDefault(x => x.IdArticulo == model.IdArticulo);
 
-            if (entity != null)
+            if (entity == null)
             {
                 res.IsSuccess = false;
                 res.Message = $"No se encontro el articulo que desea modificar";
@@ -177,17 +183,17 @@ namespace TiendaArtesaniasMarielos.Data.Services
             }
 
 
-            entity.TA_IdCategoria = model.TA_IdCategoria;
             entity.Codigo = model.Codigo;
             entity.Nombre = model.Nombre;
             entity.Stock = model.Stock;
             entity.StockMinimo = model.StockMinimo;
             entity.PrecioCompra = model.PrecioCompra;
             entity.PrecioVenta = model.PrecioVenta;
+            entity.TA_IdCategoria = model.TA_IdCategoria;
+            entity.TA_IdTalla_Medida = model.TA_IdTalla_Medida;
             entity.TA_IdEtapa = model.TA_IdEtapa;
             entity.TA_IdGenero = model.TA_IdGenero;
             entity.TA_IdMaterial = model.TA_IdMaterial;
-            entity.TA_IdTalla_Medida = model.TA_IdTalla_Medida;
           
 
             try
@@ -244,7 +250,7 @@ namespace TiendaArtesaniasMarielos.Data.Services
             catch (Exception ex)
             {
                 res.IsSuccess = false;
-                res.Message = "Error al eliminar la categoria";
+                res.Message = "Error al eliminar el articulo";
                 res.Error = ex;
             }
 

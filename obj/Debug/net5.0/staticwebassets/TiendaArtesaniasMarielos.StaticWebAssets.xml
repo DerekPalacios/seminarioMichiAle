@@ -1,5 +1,5 @@
 ﻿<StaticWebAssets Version="1.0">
-  <ContentRoot BasePath="/" Path="C:\Users\burgo\OneDrive\Pictures\Login\Login\obj\Debug\net5.0\scopedcss\bundle\" />
+  <ContentRoot BasePath="/" Path="C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\scopedcss\bundle\" />
   <ContentRoot BasePath="_content/CurrieTechnologies.Razor.SweetAlert2" Path="C:\Users\burgo\.nuget\packages\currietechnologies.razor.sweetalert2\5.1.0\build\..\staticwebassets\" />
   <ContentRoot BasePath="_content/Sotsera.Blazor.Toaster" Path="C:\Users\burgo\.nuget\packages\sotsera.blazor.toaster\3.0.0\build\..\staticwebassets\" />
 </StaticWebAssets>
