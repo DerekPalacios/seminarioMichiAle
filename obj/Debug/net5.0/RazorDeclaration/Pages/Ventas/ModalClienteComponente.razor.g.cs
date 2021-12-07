@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace TiendaArtesaniasMarielos.Pages.Tienda
+namespace TiendaArtesaniasMarielos.Pages.Ventas
 {
     #line hidden
     using System;
@@ -13,119 +13,119 @@ namespace TiendaArtesaniasMarielos.Pages.Tienda
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 1 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 2 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 3 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 4 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 5 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 6 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 7 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 8 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 11 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\_Imports.razor"
 using TiendaArtesaniasMarielos;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 12 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\_Imports.razor"
 using TiendaArtesaniasMarielos.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 17 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 17 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\_Imports.razor"
 using TiendaArtesaniasMarielos.Data.Services;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 19 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 19 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\_Imports.razor"
 using TiendaArtesaniasMarielos.Data.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 21 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 21 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\_Imports.razor"
 using TiendaArtesaniasMarielos.Data.Entities;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 26 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 26 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\_Imports.razor"
 using CurrieTechnologies.Razor.SweetAlert2;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 27 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 27 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\_Imports.razor"
 using Sotsera.Blazor.Toaster;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\burgo\OneDrive\Pictures\Proyecto\Pages\Tienda\TallaMedidaComponente.razor"
-           [Authorize]
+#line 29 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\_Imports.razor"
+using BlazorStrap;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/tallaMedida")]
-    public partial class TallaMedidaComponente : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/ModalCliente")]
+    public partial class ModalClienteComponente : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -133,70 +133,71 @@ using Sotsera.Blazor.Toaster;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 53 "C:\Users\burgo\OneDrive\Pictures\Proyecto\Pages\Tienda\TallaMedidaComponente.razor"
+#line 218 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\Pages\Ventas\ModalClienteComponente.razor"
        
-    public TallaMedidaModel Model { get; set; } = new TallaMedidaModel();
+    BSModal VerticallyCentered;
 
-    public List<TallaMedidaModel> ListaTallaMedida { get; set; } = new List<TallaMedidaModel>();
+    void onToggle(MouseEventArgs e)
+    {
+        VerticallyCentered.Toggle();
+    }
+
+
+
+    public ClienteModel Cliente { get; set; } = new ClienteModel();
+
+    public List<ClienteModel> ListaClientes { get; set; } = new List<ClienteModel>();
 
     protected override void OnInitialized()
     {
-        CargarTallaMedida();
-        //otros metodos
+        CargarClientes();
     }
 
-    protected void CargarTallaMedida()
+    protected void CargarClientes()
     {
-        var result = tallaMedidaService.ListaTallaMedida();
-        ListaTallaMedida = result;
+        ListaClientes = clientesService.ListaClientes();
     }
 
-    protected void AgregarTallaMedida()
+    protected void CrearCliente()
     {
-        var result = tallaMedidaService.Crear(Model);
-        if (result.IsSuccess)
+        var res = clientesService.Crear(Cliente);
+        if (res.IsSuccess)
         {
-            Model.IdTalla_Medida = result.Code;
-            Model.CantidadArticulos = 0;
+            toaster.Success(res.Message, "OK");
 
-
-
-            ListaTallaMedida.Add(Model);
-
-            Model = new TallaMedidaModel();
-            toaster.Success(result.Message, "OK");
+            Cliente.Id = res.Code;
+            ListaClientes.Add(Cliente);
+            Cliente = new ClienteModel();
         }
         else
         {
-            toaster.Error(result.Message, "Error");
+            toaster.Error(res.Message, "Error");
         }
-
     }
 
-    protected void ModificarTallaMedida(TallaMedidaModel tallaMedida)
+    protected void ModificarCliente(ClienteModel model)
     {
-        var result = tallaMedidaService.Modificar(tallaMedida);
-        if (result.IsSuccess)
+        var res = clientesService.Modificar(model);
+        if (res.IsSuccess)
         {
-            toaster.Success(result.Message, "OK");
+            toaster.Success(res.Message, "OK");
         }
         else
         {
-            toaster.Error(result.Message, "Error");
+            toaster.Error(res.Message, "Error");
         }
-
     }
 
-    protected async Task EliminarTallaMedida(int idtallaMedida)
+    protected async Task EliminarCliente(int idcliente)
     {
         var res = await swal.FireAsync(new SweetAlertOptions
         {
-            Title = "¿Confirma que desea eliminar este dato?",
-            Text = "Si la elimina, no podrá recuperarlo",
+            Title = "¿Confirma que desea eliminar este cliente?",
+            Text = "Si lo elimina, no podrá recuperarlo",
             ShowConfirmButton = true,
             ConfirmButtonText = "Si, eliminar",
             ShowCancelButton = true,
-            CancelButtonText = "No, no lo elimine"
+            CancelButtonText = "No, eliminar"
         });
 
         if (!res.IsConfirmed)
@@ -204,27 +205,26 @@ using Sotsera.Blazor.Toaster;
             return;
         }
 
-        var result = tallaMedidaService.Eliminar(idtallaMedida);
+        var result = clientesService.Eliminar(idcliente);
 
         if (result.IsSuccess)
         {
-            CargarTallaMedida();
+            CargarClientes();
             toaster.Success(result.Message, "OK");
         }
         else
         {
             toaster.Error(result.Message, "Error");
         }
-
-
     }
+
 
 #line default
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private SweetAlertService swal { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToaster toaster { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private TallaMedidaService tallaMedidaService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ClienteService clientesService { get; set; }
     }
 }
 #pragma warning restore 1591

@@ -13,106 +13,134 @@ namespace TiendaArtesaniasMarielos.Pages.Tienda
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 1 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 2 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 3 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 4 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 5 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 6 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 7 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 8 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 11 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using TiendaArtesaniasMarielos;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 12 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using TiendaArtesaniasMarielos.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 17 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 13 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
+using TiendaArtesaniasMarielos.Pages.Modals;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 17 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using TiendaArtesaniasMarielos.Data.Services;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 19 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 19 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using TiendaArtesaniasMarielos.Data.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 21 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 21 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using TiendaArtesaniasMarielos.Data.Entities;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 26 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 26 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using CurrieTechnologies.Razor.SweetAlert2;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 27 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 27 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using Sotsera.Blazor.Toaster;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 29 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
+using BlazorStrap;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 32 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
+using Radzen;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 33 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
+using Radzen.Blazor;
 
 #line default
 #line hidden
@@ -126,13 +154,16 @@ using Sotsera.Blazor.Toaster;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 187 "C:\Users\burgo\OneDrive\Pictures\Proyecto\Pages\Tienda\ArticuloComponente.razor"
+#line 210 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\Pages\Tienda\ArticuloComponente.razor"
        
 
     public ArticuloModel Articulo { get; set; } = new ArticuloModel();
 
     public List<CategoriaModel> ListaCategorias { get; set; }
-    public List<TallaMedidaModel> ListaTallaMedida { get; set; }
+
+    //public int IdMedida { get; set; }
+    public List<TallaModel> ListaTalla{ get; set; }
+    public List<MedidaModel> ListaMedida { get; set; }
     public List<GeneroModel> ListaGeneros { get; set; }
     public List<EtapaModel> ListaEtapas { get; set; }
     public List<MaterialModel> ListaMateriales { get; set; }
@@ -142,7 +173,8 @@ using Sotsera.Blazor.Toaster;
     protected override void OnInitialized()
     {
         ListaCategorias = categoriaService.ListaCategorias();
-        ListaTallaMedida = tallaMedidaService.ListaTallaMedida();
+        ListaTalla = tallaService.ListaTalla();
+        ListaMedida = medidaService.ListaMedidas();
         ListaGeneros = generoService.ListaGeneros();
         ListaEtapas = etapaService.ListaEtapas();
         ListaMateriales = materialService.ListaMateriales();
@@ -150,22 +182,13 @@ using Sotsera.Blazor.Toaster;
         CargarProductos();
     }
 
-    protected void CargarProductos(/*int? idCategoria = null*/)
+    protected void CargarProductos()
     {
 
 
         var result = articuloService.ListaArticulos();
         ListaArticulos = result;
 
-        //if (idCategoria == null)
-        //{
-        //ListaProductos = articuloService.ListaArticulos();
-        //    }
-        //else
-        //{
-        //    ListaProductos = articuloService.ListaArticulos(Convert.ToInt32(idCategoria));
-
-        //}
 
     }
 
@@ -177,7 +200,7 @@ using Sotsera.Blazor.Toaster;
 
         if (res.IsSuccess)
         {
-            Articulo.IdArticulo = res.Code;
+            Articulo.Id = res.Code;
 
             //var prod = (ArticuloModel)res.Objeto;
             //var prod = res.Objeto as ProductoModel;
@@ -224,7 +247,7 @@ using Sotsera.Blazor.Toaster;
             return;
         }
 
-        var res = articuloService.Eliminar(producto.IdArticulo);
+        var res = articuloService.Eliminar(producto.Id);
 
         if (res.IsSuccess)
         {
@@ -257,13 +280,13 @@ using Sotsera.Blazor.Toaster;
             return;
         }
 
-        if (string.IsNullOrEmpty(producto.PrecioCompra.ToString()))
+        if (string.IsNullOrEmpty(producto.Costo.ToString()))
         {
             toaster.Error("Debe escribir el costo del producto", "Error");
             return;
         }
 
-        if (string.IsNullOrEmpty(producto.PrecioVenta.ToString()))
+        if (string.IsNullOrEmpty(producto.Precio.ToString()))
         {
             toaster.Error("Debe escribir el precio del producto", "Error");
             return;
@@ -283,7 +306,6 @@ using Sotsera.Blazor.Toaster;
         }
     }
 
-    
 
 #line default
 #line hidden
@@ -293,8 +315,9 @@ using Sotsera.Blazor.Toaster;
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private ArticuloService articuloService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private EtapasService etapaService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private MaterialesService materialService { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private GenerosService generoService { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private TallaMedidaService tallaMedidaService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private GeneroService generoService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private MedidaService medidaService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private TallaService tallaService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private CategoriasService categoriaService { get; set; }
     }
 }

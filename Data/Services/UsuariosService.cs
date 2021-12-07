@@ -36,8 +36,9 @@ namespace TiendaArtesaniasMarielos.Data.Services
 
             newUser = new Usuario
             {
-                TU_IdRol = usuario.TU_IdRol,
-                Nombre_Apellido = usuario.Nombre_Apellido,
+                IdRol = usuario.IdRol,
+                Nombres = usuario.Nombres,
+                Apellidos = usuario.Apellidos,
                 Nombre_Usuario = usuario.Nombre_Usuario,
                 Clave = usuario.Clave,
                 ConfirmarClave = usuario.ConfirmarClave

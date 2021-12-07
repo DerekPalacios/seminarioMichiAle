@@ -13,111 +13,139 @@ namespace TiendaArtesaniasMarielos.Pages.Ventas
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 1 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 2 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 3 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 4 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 5 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 6 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 7 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 8 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 11 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using TiendaArtesaniasMarielos;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 12 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using TiendaArtesaniasMarielos.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 17 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 13 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
+using TiendaArtesaniasMarielos.Pages.Modals;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 17 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using TiendaArtesaniasMarielos.Data.Services;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 19 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 19 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using TiendaArtesaniasMarielos.Data.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 21 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 21 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using TiendaArtesaniasMarielos.Data.Entities;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 26 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 26 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using CurrieTechnologies.Razor.SweetAlert2;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 27 "C:\Users\burgo\OneDrive\Pictures\Proyecto\_Imports.razor"
+#line 27 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
 using Sotsera.Blazor.Toaster;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/facturas/{IdVenta:int}")]
+#nullable restore
+#line 29 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
+using BlazorStrap;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 32 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
+using Radzen;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 33 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
+using Radzen.Blazor;
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/facturas/{IdFactura:int}")]
     [Microsoft.AspNetCore.Components.RouteAttribute("/facturas/add")]
     public partial class VentasComponente : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -127,40 +155,48 @@ using Sotsera.Blazor.Toaster;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 143 "C:\Users\burgo\OneDrive\Pictures\Proyecto\Pages\Ventas\VentasComponente.razor"
+#line 177 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\Pages\Ventas\VentasComponente.razor"
        
 
     [Parameter]
-    public int? IdVenta { get; set; }
+    public int? IdFactura { get; set; }
 
     public VentaModel Model { get; set; }
     public ItemFacturaModel ItemFactura { get; set; } = new ItemFacturaModel();
 
+
+
+    //variable que guarda una lista de los items de la factura antes de que sean modificados
+    private List<ItemFacturaModel> listaAnteriorModificacion { get; set; }
+
     public List<ClienteModel> ListaClientes { get; set; }
+
+
 
     protected override void OnInitialized()
     {
         CargarFactura();
 
         ListaClientes = clientesService.ListaClientes();
+
     }
 
     protected void CargarFactura()
     {
-        if (IdVenta == null)
+        if (IdFactura == null)
         {
             Model = new VentaModel()
             {
-                IdVenta = -1,
-                FechaVenta = DateTime.Now,
-
+                Id = -1,
+                Fecha = DateTime.Now,
             };
-            ItemFactura.TDV_IdVenta = -1;
+            ItemFactura.IdVenta = -1;
         }
         else
         {
-            Model = facturaService.Factura(Convert.ToInt32(IdVenta));
-            ItemFactura.TDV_IdVenta = Convert.ToInt32(IdVenta);
+            Model = facturaService.Factura(Convert.ToInt32(IdFactura));
+            listaAnteriorModificacion = facturaService.Factura(Convert.ToInt32(IdFactura)).Items;
+            ItemFactura.IdVenta = Convert.ToInt32(IdFactura);
         }
     }
 
@@ -168,14 +204,14 @@ using Sotsera.Blazor.Toaster;
     {
         var res = new MsgResult();
 
-        if (Model.IdVenta != -1)
+        if (Model.Id == -1)
         {
             res = CrearFactura();
 
             if (res.IsSuccess)
             {
-                Model.IdVenta = res.Code;
-                ItemFactura.TDV_IdVenta = res.Code;
+                Model.Id = res.Code;
+                ItemFactura.IdVenta = res.Code;
             }
         }
         else
@@ -199,12 +235,14 @@ using Sotsera.Blazor.Toaster;
         return facturaService.Crear(Model);
     }
 
+
     protected MsgResult ModificarFactura()
     {
-        return facturaService.Modificar(Model);
+        //envio extra de una lista de items que el modelo tenia antes de que se modificara en la vista
+        return facturaService.Modificar(Model, listaAnteriorModificacion);
     }
 
-    protected void BuscarArticulo(ChangeEventArgs e)
+    protected void BuscarProducto(ChangeEventArgs e)
     {
         if (string.IsNullOrEmpty(e.Value.ToString()))
         {
@@ -214,40 +252,64 @@ using Sotsera.Blazor.Toaster;
         var producto = productoService.Articulo(e.Value.ToString());
         if (producto == null)
         {
-            toaster.Info("Articulo no encontrado", "Info");
+            toaster.Info("Producto no encontrado", "Info");
             return;
         }
 
         ItemFactura = new ItemFacturaModel
         {
-            TDV_IdVenta = Model.IdVenta,
-            Codigo = producto.Codigo,
-            TDV_IdArticulo = producto.IdArticulo,
-            NombreArticulo = producto.Nombre,
-            PrecioCompra = producto.PrecioCompra,
-            Cantidad = 1,
-            PrecioUnidad = producto.PrecioVenta,
+            Id = producto.Id,
+            //asignacion del id al item producto
 
+            Cantidad = 1,
+            Costo = producto.Costo,
+            IdVenta = Model.Id,
+            IdArticulo = producto.Id,
+            NombreArticulo = producto.Nombre,
+            Precio = producto.Precio,
+            Codigo = producto.Codigo,
+            Stock = producto.Stock,
         };
     }
 
+
+
+    //agrega item a la lista de items del modelo y por ello a la grid
     protected void AgregarItemFactura()
     {
-        var res = facturaService.AgregarProducto(ItemFactura);
-        if (res.IsSuccess)
-        {
-            ItemFactura.IdDetalleVenta = res.Code;
-            Model.Items.Add(ItemFactura);
-            ItemFactura = new ItemFacturaModel();
-        }
-        else
-        {
-            toaster.Error(res.Message, "Error");
-        }
+        //var res = facturaService.AgregarProducto(ItemFactura);
+        //if (res.IsSuccess)
+        //{
+        //ItemFactura.Id = res.Code;            --tambien asignacion de id al item producto
+
+        Model.Items.Add(ItemFactura);
+        ItemFactura = new ItemFacturaModel();
+
+        //    }
+        //else
+        //{
+        //    toaster.Error(res.Message, "Error");
+        //}
     }
 
-    protected void EliminarArticulo(ItemFacturaModel item)
+
+    protected async Task EliminarProducto(ItemFacturaModel item)
     {
+        var confirm = await swal.FireAsync(new SweetAlertOptions
+        {
+            Title = "¿Confirma que desea eliminar este Artículo de la Factura?",
+            Text = "Si lo elimina, no podrá recuperarlo",
+            ShowConfirmButton = true,
+            ConfirmButtonText = "Si, eliminar",
+            ShowCancelButton = true,
+            CancelButtonText = "No, eliminar"
+        });
+
+        if (!confirm.IsConfirmed)
+        {
+            return;
+        }
+
         var res = facturaService.EliminarProducto(item);
         if (res.IsSuccess)
         {
@@ -260,14 +322,22 @@ using Sotsera.Blazor.Toaster;
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+
+    public ClienteModel Cliente { get; set; } = new ClienteModel();
+
+
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private SweetAlertService swal { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToaster toaster { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private ArticuloService productoService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private ClienteService clientesService { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private VentasService facturaService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private VentaService facturaService { get; set; }
     }
 }
 #pragma warning restore 1591

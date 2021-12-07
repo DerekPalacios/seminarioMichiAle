@@ -1,4 +1,4 @@
-﻿@page "/tallaMedida"
+﻿@page "/medidas"
 
 @attribute [Authorize]
 
@@ -6,9 +6,9 @@
     <div class="row mb-3">
         <div class="col">
             <div class="input-group">
-                <input type="text" class="form-control" @bind="Model.Descripcion" />
+                <input type="text" class="form-control" @bind="Model.Nombre_Medida" />
                 <div class="input-group-append">
-                    <button class="btn btn-primary" @onclick="AgregarTallaMedida">Agregar</button>
+                    <button class="btn btn-primary" @onclick="AgregarMedida">Agregar</button>
                 </div>
             </div>
         </div>
@@ -19,22 +19,22 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Talla o Medida</th>
+                        <th>Tamaño</th>
                         <th>Articulos</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var cat in ListaTallaMedida)
+                    @foreach (var cat in ListaMedidas)
                     {
                         <tr>
                             <td>
-                                <input type="text" class="form-control" @bind="cat.Descripcion" />
+                                <input type="text" class="form-control" @bind="cat.Nombre_Medida" />
                             </td>
                             <td>@cat.CantidadArticulos</td>
                             <td>
-                                <button class="btn btn-success" @onclick="(()=>ModificarTallaMedida(cat))">Guardar</button>
-                                <button class="btn btn-danger" @onclick="(()=>EliminarTallaMedida(cat.IdTalla_Medida))">Eliminar</button>
+                                <button class="btn btn-success" @onclick="(()=>ModificarMedida(cat))">Guardar</button>
+                                <button class="btn btn-danger" @onclick="(()=>EliminarMedida(cat.Id))">Eliminar</button>
                             </td>
                         </tr>
                     }
@@ -46,40 +46,40 @@
 </div>
 <ToastContainer />
 
-@inject TallaMedidaService tallaMedidaService
+@inject MedidaService medidaService
 @inject IToaster toaster
 @inject SweetAlertService swal
 
 @code {
-    public TallaMedidaModel Model { get; set; } = new TallaMedidaModel();
+    public MedidaModel Model { get; set; } = new MedidaModel();
 
-    public List<TallaMedidaModel> ListaTallaMedida { get; set; } = new List<TallaMedidaModel>();
+    public List<MedidaModel> ListaMedidas { get; set; } = new List<MedidaModel>();
 
     protected override void OnInitialized()
     {
-        CargarTallaMedida();
+        CargarMedida();
         //otros metodos
     }
 
-    protected void CargarTallaMedida()
+    protected void CargarMedida()
     {
-        var result = tallaMedidaService.ListaTallaMedida();
-        ListaTallaMedida = result;
+        var result = medidaService.ListaMedidas();
+        ListaMedidas = result;
     }
 
-    protected void AgregarTallaMedida()
+    protected void AgregarMedida()
     {
-        var result = tallaMedidaService.Crear(Model);
+        var result = medidaService.Crear(Model);
         if (result.IsSuccess)
         {
-            Model.IdTalla_Medida = result.Code;
+            Model.Id = result.Code;
             Model.CantidadArticulos = 0;
 
 
 
-            ListaTallaMedida.Add(Model);
+            ListaMedidas.Add(Model);
 
-            Model = new TallaMedidaModel();
+            Model = new MedidaModel();
             toaster.Success(result.Message, "OK");
         }
         else
@@ -89,9 +89,9 @@
 
     }
 
-    protected void ModificarTallaMedida(TallaMedidaModel tallaMedida)
+    protected void ModificarMedida(MedidaModel etapa)
     {
-        var result = tallaMedidaService.Modificar(tallaMedida);
+        var result = medidaService.Modificar(etapa);
         if (result.IsSuccess)
         {
             toaster.Success(result.Message, "OK");
@@ -103,7 +103,7 @@
 
     }
 
-    protected async Task EliminarTallaMedida(int idtallaMedida)
+    protected async Task EliminarMedida(int idmedida)
     {
         var res = await swal.FireAsync(new SweetAlertOptions
         {
@@ -112,7 +112,7 @@
             ShowConfirmButton = true,
             ConfirmButtonText = "Si, eliminar",
             ShowCancelButton = true,
-            CancelButtonText = "No, no lo elimine"
+            CancelButtonText = "No, eliminar"
         });
 
         if (!res.IsConfirmed)
@@ -120,11 +120,11 @@
             return;
         }
 
-        var result = tallaMedidaService.Eliminar(idtallaMedida);
+        var result = medidaService.Eliminar(idmedida);
 
         if (result.IsSuccess)
         {
-            CargarTallaMedida();
+            CargarMedida();
             toaster.Success(result.Message, "OK");
         }
         else

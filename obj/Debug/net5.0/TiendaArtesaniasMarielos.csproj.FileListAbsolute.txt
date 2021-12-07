@@ -491,9 +491,7 @@ C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\RazorDeclaration\Page
 C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\RazorDeclaration\Pages\Tienda\ArticuloComponente.razor.g.cs
 C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\RazorDeclaration\Pages\Tienda\CategoriasComponente.razor.g.cs
 C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\RazorDeclaration\Pages\Tienda\EtapaComponente.razor.g.cs
-C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\RazorDeclaration\Pages\Tienda\GeneroComponente.razor.g.cs
 C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\RazorDeclaration\Pages\Tienda\MaterialComponente.razor.g.cs
-C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\RazorDeclaration\Pages\Tienda\TallaMedidaComponente.razor.g.cs
 C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\RazorDeclaration\Shared\PathNotFound.razor.g.cs
 C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\RazorDeclaration\_Imports.razor.g.cs
 C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\RazorDeclaration\Shared\MainLayout.razor.g.cs
@@ -511,9 +509,7 @@ C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\Razor\Pages\RecoverPa
 C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\Razor\Pages\Tienda\ArticuloComponente.razor.g.cs
 C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\Razor\Pages\Tienda\CategoriasComponente.razor.g.cs
 C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\Razor\Pages\Tienda\EtapaComponente.razor.g.cs
-C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\Razor\Pages\Tienda\GeneroComponente.razor.g.cs
 C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\Razor\Pages\Tienda\MaterialComponente.razor.g.cs
-C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\Razor\Pages\Tienda\TallaMedidaComponente.razor.g.cs
 C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\Razor\Shared\PathNotFound.razor.g.cs
 C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\Razor\_Imports.razor.g.cs
 C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\Razor\Shared\MainLayout.razor.g.cs
@@ -538,7 +534,261 @@ C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\TiendaArtesaniasMarie
 C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\TiendaArtesaniasMarielos.genruntimeconfig.cache
 C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\RazorDeclaration\Pages\Ventas\ClienteComponente.razor.g.cs
 C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\Razor\Pages\Ventas\ClienteComponente.razor.g.cs
-C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\RazorDeclaration\Pages\Ventas\ListaVentasComponente.razor.g.cs
-C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\RazorDeclaration\Pages\Ventas\VentasComponente.razor.g.cs
-C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\Razor\Pages\Ventas\ListaVentasComponente.razor.g.cs
-C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\Razor\Pages\Ventas\VentasComponente.razor.g.cs
+C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\RazorDeclaration\Pages\Tienda\TallaComponente.razor.g.cs
+C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\Razor\Pages\Tienda\TallaComponente.razor.g.cs
+C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\RazorDeclaration\Pages\Tienda\MedidasComponente.razor.g.cs
+C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\Razor\Pages\Tienda\MedidasComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\appsettings.Development.json
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\appsettings.json
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\TiendaArtesaniasMarielos.StaticWebAssets.xml
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\TiendaArtesaniasMarielos.exe
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\TiendaArtesaniasMarielos.deps.json
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\TiendaArtesaniasMarielos.runtimeconfig.json
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\TiendaArtesaniasMarielos.runtimeconfig.dev.json
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\TiendaArtesaniasMarielos.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\ref\TiendaArtesaniasMarielos.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\TiendaArtesaniasMarielos.pdb
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\TiendaArtesaniasMarielos.Views.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\TiendaArtesaniasMarielos.Views.pdb
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\CurrieTechnologies.Razor.SweetAlert2.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\Microsoft.Identity.Client.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\Newtonsoft.Json.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\Sotsera.Blazor.Toaster.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\System.Runtime.Caching.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.csproj.AssemblyReference.cache
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.GeneratedMSBuildEditorConfig.editorconfig
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.AssemblyInfoInputs.cache
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.AssemblyInfo.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.csproj.CoreCompileInputs.cache
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.MvcApplicationPartsAssemblyInfo.cache
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.RazorComponent.input.cache
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\RazorDeclaration\App.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Account\Login.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Account\Register.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Index.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\RazorDeclaration\Pages\RecoverPassword.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Tienda\ArticuloComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Tienda\CategoriasComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Tienda\EtapaComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Tienda\MaterialComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Tienda\MedidasComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Tienda\TallaComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Ventas\ClienteComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\RazorDeclaration\Shared\PathNotFound.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\RazorDeclaration\_Imports.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\RazorDeclaration\Shared\MainLayout.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\RazorDeclaration\Shared\NavMenu.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.RazorComponent.output.cache
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\RazorDeclaration\TiendaArtesaniasMarielos.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.TagHelpers.input.cache
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.TagHelpers.output.cache
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.RazorCoreGenerate.cache
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\Razor\App.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\Razor\Pages\Account\Login.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\Razor\Pages\Account\Register.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\Razor\Pages\Index.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\Razor\Pages\RecoverPassword.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\Razor\Pages\Tienda\ArticuloComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\Razor\Pages\Tienda\CategoriasComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\Razor\Pages\Tienda\EtapaComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\Razor\Pages\Tienda\MaterialComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\Razor\Pages\Tienda\MedidasComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\Razor\Pages\Tienda\TallaComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\Razor\Pages\Ventas\ClienteComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\Razor\Shared\PathNotFound.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\Razor\_Imports.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\Razor\Shared\MainLayout.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\Razor\Shared\NavMenu.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\Razor\Pages\Error.cshtml.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\Razor\Pages\_Host.cshtml.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.RazorAssemblyInfo.cache
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.RazorAssemblyInfo.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\staticwebassets\TiendaArtesaniasMarielos.StaticWebAssets.Manifest.cache
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\staticwebassets\TiendaArtesaniasMarielos.StaticWebAssets.xml
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\scopedcss\Shared\MainLayout.razor.rz.scp.css
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\scopedcss\Shared\NavMenu.razor.rz.scp.css
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\scopedcss\bundle\TiendaArtesaniasMarielos.styles.css
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\scopedcss\projectbundle\TiendaArtesaniasMarielos.bundle.scp.css
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.RazorTargetAssemblyInfo.cache
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.RazorTargetAssemblyInfo.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.Views.pdb
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.csproj.CopyComplete
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\ref\TiendaArtesaniasMarielos.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.pdb
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.genruntimeconfig.cache
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Ventas\ListaVentasComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Ventas\VentasComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\Razor\Pages\Ventas\ListaVentasComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\Razor\Pages\Ventas\VentasComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\BlazorComponentUtilities.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\BlazorStrap.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\Microsoft.AspNetCore.Authorization.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\Microsoft.AspNetCore.Components.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\Microsoft.AspNetCore.Components.Forms.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\Microsoft.AspNetCore.Components.Web.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\Microsoft.AspNetCore.Metadata.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\Microsoft.JSInterop.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\System.IO.Pipelines.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Modals\ArticuloModal.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Modals\ClienteModal.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Modals\PruebaComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\Razor\Pages\Modals\ArticuloModal.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\Razor\Pages\Modals\ClienteModal.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\obj\Debug\net5.0\Razor\Pages\Modals\PruebaComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\Radzen.Blazor.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\bin\Debug\net5.0\System.Linq.Dynamic.Core.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\appsettings.Development.json
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\appsettings.json
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\TiendaArtesaniasMarielos.StaticWebAssets.xml
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\TiendaArtesaniasMarielos.exe
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\TiendaArtesaniasMarielos.deps.json
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\TiendaArtesaniasMarielos.runtimeconfig.json
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\TiendaArtesaniasMarielos.runtimeconfig.dev.json
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\TiendaArtesaniasMarielos.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\ref\TiendaArtesaniasMarielos.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\TiendaArtesaniasMarielos.pdb
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\TiendaArtesaniasMarielos.Views.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\TiendaArtesaniasMarielos.Views.pdb
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\BlazorComponentUtilities.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\BlazorStrap.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\CurrieTechnologies.Razor.SweetAlert2.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\Microsoft.AspNetCore.Authorization.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\Microsoft.AspNetCore.Components.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\Microsoft.AspNetCore.Components.Forms.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\Microsoft.AspNetCore.Components.Web.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\Microsoft.AspNetCore.Metadata.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\Microsoft.Identity.Client.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\Microsoft.JSInterop.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\Newtonsoft.Json.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\Radzen.Blazor.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\Sotsera.Blazor.Toaster.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\System.IO.Pipelines.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\System.Linq.Dynamic.Core.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\System.Runtime.Caching.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.csproj.AssemblyReference.cache
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.GeneratedMSBuildEditorConfig.editorconfig
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.AssemblyInfoInputs.cache
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.AssemblyInfo.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.csproj.CoreCompileInputs.cache
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.MvcApplicationPartsAssemblyInfo.cache
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.RazorComponent.input.cache
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\RazorDeclaration\App.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Account\Login.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Account\Register.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Index.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Modals\ArticuloModal.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Modals\ClienteModal.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Modals\PruebaComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\RazorDeclaration\Pages\RecoverPassword.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Tienda\ArticuloComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Tienda\CategoriasComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Tienda\EtapaComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Tienda\MaterialComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Tienda\MedidasComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Tienda\TallaComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Ventas\ClienteComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Ventas\ListaVentasComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\RazorDeclaration\Pages\Ventas\VentasComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\RazorDeclaration\Shared\PathNotFound.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\RazorDeclaration\_Imports.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\RazorDeclaration\Shared\MainLayout.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\RazorDeclaration\Shared\NavMenu.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.RazorComponent.output.cache
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\RazorDeclaration\TiendaArtesaniasMarielos.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.TagHelpers.input.cache
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.TagHelpers.output.cache
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.RazorCoreGenerate.cache
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\Razor\App.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\Razor\Pages\Account\Login.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\Razor\Pages\Account\Register.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\Razor\Pages\Index.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\Razor\Pages\Modals\ArticuloModal.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\Razor\Pages\Modals\ClienteModal.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\Razor\Pages\Modals\PruebaComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\Razor\Pages\RecoverPassword.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\Razor\Pages\Tienda\ArticuloComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\Razor\Pages\Tienda\CategoriasComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\Razor\Pages\Tienda\EtapaComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\Razor\Pages\Tienda\MaterialComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\Razor\Pages\Tienda\MedidasComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\Razor\Pages\Tienda\TallaComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\Razor\Pages\Ventas\ClienteComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\Razor\Pages\Ventas\ListaVentasComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\Razor\Pages\Ventas\VentasComponente.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\Razor\Shared\PathNotFound.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\Razor\_Imports.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\Razor\Shared\MainLayout.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\Razor\Shared\NavMenu.razor.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\Razor\Pages\Error.cshtml.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\Razor\Pages\_Host.cshtml.g.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.RazorAssemblyInfo.cache
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.RazorAssemblyInfo.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\staticwebassets\TiendaArtesaniasMarielos.StaticWebAssets.Manifest.cache
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\staticwebassets\TiendaArtesaniasMarielos.StaticWebAssets.xml
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\scopedcss\Shared\MainLayout.razor.rz.scp.css
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\scopedcss\Shared\NavMenu.razor.rz.scp.css
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\scopedcss\bundle\TiendaArtesaniasMarielos.styles.css
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\scopedcss\projectbundle\TiendaArtesaniasMarielos.bundle.scp.css
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.RazorTargetAssemblyInfo.cache
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.RazorTargetAssemblyInfo.cs
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.Views.pdb
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.csproj.CopyComplete
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\ref\TiendaArtesaniasMarielos.dll
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.pdb
+D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\TiendaArtesaniasMarielos.genruntimeconfig.cache

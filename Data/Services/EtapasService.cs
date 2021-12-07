@@ -25,7 +25,7 @@ namespace TiendaArtesaniasMarielos.Data.Services
 
             var lista = query.Select(x => new EtapaModel
             {
-                IdEtapa = x.IdEtapa,
+                Id = x.Id,
                 Nombre_Etapa = x.Nombre_Etapa,
                 CantidadArticulos = x.Articulos.Count,
             }).ToList();
@@ -37,12 +37,12 @@ namespace TiendaArtesaniasMarielos.Data.Services
         {
             var query = _context.CatEtapa
                .Include(x => x.Articulos)
-                .Where(x => x.IdEtapa == idetapa)
+                .Where(x => x.Id == idetapa)
                 .ToList();
 
             var model = query.Select(x => new EtapaModel
             {
-                IdEtapa = x.IdEtapa,
+                Id = x.Id,
                 Nombre_Etapa = x.Nombre_Etapa,
                 CantidadArticulos = x.Articulos.Count,
 
@@ -69,7 +69,7 @@ namespace TiendaArtesaniasMarielos.Data.Services
 
                 res.IsSuccess = true;
                 res.Message = "Dato registrado correctamente";
-                res.Code = entity.IdEtapa;
+                res.Code = entity.Id;
             }
             catch (Exception ex)
             {
@@ -84,7 +84,7 @@ namespace TiendaArtesaniasMarielos.Data.Services
         {
             var res = new MsgResult();
 
-            var entity = _context.CatEtapa.FirstOrDefault(x => x.IdEtapa == model.IdEtapa);
+            var entity = _context.CatEtapa.FirstOrDefault(x => x.Id == model.Id);
             if (entity == null)
             {
                 res.IsSuccess = false;
@@ -116,7 +116,7 @@ namespace TiendaArtesaniasMarielos.Data.Services
 
             var entity = _context.CatEtapa
             .Include(x => x.Articulos)
-            .FirstOrDefault(x => x.IdEtapa == idetapa);
+            .FirstOrDefault(x => x.Id == idetapa);
 
             if (entity == null)
             {

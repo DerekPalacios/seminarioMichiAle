@@ -34,12 +34,12 @@
                     <div class="col-md-4">
                         <label>Dirección</label>
                         <input type="text" class="form-control" @bind="Cliente.Direccion" />
-                        <ValidationMessage For="(()=>Cliente.Direccion)" />
+                        @*<ValidationMessage For="(()=>Cliente.Direccion)" />*@
                     </div>
                     <div class="col-md-4">
                         <label>Teléfono</label>
                         <input type="tel" class="form-control" @bind="Cliente.Telefono" />
-                        <ValidationMessage For="(()=>Cliente.Telefono)" />
+                        @*<ValidationMessage For="(()=>Cliente.Telefono)" />*@
                     </div>
                     <div class="col-md-4">
                         <label>Email</label>
@@ -61,7 +61,7 @@
                             <tr>
                                 <th>Nombres</th>
                                 <th>Apellidos</th>
-                                <th>Identifación</th>
+                                <th>Identifacion</th>
                                 <th>Direccion</th>
                                 <th>Telefono</th>
                                 <th>Email</th>
@@ -87,19 +87,19 @@
                                         <input type="text" class="form-control" @bind="item.Direccion" />
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" @bind="item.Telefono" />
+                                        <input type="tel" class="form-control" @bind="item.Telefono" />
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" @bind="item.Correo" />
+                                        <input type="email" class="form-control" @bind="item.Correo" />
                                     </td>
                                     <td>
                                         <button class="btn btn-success"
                                                 @onclick="(()=>ModificarCliente(item))">
-                                            <i class="fa fa-save"></i>
+                                                <i class='bx bxs-save' ></i>
                                         </button>
-                                        <button class="btn btn-danger"
-                                                @onclick="(()=>EliminarCliente(item.IdCliente))">
-                                            <i class="fa fa-trash"></i>
+                                        <button class="btn btn-danger" style="float:left;"
+                                                @onclick="(()=>EliminarCliente(item.Id))">
+                                                <i class='bx bx-trash'></i>
                                         </button>
                                     </td>
                                 </tr>
@@ -142,7 +142,7 @@
         {
             toaster.Success(res.Message, "OK");
 
-            Cliente.IdCliente = res.Code;
+            Cliente.Id = res.Code;
             ListaClientes.Add(Cliente);
             Cliente = new ClienteModel();
         }

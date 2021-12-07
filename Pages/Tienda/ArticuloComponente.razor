@@ -3,7 +3,7 @@
 <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-            <h4>Articulos</h4>
+            <h4>Artículos</h4>
         </div>
         <div class="card-body">
             <EditForm Model="Articulo" OnValidSubmit="AgregarProducto">
@@ -11,61 +11,84 @@
                 <div class="row">
                     <div class="col-4">
                         <label>Categoría</label>
-                        <select class="form-control" @bind="Articulo.TA_IdCategoria">
+                        <select class="form-control" @bind="Articulo.IdCategoria">
                             @if (ListaCategorias != null)
                             {
                                 @foreach (var cat in ListaCategorias)
                                 {
-                                    <option value="@cat.IdCategoria">@cat.Nombre_Categoria</option>
+
+                                    <option value="@cat.Id">@cat.Nombre_Categoria</option>
                                 }
                             }
                         </select>
-                        <ValidationMessage For="(() => Articulo.TA_IdCategoria)" />
+                        <ValidationMessage For="(() => Articulo.IdCategoria)" />
                     </div>
                     <div class="col-4">
-                        <label>Talla o Medida</label>
-                        <select class="form-control" @bind="Articulo.TA_IdTalla_Medida">
-                            @if (ListaTallaMedida != null)
+                        <label>Talla</label>
+                        <select class="form-control" @bind="Articulo.IdTalla">
+                            @*<option value="">Ninguno</option>*@
+                            @if (ListaTalla != null)
                             {
-                                @foreach (var cat in ListaTallaMedida)
+                                @foreach (var cat in ListaTalla)
                                 {
-                                    <option value="@cat.IdTalla_Medida">@cat.Descripcion</option>
+
+                                    <option value="@cat.Id">@cat.Nombre_Talla</option>
                                 }
                             }
                         </select>
                     </div>
                     <div class="col-4">
-                        <label>Genero</label>
-                        <select class="form-control" @bind="Articulo.TA_IdGenero">
+                        <label>Tamaño</label>
+                        <select class="form-control" @bind="Articulo.IdMedida">
+                            @*<option value="">Ninguno</option>*@
+                            @if (ListaMedida != null)
+                            {
+                                @foreach (var cat in ListaMedida)
+                                {
+
+                                    <option value="@cat.Id">@cat.Nombre_Medida</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <label>Género</label>
+                        <select class="form-control" @bind="Articulo.IdGenero">
+                            @*<option value="">Ninguno</option>*@
                             @if (ListaGeneros != null)
                             {
                                 @foreach (var cat in ListaGeneros)
                                 {
-                                    <option value="@cat.IdGenero">@cat.Nombre_Genero</option>
+
+                                    <option value="@cat.Id">@cat.Nombre_Genero</option>
                                 }
                             }
                         </select>
                     </div>
                     <div class="col-4">
-                        <label>Etapa</label>
-                        <select class="form-control" @bind="Articulo.TA_IdEtapa">
+                        <label>Categoria Personas</label>
+                        <select class="form-control" @bind="Articulo.IdEtapa">
+                            @*<option value="">Ninguno</option>*@
                             @if (ListaEtapas != null)
                             {
                                 @foreach (var cat in ListaEtapas)
                                 {
-                                    <option value="@cat.IdEtapa">@cat.Nombre_Etapa</option>
+
+                                    <option value="@cat.Id">@cat.Nombre_Etapa</option>
                                 }
                             }
                         </select>
                     </div>
                     <div class="col-4">
                         <label>Tipo de Material</label>
-                        <select class="form-control" @bind="Articulo.TA_IdMaterial">
+                        <select class="form-control" @bind="Articulo.IdMaterial">
+                            @*<option value="">Ninguno</option>*@
                             @if (ListaMateriales != null)
                             {
                                 @foreach (var cat in ListaMateriales)
                                 {
-                                    <option value="@cat.IdMaterial">@cat.Nombre_Material</option>
+
+                                    <option value="@cat.Id">@cat.Nombre_Material</option>
                                 }
                             }
                         </select>
@@ -93,14 +116,14 @@
                     </div>
                     <div class="col-3">
                         <label>Costo</label>
-                        <input type="number" class="form-control" @bind="Articulo.PrecioCompra" />
-                        <ValidationMessage For="(() => Articulo.PrecioCompra)" />
+                        <input type="number" class="form-control" @bind="Articulo.Costo" />
+                        <ValidationMessage For="(() => Articulo.Costo)" />
                     </div>
                     <div class="col-5">
                         <label>Precio</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" @bind="Articulo.PrecioVenta" />
-                            <ValidationMessage For="(() => Articulo.PrecioVenta)" />
+                            <input type="number" class="form-control" @bind="Articulo.Precio" />
+                            <ValidationMessage For="(() => Articulo.Precio)" />
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-primary">Agregar</button>
                             </div>
@@ -128,39 +151,38 @@
                             @foreach (var producto in ListaArticulos)
                             {
 
-                            <tr>
-                                <td>
-                                    <input type="text" class="form-control" @bind="producto.Codigo" />
-                                </td>
-                                <td>
-                                    <input type="text" class="form-control" @bind="producto.Nombre" />
-                                </td>
-                                <td>
-                                    <input type="number" class="form-control" @bind="producto.Stock" />
-                                </td>
-                                <td>
-                                    <input type="number" class="form-control" @bind="producto.StockMinimo" />
-                                </td>
-                                <td>
-                                    <input type="number" class="form-control" @bind="producto.PrecioCompra" />
-                                </td>
-                                <td>
-                                    <input type="number" class="form-control" @bind="producto.PrecioVenta" />
-                                </td>
-                                <td>@producto.Margen</td>
-                                <td>
-                                    <button type="button" class="btn btn-success"
-                                            @onclick="(() => GuardarProducto(producto))">
+                                <tr>
+                                    <td>
+                                        <input type="text" class="form-control" @bind="producto.Codigo" />
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" @bind="producto.Nombre" />
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" @bind="producto.Stock" />
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" @bind="producto.StockMinimo" />
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" @bind="producto.Costo" />
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" @bind="producto.Precio" />
+                                    </td>
+                                    <td>@producto.Margen</td>
+                                    <td>
+                                        <button type="button" class="btn btn-success"
+                                                @onclick="(() => GuardarProducto(producto))">
+                                                <i class='bx bxs-save'></i>
+                                        </button>
 
-                                        <i class="fa fa-save"></i>
-                                    </button>
-
-                                    <button type="button" class="btn btn-danger"
-                                            @onclick="(() => EliminarProducto(producto))">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
+                                        <button type="button" class="btn btn-danger"
+                                                @onclick="(() => EliminarProducto(producto))">
+                                                <i class='bx bx-trash'></i>
+                                        </button>
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>
@@ -175,8 +197,9 @@
 <ToastContainer />
 
 @inject CategoriasService categoriaService
-@inject TallaMedidaService tallaMedidaService
-@inject GenerosService generoService
+@inject TallaService tallaService
+@inject MedidaService medidaService
+@inject GeneroService generoService
 @inject MaterialesService materialService
 @inject EtapasService etapaService
 @inject ArticuloService articuloService
@@ -189,7 +212,10 @@
     public ArticuloModel Articulo { get; set; } = new ArticuloModel();
 
     public List<CategoriaModel> ListaCategorias { get; set; }
-    public List<TallaMedidaModel> ListaTallaMedida { get; set; }
+
+    //public int IdMedida { get; set; }
+    public List<TallaModel> ListaTalla{ get; set; }
+    public List<MedidaModel> ListaMedida { get; set; }
     public List<GeneroModel> ListaGeneros { get; set; }
     public List<EtapaModel> ListaEtapas { get; set; }
     public List<MaterialModel> ListaMateriales { get; set; }
@@ -199,7 +225,8 @@
     protected override void OnInitialized()
     {
         ListaCategorias = categoriaService.ListaCategorias();
-        ListaTallaMedida = tallaMedidaService.ListaTallaMedida();
+        ListaTalla = tallaService.ListaTalla();
+        ListaMedida = medidaService.ListaMedidas();
         ListaGeneros = generoService.ListaGeneros();
         ListaEtapas = etapaService.ListaEtapas();
         ListaMateriales = materialService.ListaMateriales();
@@ -207,22 +234,13 @@
         CargarProductos();
     }
 
-    protected void CargarProductos(/*int? idCategoria = null*/)
+    protected void CargarProductos()
     {
 
 
         var result = articuloService.ListaArticulos();
         ListaArticulos = result;
 
-        //if (idCategoria == null)
-        //{
-        //ListaProductos = articuloService.ListaArticulos();
-        //    }
-        //else
-        //{
-        //    ListaProductos = articuloService.ListaArticulos(Convert.ToInt32(idCategoria));
-
-        //}
 
     }
 
@@ -234,7 +252,7 @@
 
         if (res.IsSuccess)
         {
-            Articulo.IdArticulo = res.Code;
+            Articulo.Id = res.Code;
 
             //var prod = (ArticuloModel)res.Objeto;
             //var prod = res.Objeto as ProductoModel;
@@ -281,7 +299,7 @@
             return;
         }
 
-        var res = articuloService.Eliminar(producto.IdArticulo);
+        var res = articuloService.Eliminar(producto.Id);
 
         if (res.IsSuccess)
         {
@@ -314,13 +332,13 @@
             return;
         }
 
-        if (string.IsNullOrEmpty(producto.PrecioCompra.ToString()))
+        if (string.IsNullOrEmpty(producto.Costo.ToString()))
         {
             toaster.Error("Debe escribir el costo del producto", "Error");
             return;
         }
 
-        if (string.IsNullOrEmpty(producto.PrecioVenta.ToString()))
+        if (string.IsNullOrEmpty(producto.Precio.ToString()))
         {
             toaster.Error("Debe escribir el precio del producto", "Error");
             return;
@@ -340,4 +358,4 @@
         }
     }
 
-    }
+}

@@ -1,4 +1,4 @@
-﻿@page "/genero"
+﻿@page "/tallas"
 
 @attribute [Authorize]
 
@@ -6,9 +6,9 @@
     <div class="row mb-3">
         <div class="col">
             <div class="input-group">
-                <input type="text" class="form-control" @bind="Model.Nombre_Genero" />
+                <input type="text" class="form-control" @bind="Model.Nombre_Talla" />
                 <div class="input-group-append">
-                    <button class="btn btn-primary" @onclick="AgregarGenero">Agregar</button>
+                    <button class="btn btn-primary" @onclick="AgregarTalla">Agregar</button>
                 </div>
             </div>
         </div>
@@ -19,22 +19,22 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Genero</th>
+                        <th>Tallas</th>
                         <th>Articulos</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var cat in ListaGeneros)
+                    @foreach (var cat in ListaTalla)
                     {
                         <tr>
                             <td>
-                                <input type="text" class="form-control" @bind="cat.Nombre_Genero" />
+                                <input type="text" class="form-control" @bind="cat.Nombre_Talla" />
                             </td>
                             <td>@cat.CantidadArticulos</td>
                             <td>
-                                <button class="btn btn-success" @onclick="(()=>ModificarGenero(cat))">Guardar</button>
-                                <button class="btn btn-danger" @onclick="(()=>EliminarGenero(cat.IdGenero))">Eliminar</button>
+                                <button class="btn btn-success" @onclick="(()=>ModificarTalla(cat))">Guardar</button>
+                                <button class="btn btn-danger" @onclick="(()=>EliminarTalla(cat.Id))">Eliminar</button>
                             </td>
                         </tr>
                     }
@@ -46,40 +46,40 @@
 </div>
 <ToastContainer />
 
-@inject GenerosService generoService
+@inject TallaService tallasService
 @inject IToaster toaster
 @inject SweetAlertService swal
 
 @code {
-    public GeneroModel Model { get; set; } = new GeneroModel();
+    public TallaModel Model { get; set; } = new TallaModel();
 
-    public List<GeneroModel> ListaGeneros { get; set; } = new List<GeneroModel>();
+    public List<TallaModel> ListaTalla { get; set; } = new List<TallaModel>();
 
     protected override void OnInitialized()
     {
-        CargarGenero();
+        CargarTalla();
         //otros metodos
     }
 
-    protected void CargarGenero()
+    protected void CargarTalla()
     {
-        var result = generoService.ListaGeneros();
-        ListaGeneros = result;
+        var result = tallasService.ListaTalla();
+        ListaTalla = result;
     }
 
-    protected void AgregarGenero()
+    protected void AgregarTalla()
     {
-        var result = generoService.Crear(Model);
+        var result = tallasService.Crear(Model);
         if (result.IsSuccess)
         {
-            Model.IdGenero = result.Code;
+            Model.Id = result.Code;
             Model.CantidadArticulos = 0;
 
 
 
-            ListaGeneros.Add(Model);
+            ListaTalla.Add(Model);
 
-            Model = new GeneroModel();
+            Model = new TallaModel();
             toaster.Success(result.Message, "OK");
         }
         else
@@ -89,9 +89,9 @@
 
     }
 
-    protected void ModificarGenero(GeneroModel etapa)
+    protected void ModificarTalla(TallaModel tallaMedida)
     {
-        var result = generoService.Modificar(etapa);
+        var result = tallasService.Modificar(tallaMedida);
         if (result.IsSuccess)
         {
             toaster.Success(result.Message, "OK");
@@ -103,16 +103,16 @@
 
     }
 
-    protected async Task EliminarGenero(int idetapa)
+    protected async Task EliminarTalla(int idtalla)
     {
         var res = await swal.FireAsync(new SweetAlertOptions
         {
-            Title = "¿Confirma que desea eliminar este dato?",
+            Title = "¿Confirma que desea eliminar esta talla?",
             Text = "Si la elimina, no podrá recuperarlo",
             ShowConfirmButton = true,
             ConfirmButtonText = "Si, eliminar",
             ShowCancelButton = true,
-            CancelButtonText = "No, no lo elimine"
+            CancelButtonText = "No, eliminar"
         });
 
         if (!res.IsConfirmed)
@@ -120,11 +120,11 @@
             return;
         }
 
-        var result = generoService.Eliminar(idetapa);
+        var result = tallasService.Eliminar(idtalla);
 
         if (result.IsSuccess)
         {
-            CargarGenero();
+            CargarTalla();
             toaster.Success(result.Message, "OK");
         }
         else

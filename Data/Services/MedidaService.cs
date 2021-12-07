@@ -8,42 +8,42 @@ using TiendaArtesaniasMarielos.Data.Models;
 
 namespace TiendaArtesaniasMarielos.Data.Services
 {
-    public class GenerosService
+    public class MedidaService
     {
         private readonly ArtesaniasDbContext _context;
 
-        public GenerosService(ArtesaniasDbContext context)
+        public MedidaService(ArtesaniasDbContext context)
         {
             _context = context;
         }
 
-        public List<GeneroModel> ListaGeneros()
+        public List<MedidaModel> ListaMedidas()
         {
-            var query = _context.CatGenero
+            var query = _context.CatMedida
             .Include(x => x.Articulos)
             .ToList();
 
-            var lista = query.Select(x => new GeneroModel
+            var lista = query.Select(x => new MedidaModel
             {
-                IdGenero = x.IdGenero,
-                Nombre_Genero = x.Nombre_Genero,
+                Id = x.Id,
+                Nombre_Medida = x.Nombre_Medida,
                 CantidadArticulos = x.Articulos.Count,
             }).ToList();
 
             return lista;
 
         }
-        public GeneroModel Genero(int idgenero)
+        public MedidaModel Medida(int idmedida)
         {
-            var query = _context.CatGenero
+            var query = _context.CatMedida
                .Include(x => x.Articulos)
-                .Where(x => x.IdGenero == idgenero)
+                .Where(x => x.Id == idmedida)
                 .ToList();
 
-            var model = query.Select(x => new GeneroModel
+            var model = query.Select(x => new MedidaModel
             {
-                IdGenero = x.IdGenero,
-                Nombre_Genero = x.Nombre_Genero,
+                Id = x.Id,
+                Nombre_Medida = x.Nombre_Medida,
                 CantidadArticulos = x.Articulos.Count,
 
             }).FirstOrDefault();
@@ -52,16 +52,16 @@ namespace TiendaArtesaniasMarielos.Data.Services
             ;
         }
 
-        public MsgResult Crear(GeneroModel model)
+        public MsgResult Crear(MedidaModel model)
         {
             var res = new MsgResult();
 
-            var entity = new Genero
+            var entity = new Medida
             {
-                Nombre_Genero = model.Nombre_Genero,
+                Nombre_Medida = model.Nombre_Medida,
             };
 
-            _context.CatGenero.Add(entity);
+            _context.CatMedida.Add(entity);
 
             try
             {
@@ -69,7 +69,7 @@ namespace TiendaArtesaniasMarielos.Data.Services
 
                 res.IsSuccess = true;
                 res.Message = "Dato registrado correctamente";
-                res.Code = entity.IdGenero;
+                res.Code = entity.Id;
             }
             catch (Exception ex)
             {
@@ -80,18 +80,18 @@ namespace TiendaArtesaniasMarielos.Data.Services
             return res;
         }
 
-        public MsgResult Modificar(GeneroModel model)
+        public MsgResult Modificar(MedidaModel model)
         {
             var res = new MsgResult();
 
-            var entity = _context.CatGenero.FirstOrDefault(x => x.IdGenero == model.IdGenero);
+            var entity = _context.CatMedida.FirstOrDefault(x => x.Id == model.Id);
             if (entity == null)
             {
                 res.IsSuccess = false;
                 res.Message = "Ese dato no existe";
                 return res;
             }
-            entity.Nombre_Genero = model.Nombre_Genero;
+            entity.Nombre_Medida = model.Nombre_Medida;
 
             try
             {
@@ -110,13 +110,13 @@ namespace TiendaArtesaniasMarielos.Data.Services
         }
 
 
-        public MsgResult Eliminar(int idgenero)
+        public MsgResult Eliminar(int idmedida)
         {
             var res = new MsgResult();
 
-            var entity = _context.CatGenero
+            var entity = _context.CatMedida
             .Include(x => x.Articulos)
-            .FirstOrDefault(x => x.IdGenero == idgenero);
+            .FirstOrDefault(x => x.Id == idmedida);
 
             if (entity == null)
             {
@@ -135,7 +135,7 @@ namespace TiendaArtesaniasMarielos.Data.Services
                 return res;
             }
 
-            _context.CatGenero.Remove(entity);
+            _context.CatMedida.Remove(entity);
 
             try
             {

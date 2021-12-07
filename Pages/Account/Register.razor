@@ -15,13 +15,18 @@
             <div>
                 <div class="card-body">
                     <EditForm Model="Model" OnValidSubmit="Registrar">
-                        <DataAnnotationsValidator/>
+                        <DataAnnotationsValidator />
 
                         <h4 class="card-title text-center">Registro de Usuario</h4>
                         <div class="col-md-12 mb-3">
-                            <label>Nombres y Apellidos</label>
-                            <input type="text" placeholder="Escriba sus Nombres y Apellidos" class="form-control" @bind="Model.Nombre_Apellido" />
-                            <ValidationMessage For="@(()=>Model.Nombre_Apellido)"/>
+                            <label>Nombres</label>
+                            <input type="text" placeholder="Escriba un nombre" class="form-control" @bind="Model.Nombres" />
+                            <ValidationMessage For="@(()=>Model.Nombres)" />
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label>Apellidos</label>
+                            <input type="text" placeholder="Escriba un apellido" class="form-control" @bind="Model.Apellidos" />
+                            <ValidationMessage For="@(()=>Model.Apellidos)" />
                         </div>
 
                         <div class="col-md-12 mb-3">
@@ -31,20 +36,19 @@
 
                             @if (MostrarMensaje)
                             {
-                                <span class="text-danger">El usuario que intenta registrar ya existe</span>
-                            }
+                    <span class="text-danger">El usuario que intenta registrar ya existe</span>}
 
                         </div>
 
                         <div class="col-md-12 mb-3">
-                            <label>
+                            @*<label>
                                 Rol:
-                                <InputSelect @bind-Value="Model.TU_IdRol">
+                                <InputSelect @bind-Value="Model.IdRol">
                                     <option value="">Select Rol ...</option>
                                     <option value="Administrador">Administrador</option>
                                     <option value="Vendedor">Vendedor</option>
                                 </InputSelect>
-                            </label>
+                            </label>*@
                         </div>
 
                         <div class="col-md-12 mb-3">
@@ -61,25 +65,12 @@
 
                         <div class="col-md-12 mb-3">
                             <button type="submit" class="btn btn-primary btn-block">
-                                Registrarme
+                                Registrar
                             </button>
 
                         </div>
 
                     </EditForm>
-                    <div class="col-md-12 mb-3">
-                        <hr />
-                    </div>
-
-
-                    <div class="col-md-12 mb-3">
-                        <h5>¿Ya tienes una Cuenta?</h5>
-                    </div>
-
-                    <div class="col-md-12 mb-3">
-                        <a href="login"
-                           class="btn btn-success btn-block">Iniciar Sesión Ahora</a>
-                    </div>
 
                 </div>
             </div>
@@ -99,7 +90,7 @@
 
     public Usuario Model { get; set; } = new Usuario
     {
-      TU_IdRol = 1,
+      IdRol = 1,
     };
 
     protected async void Registrar()
@@ -117,7 +108,7 @@
 
             });
 
-            navigation.NavigateTo("/login");
+            navigation.NavigateTo("/");
         }
 
         else

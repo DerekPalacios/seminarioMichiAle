@@ -1,4 +1,4 @@
-﻿@page "/etapa"
+﻿@page "/etapas"
 
 @attribute [Authorize]
 
@@ -34,7 +34,7 @@
                             <td>@cat.CantidadArticulos</td>
                             <td>
                                 <button class="btn btn-success" @onclick="(()=>ModificarEtapa(cat))">Guardar</button>
-                                <button class="btn btn-danger" @onclick="(()=>EliminarEtapa(cat.IdEtapa))">Eliminar</button>
+                                <button class="btn btn-danger" @onclick="(()=>EliminarEtapa(cat.Id))">Eliminar</button>
                             </td>
                         </tr>
                     }
@@ -72,7 +72,7 @@
         var result = etapaService.Crear(Model);
         if (result.IsSuccess)
         {
-            Model.IdEtapa = result.Code;
+            Model.Id = result.Code;
             Model.CantidadArticulos = 0;
 
 
@@ -112,7 +112,7 @@
             ShowConfirmButton = true,
             ConfirmButtonText = "Si, eliminar",
             ShowCancelButton = true,
-            CancelButtonText = "No, no lo elimine"
+            CancelButtonText = "No, eliminar"
         });
 
         if (!res.IsConfirmed)

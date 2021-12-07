@@ -9,42 +9,42 @@ using TiendaArtesaniasMarielos.Data.Models;
 
 namespace TiendaArtesaniasMarielos.Data.Services
 {
-    public class TallaMedidaService
+    public class TallaService
     {
         private readonly ArtesaniasDbContext _context;
 
-        public TallaMedidaService(ArtesaniasDbContext context)
+        public TallaService(ArtesaniasDbContext context)
         {
             _context = context;
         }
 
-        public List<TallaMedidaModel> ListaTallaMedida()
+        public List<TallaModel> ListaTalla()
         {
-                var query = _context.CatTalla_Medida
+                var query = _context.CatTalla
                 .Include(x => x.Articulos)
                 .ToList();
 
-            var lista = query.Select(x => new TallaMedidaModel
+            var lista = query.Select(x => new TallaModel
             {
-                IdTalla_Medida = x.IdTalla_Medida,
-                Descripcion = x.Descripcion,
+                Id = x.Id,
+                Nombre_Talla = x.Nombre_Talla,
                 CantidadArticulos= x.Articulos.Count,
             }).ToList();
 
             return lista;
 
         }
-        public TallaMedidaModel TallaMedida(int idtallaMedida)
+        public TallaModel Talla(int idtalla)
         {
-            var query = _context.CatTalla_Medida
+            var query = _context.CatTalla
                .Include(x => x.Articulos)
-                .Where(x => x.IdTalla_Medida == idtallaMedida)
+                .Where(x => x.Id == idtalla)
                 .ToList();
 
-            var model = query.Select(x => new TallaMedidaModel
+            var model = query.Select(x => new TallaModel
             {
-                IdTalla_Medida = x.IdTalla_Medida,
-                Descripcion = x.Descripcion,
+                Id = x.Id,
+                Nombre_Talla = x.Nombre_Talla,
                 CantidadArticulos = x.Articulos.Count,
 
             }).FirstOrDefault();
@@ -53,16 +53,16 @@ namespace TiendaArtesaniasMarielos.Data.Services
             ;
         }
 
-        public MsgResult Crear(TallaMedidaModel model)
+        public MsgResult Crear(TallaModel model)
         {
             var res = new MsgResult();
 
-            var entity = new Talla_Medida
+            var entity = new Talla
             {
-                Descripcion = model.Descripcion,
+                Nombre_Talla = model.Nombre_Talla,
             };
 
-            _context.CatTalla_Medida.Add(entity);
+            _context.CatTalla.Add(entity);
 
             try
             {
@@ -70,7 +70,7 @@ namespace TiendaArtesaniasMarielos.Data.Services
 
                 res.IsSuccess = true;
                 res.Message = "Dato registrado correctamente";
-                res.Code = entity.IdTalla_Medida;
+                res.Code = entity.Id;
             }
             catch (Exception ex)
             {
@@ -81,18 +81,18 @@ namespace TiendaArtesaniasMarielos.Data.Services
             return res;
         }
 
-        public MsgResult Modificar(TallaMedidaModel model)
+        public MsgResult Modificar(TallaModel model)
         {
             var res = new MsgResult();
 
-            var entity = _context.CatTalla_Medida.FirstOrDefault(x => x.IdTalla_Medida == model.IdTalla_Medida);
+            var entity = _context.CatTalla.FirstOrDefault(x => x.Id == model.Id);
             if (entity == null)
             {
                 res.IsSuccess = false;
                 res.Message = "Ese dato no existe";
                 return res;
             }
-            entity.Descripcion = model.Descripcion;
+            entity.Nombre_Talla = model.Nombre_Talla;
 
             try
             {
@@ -111,13 +111,13 @@ namespace TiendaArtesaniasMarielos.Data.Services
         }
 
 
-        public MsgResult Eliminar(int idtallaMedida)
+        public MsgResult Eliminar(int idtalla)
         {
             var res = new MsgResult();
 
-            var entity = _context.CatTalla_Medida
+            var entity = _context.CatTalla
             .Include(x => x.Articulos)
-            .FirstOrDefault(x => x.IdTalla_Medida == idtallaMedida);
+            .FirstOrDefault(x => x.Id == idtalla);
 
             if (entity == null)
             {
@@ -136,7 +136,7 @@ namespace TiendaArtesaniasMarielos.Data.Services
                 return res;
             }
 
-            _context.CatTalla_Medida.Remove(entity);
+            _context.CatTalla.Remove(entity);
 
             try
             {

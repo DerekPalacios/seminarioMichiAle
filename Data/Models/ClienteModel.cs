@@ -8,7 +8,7 @@ namespace TiendaArtesaniasMarielos.Data.Models
 {
     public class ClienteModel
     {
-        public int IdCliente { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "Campo obligatorio")]
         public string Nombres { get; set; }
@@ -17,6 +17,8 @@ namespace TiendaArtesaniasMarielos.Data.Models
         public string Apellidos { get; set; }
 
         public string NombreCompleto=> $"{Nombres} {Apellidos}";
+
+        [Required(ErrorMessage = "Campo obligatorio")]
         public string Identificacion { get; set; }
         public string Direccion { get; set; }
         public int Telefono { get; set; }

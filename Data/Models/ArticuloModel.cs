@@ -8,30 +8,32 @@ namespace TiendaArtesaniasMarielos.Data.Models
 {
     public class ArticuloModel
     {
-        public int IdArticulo { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "Campo Obligatorio")]
         public string Codigo { get; set; }
+        public int IdCategoria { get; set; }
 
         [Required(ErrorMessage ="Campo Obligatorio")]
         [MinLength(5, ErrorMessage = "Minimo 5 caracteres")]
         public string Nombre { get; set; }
+        public int IdTalla { get; set; }
+        public int IdMedida { get; set; }
+        public int IdEtapa { get; set; }
+        public int IdGenero { get; set; }
+        public int IdMaterial { get; set; }
         public int Stock { get; set; }
         public int StockMinimo { get; set; }
 
         [Required(ErrorMessage = "Campo Obligatorio")]
-        public decimal PrecioCompra { get; set; }
+        public decimal Costo { get; set; }
 
         [Required(ErrorMessage = "Campo Obligatorio")]
-        public decimal PrecioVenta { get; set; }
+        public decimal Precio { get; set; }
 
         [Required(ErrorMessage = "Campo Obligatorio")]
-        public int TA_IdCategoria { get; set; }
-        public int TA_IdTalla_Medida { get; set; }
-        public int TA_IdEtapa { get; set; }
-        public int TA_IdGenero { get; set; }
-        public int TA_IdMaterial { get; set; }
+     
 
-        public decimal? Margen => (PrecioVenta - PrecioCompra);
+        public decimal? Margen => (Precio - Costo);
     }
 }

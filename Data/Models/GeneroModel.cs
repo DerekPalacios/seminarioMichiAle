@@ -7,8 +7,8 @@ namespace TiendaArtesaniasMarielos.Data.Models
 {
     public class GeneroModel
     {
-        public int IdGenero { get; set; }
+        public int Id { get; set; }
         public string Nombre_Genero { get; set; }
-        public int? CantidadArticulos { get; set; }
+        public int? CantidadProductos { get; set; }
     }
 }

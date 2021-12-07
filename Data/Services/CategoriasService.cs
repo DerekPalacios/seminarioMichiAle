@@ -25,7 +25,7 @@ namespace TiendaArtesaniasMarielos.Data.Services
 
             var lista = query.Select(x => new CategoriaModel
             {
-                IdCategoria = x.IdCategoria,
+                Id = x.Id,
                 Nombre_Categoria = x.Nombre_Categoria,
                 CantidadProductos = x.Articulos.Count,
             }).ToList();
@@ -38,12 +38,12 @@ namespace TiendaArtesaniasMarielos.Data.Services
         {
             var query = _context.CatCategoria
                 .Include(x => x.Articulos)
-                .Where(x => x.IdCategoria == idCategoria)
+                .Where(x => x.Id == idCategoria)
                 .ToList();
 
             var model = query.Select(x => new CategoriaModel
             {
-                IdCategoria = x.IdCategoria,
+                Id = x.Id,
                 Nombre_Categoria = x.Nombre_Categoria,
                 CantidadProductos = x.Articulos.Count,
 
@@ -69,7 +69,7 @@ namespace TiendaArtesaniasMarielos.Data.Services
 
                 res.IsSuccess = true;
                 res.Message = "Categoria creada correctamente";
-                res.Code = entity.IdCategoria;
+                res.Code = entity.Id;
             }
             catch (Exception ex)
             {
@@ -86,7 +86,7 @@ namespace TiendaArtesaniasMarielos.Data.Services
 
             var res = new MsgResult();
 
-            var entity = _context.CatCategoria.FirstOrDefault(x => x.IdCategoria == model.IdCategoria);
+            var entity = _context.CatCategoria.FirstOrDefault(x => x.Id == model.Id);
 
             if (entity == null)
             {
@@ -121,7 +121,7 @@ namespace TiendaArtesaniasMarielos.Data.Services
 
             var entity = _context.CatCategoria
                 .Include(x => x.Articulos)
-                .FirstOrDefault(x => x.IdCategoria == idCategoria);
+                .FirstOrDefault(x => x.Id == idCategoria);
 
             if (entity == null)
             {

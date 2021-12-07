@@ -1,5 +1,7 @@
 ﻿<StaticWebAssets Version="1.0">
-  <ContentRoot BasePath="/" Path="C:\Users\burgo\OneDrive\Pictures\Proyecto\obj\Debug\net5.0\scopedcss\bundle\" />
-  <ContentRoot BasePath="_content/CurrieTechnologies.Razor.SweetAlert2" Path="C:\Users\burgo\.nuget\packages\currietechnologies.razor.sweetalert2\5.1.0\build\..\staticwebassets\" />
-  <ContentRoot BasePath="_content/Sotsera.Blazor.Toaster" Path="C:\Users\burgo\.nuget\packages\sotsera.blazor.toaster\3.0.0\build\..\staticwebassets\" />
+  <ContentRoot BasePath="/" Path="D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\obj\Debug\net5.0\scopedcss\bundle\" />
+  <ContentRoot BasePath="_content/BlazorStrap" Path="C:\Users\Alejandro Moraga\.nuget\packages\blazorstrap\1.5.1\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/CurrieTechnologies.Razor.SweetAlert2" Path="C:\Users\Alejandro Moraga\.nuget\packages\currietechnologies.razor.sweetalert2\5.1.0\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Radzen.Blazor" Path="C:\Users\Alejandro Moraga\.nuget\packages\radzen.blazor\3.13.3\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Sotsera.Blazor.Toaster" Path="C:\Users\Alejandro Moraga\.nuget\packages\sotsera.blazor.toaster\3.0.0\build\..\staticwebassets\" />
 </StaticWebAssets>

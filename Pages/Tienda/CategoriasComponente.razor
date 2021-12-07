@@ -1,4 +1,4 @@
-﻿@page "/categories"
+﻿@page "/categorias"
 
 
 @attribute [Authorize]
@@ -35,7 +35,7 @@
                             <td>@cat.CantidadProductos</td>
                             <td>
                                 <button class="btn btn-success" @onclick="(()=>ModificarCategoria(cat))">Guardar</button>
-                                <button class="btn btn-danger" @onclick="(()=>EliminarCategoria(cat.IdCategoria))">Eliminar</button>
+                                <button class="btn btn-danger" @onclick="(()=>EliminarCategoria(cat.Id))">Eliminar</button>
                             </td>
                         </tr>
                     }
@@ -75,7 +75,7 @@
         var result = categoriaService.Crear(Model);
         if (result.IsSuccess)
         {
-            Model.IdCategoria = result.Code;
+            Model.Id = result.Code;
             Model.CantidadProductos = 0;
 
             ListaCategorias.Add(Model);

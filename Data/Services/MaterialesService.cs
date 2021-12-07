@@ -25,7 +25,7 @@ namespace TiendaArtesaniasMarielos.Data.Services
 
             var lista = query.Select(x => new MaterialModel
             {
-                IdMaterial = x.IdMaterial,
+                Id = x.Id,
                 Nombre_Material = x.Nombre_Material,
                 CantidadProductos = 0
             }).ToList();
@@ -38,12 +38,12 @@ namespace TiendaArtesaniasMarielos.Data.Services
         {
             var query = _context.CatMaterial
                 .Include(x => x.Articulos)
-                .Where(x => x.IdMaterial == idMaterial)
+                .Where(x => x.Id == idMaterial)
                 .ToList();
 
             var model = query.Select(x => new MaterialModel
             {
-                IdMaterial = x.IdMaterial,
+                Id = x.Id,
                 Nombre_Material = x.Nombre_Material,
                 CantidadProductos = 0
 
@@ -69,7 +69,7 @@ namespace TiendaArtesaniasMarielos.Data.Services
 
                 res.IsSuccess = true;
                 res.Message = "Material creado correctamente";
-                res.Code = entity.IdMaterial;
+                res.Code = entity.Id;
             }
             catch (Exception ex)
             {
@@ -86,7 +86,7 @@ namespace TiendaArtesaniasMarielos.Data.Services
 
             var res = new MsgResult();
 
-            var entity = _context.CatMaterial.FirstOrDefault(x => x.IdMaterial == model.IdMaterial);
+            var entity = _context.CatMaterial.FirstOrDefault(x => x.Id == model.Id);
 
             if (entity == null)
             {
@@ -121,7 +121,7 @@ namespace TiendaArtesaniasMarielos.Data.Services
 
             var entity = _context.CatMaterial
                 .Include(x => x.Articulos)
-                .FirstOrDefault(x => x.IdMaterial == idMaterial);
+                .FirstOrDefault(x => x.Id == idMaterial);
 
             if (entity == null)
             {

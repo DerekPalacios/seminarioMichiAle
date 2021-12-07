@@ -7,11 +7,11 @@ namespace TiendaArtesaniasMarielos.Data.Entities
 {
     public class Venta
     {
-        public int IdVenta { get; set; }
-        public string NumVenta { get; set; }
-        public int TV_IdCliente { get; set; }
+        public int Id { get; set; }
+        public string Numero { get; set; }
         //public int TV_IdUsuario { get; set; }
-        public DateTime FechaVenta { get; set; }
+        public DateTime Fecha { get; set; }
+        public int IdCliente { get; set; }
         //public float IVA { get; set; }
         //public decimal Total { get; set; }
 

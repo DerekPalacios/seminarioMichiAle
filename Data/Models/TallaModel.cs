@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace TiendaArtesaniasMarielos.Data.Models
 {
-    public class TallaMedidaModel
+    public class TallaModel
     {
-        public int IdTalla_Medida { get; set; }
-        public string Descripcion { get; set; }
+        public int Id { get; set; }
+        public string Nombre_Talla { get; set; }
         public int? CantidadArticulos { get; set; }
     }
 }

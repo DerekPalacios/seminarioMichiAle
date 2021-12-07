@@ -1,11 +1,11 @@
-﻿@page "/facturas/{IdVenta:int}"
+﻿@page "/facturas/{IdFactura:int}"
 
 @page "/facturas/add"
-
 <div class="container-fluid">
     <div class="card">
         <div class="card-header">
             <div class="float-right">
+                <ClienteModal/>
                 <a href="/facturas" class="btn btn-secondary">Volver</a>
             </div>
             <h4>Factura</h4>
@@ -17,71 +17,101 @@
 
                     <div class="col-md-3">
                         <label>Fecha</label>
-                        <input type="date" class="form-control" @bind="Model.FechaVenta" />
+                        <input type="date" class="form-control" @bind="Model.Fecha" />
                     </div>
                     <div class="col-md-3">
-                        <label>Número de Venta</label>
-                        <input type="number" class="form-control" @bind="Model.NumVenta" />
+                        <label>N° Factura</label>
+                        <input type="number" class="form-control" @bind="Model.Numero" />
                     </div>
                     <div class="col-md-6">
                         <label>Cliente</label>
-                        <div class="input-group">
-                            <select class="form-control" @bind="Model.TV_IdCliente">
-                                @if (ListaClientes != null)
+                        <select class="form-control" @bind="Model.IdCliente">
+                            @if (ListaClientes != null)
+                            {
+                                @foreach (var item in ListaClientes)
                                 {
-                                    @foreach (var item in ListaClientes)
-                                    {
-                                        <option value="@item.IdCliente">@item.NombreCompleto</option>
-                                    }
+                                    <option value="@item.Id">@item.NombreCompleto</option>
                                 }
-                            </select>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Dirección</label>
+                        <span class="form-control">@ListaClientes.FirstOrDefault(x => x.Id == Model.IdCliente)?.Direccion</span>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Teléfono</label>
+                        <span class="form-control">@ListaClientes.FirstOrDefault(x => x.Id == Model.IdCliente)?.Telefono</span>
+                    </div>
+
+                    <div class="col-md-5">
+                        <label>Email</label>
+                        <div class="input-group">
+                            <span class="form-control">@ListaClientes.FirstOrDefault(x => x.Id == Model.IdCliente)?.Correo</span>
                             <div class="input-group-append">
-                                <button type="submit" class="btn btn-success"> Guardar</button>
+                                @*<button type="submit" class="btn btn-primary ">Crear Factura</button>*@
+                                <button type="submit" class="btn btn-success">Guardar Factura</button>
                             </div>
                         </div>
                     </div>
-                </div>          
+                </div>
             </EditForm>
-            <hr />
-        @if (ItemFactura.TDV_IdVenta != -1)
-        {
 
-                            <div class="row mb-3">
-                                <div class="col-md-2">
-                                    <label>Buscar</label>
-                                    <input type="text" class="form-control" @onchange="BuscarArticulo" />
-                                </div>
-                                <div class="col-md-10">
+            <hr />
+            @if (ItemFactura.IdVenta != -1)
+            {
+                <div class="row mb-3">
+                    <div class="col-md-2">
+                        <label>Buscar</label>
+                        <input type="text" style="text-transform:uppercase" class="form-control"  @onchange="BuscarProducto" />
+                    </div>
+                    <div class="col-md-12">
+
                         <EditForm Model="ItemFactura" OnValidSubmit="AgregarItemFactura">
                             <div class="row">
+
+                                <DataAnnotationsValidator></DataAnnotationsValidator>
+
                                 <div class="col-md-2">
-                                    <label>Codigo</label>
+                                    <label>Referencia</label>
                                     <span class="form-control">@ItemFactura.Codigo</span>
+                                    <ValidationMessage For="(() => ItemFactura.Codigo)" />
                                 </div>
-                                <div class="col-md-3">
-                                    <label>Articulo</label>
+                                <div class="col-md-4">
+                                    <label>Artículo</label>
                                     <span class="form-control">@ItemFactura.NombreArticulo</span>
                                 </div>
                                 <div class="col-md-2">
-                                    <label>Cantidad</label>
-                                    <input type="number" class="form-control" @bind="ItemFactura.Cantidad" />
+                                    <label>Stock</label>
+                                    <input type="text" placeholder="Stock" class="form-control" @bind="ItemFactura.Stock" />
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
+                                    <label>Cantidad</label>
+                                    <input type="number" min="1" pattern="^[0-9]+" class="form-control" @bind="ItemFactura.Cantidad" />
+                                </div>
+                                <div class="col-md-2">
+                                    <label>Resultado</label>
+                                    <span class="form-control"> @ItemFactura.Resultado.ToString()</span>
+                                </div>
+
+                                <div class="col-md-4">
                                     <label>Precio</label>
                                     <div class="input-group">
-                                        <input type="number" class="form-control" @bind="ItemFactura.PrecioUnidad" />
+                                        <input type="number" class="form-control" @bind="ItemFactura.Precio" />
                                         <div class="input-group-append">
-                                            <button type="submit" class="btn btn-primary"> Agregar</button>
+                                            <button type="submit" class="btn btn-primary">Agregar</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </EditForm>
 
-                                </div>
-                            </div>
+                    </div>
 
-
+                </div>
                 <div class="row">
                     <div class="col-12">
 
@@ -92,8 +122,8 @@
                                     <th>Nombre</th>
                                     <th>Cantidad</th>
                                     <th>Precio</th>
-                                    <th>Total</th>
-                                    <th>Marge</th>
+                                    <th>SubTotal</th>
+                                    <th>Margen</th>
                                     <th>Opciones</th>
                                 </tr>
                             </thead>
@@ -107,12 +137,14 @@
                                             <input type="number" class="form-control" @bind="item.Cantidad" />
                                         </td>
                                         <td class="text-right">
-                                            <input type="number" class="form-control" @bind="item.PrecioUnidad" />
+                                            @item.Precio.ToString("c2")
                                         </td>
                                         <td class="text-right">@item.Subtotal.ToString("c2")</td>
                                         <td class="text-right">@item.Margen.ToString("c2")</td>
                                         <th>
-                                            <button class="btn btn-danger" @onclick="(() => EliminarArticulo(item))"><i class="fa fa-trash"></i></button>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-danger" @onclick="(() => EliminarProducto(item))"><i class='bx bx-trash'></i></button>
+                                            </div>
                                         </th>
                                     </tr>
                                 }
@@ -128,51 +160,61 @@
                         </table>
                     </div>
                 </div>
-        }
+            }
         </div>
     </div>
 </div>
+
 <ToastContainer />
 
-@inject VentasService facturaService
+@inject VentaService facturaService
 @inject ClienteService clientesService
 @inject ArticuloService productoService
 
 @inject IToaster toaster
+@inject SweetAlertService swal
 
 @code {
 
     [Parameter]
-    public int? IdVenta { get; set; }
+    public int? IdFactura { get; set; }
 
     public VentaModel Model { get; set; }
     public ItemFacturaModel ItemFactura { get; set; } = new ItemFacturaModel();
 
+
+
+    //variable que guarda una lista de los items de la factura antes de que sean modificados
+    private List<ItemFacturaModel> listaAnteriorModificacion { get; set; }
+
     public List<ClienteModel> ListaClientes { get; set; }
+
+
 
     protected override void OnInitialized()
     {
         CargarFactura();
 
         ListaClientes = clientesService.ListaClientes();
+
     }
 
     protected void CargarFactura()
     {
-        if (IdVenta == null)
+        if (IdFactura == null)
         {
             Model = new VentaModel()
             {
-                IdVenta = -1,
-                FechaVenta = DateTime.Now,
-
+                Id = -1,
+                Fecha = DateTime.Now,
             };
-            ItemFactura.TDV_IdVenta = -1;
+            ItemFactura.IdVenta = -1;
         }
         else
         {
-            Model = facturaService.Factura(Convert.ToInt32(IdVenta));
-            ItemFactura.TDV_IdVenta = Convert.ToInt32(IdVenta);
+            Model = facturaService.Factura(Convert.ToInt32(IdFactura));
+            listaAnteriorModificacion = facturaService.Factura(Convert.ToInt32(IdFactura)).Items;
+            ItemFactura.IdVenta = Convert.ToInt32(IdFactura);
         }
     }
 
@@ -180,14 +222,14 @@
     {
         var res = new MsgResult();
 
-        if (Model.IdVenta != -1)
+        if (Model.Id == -1)
         {
             res = CrearFactura();
 
             if (res.IsSuccess)
             {
-                Model.IdVenta = res.Code;
-                ItemFactura.TDV_IdVenta = res.Code;
+                Model.Id = res.Code;
+                ItemFactura.IdVenta = res.Code;
             }
         }
         else
@@ -211,12 +253,14 @@
         return facturaService.Crear(Model);
     }
 
+
     protected MsgResult ModificarFactura()
     {
-        return facturaService.Modificar(Model);
+        //envio extra de una lista de items que el modelo tenia antes de que se modificara en la vista
+        return facturaService.Modificar(Model, listaAnteriorModificacion);
     }
 
-    protected void BuscarArticulo(ChangeEventArgs e)
+    protected void BuscarProducto(ChangeEventArgs e)
     {
         if (string.IsNullOrEmpty(e.Value.ToString()))
         {
@@ -226,40 +270,64 @@
         var producto = productoService.Articulo(e.Value.ToString());
         if (producto == null)
         {
-            toaster.Info("Articulo no encontrado", "Info");
+            toaster.Info("Producto no encontrado", "Info");
             return;
         }
 
         ItemFactura = new ItemFacturaModel
         {
-            TDV_IdVenta = Model.IdVenta,
-            Codigo = producto.Codigo,
-            TDV_IdArticulo = producto.IdArticulo,
-            NombreArticulo = producto.Nombre,
-            PrecioCompra = producto.PrecioCompra,
-            Cantidad = 1,
-            PrecioUnidad = producto.PrecioVenta,
+            Id = producto.Id,
+            //asignacion del id al item producto
 
+            Cantidad = 1,
+            Costo = producto.Costo,
+            IdVenta = Model.Id,
+            IdArticulo = producto.Id,
+            NombreArticulo = producto.Nombre,
+            Precio = producto.Precio,
+            Codigo = producto.Codigo,
+            Stock = producto.Stock,
         };
     }
 
+
+
+    //agrega item a la lista de items del modelo y por ello a la grid
     protected void AgregarItemFactura()
     {
-        var res = facturaService.AgregarProducto(ItemFactura);
-        if (res.IsSuccess)
-        {
-            ItemFactura.IdDetalleVenta = res.Code;
-            Model.Items.Add(ItemFactura);
-            ItemFactura = new ItemFacturaModel();
-        }
-        else
-        {
-            toaster.Error(res.Message, "Error");
-        }
+        //var res = facturaService.AgregarProducto(ItemFactura);
+        //if (res.IsSuccess)
+        //{
+        //ItemFactura.Id = res.Code;            --tambien asignacion de id al item producto
+
+        Model.Items.Add(ItemFactura);
+        ItemFactura = new ItemFacturaModel();
+
+        //    }
+        //else
+        //{
+        //    toaster.Error(res.Message, "Error");
+        //}
     }
 
-    protected void EliminarArticulo(ItemFacturaModel item)
+
+    protected async Task EliminarProducto(ItemFacturaModel item)
     {
+        var confirm = await swal.FireAsync(new SweetAlertOptions
+        {
+            Title = "¿Confirma que desea eliminar este Artículo de la Factura?",
+            Text = "Si lo elimina, no podrá recuperarlo",
+            ShowConfirmButton = true,
+            ConfirmButtonText = "Si, eliminar",
+            ShowCancelButton = true,
+            CancelButtonText = "No, eliminar"
+        });
+
+        if (!confirm.IsConfirmed)
+        {
+            return;
+        }
+
         var res = facturaService.EliminarProducto(item);
         if (res.IsSuccess)
         {
@@ -271,5 +339,12 @@
             toaster.Error(res.Message, "OK");
         }
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+
+    public ClienteModel Cliente { get; set; } = new ClienteModel();
+
 
 }

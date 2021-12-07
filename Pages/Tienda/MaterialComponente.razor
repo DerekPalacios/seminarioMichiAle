@@ -35,7 +35,7 @@
                             <td>@mat.CantidadProductos</td>
                             <td>
                                 <button class="btn btn-success" @onclick="(()=>ModificarMaterial(mat))">Guardar</button>
-                                <button class="btn btn-danger" @onclick="(()=>EliminarMaterial(mat.IdMaterial))">Eliminar</button>
+                                <button class="btn btn-danger" @onclick="(()=>EliminarMaterial(mat.Id))">Eliminar</button>
                             </td>
                         </tr>
                     }
@@ -76,7 +76,7 @@
         var result = materialesService.Crear(Model);
         if (result.IsSuccess)
         {
-            Model.IdMaterial = result.Code;
+            Model.Id = result.Code;
             Model.CantidadProductos = 0;
 
             ListaMateriales.Add(Model);
