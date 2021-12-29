@@ -117,6 +117,33 @@ namespace TiendaArtesaniasMarielos.Data.Services
             return model;
         }
 
+        //public ArticuloModel Buscar(int id)
+        //{
+        //    var model = _context.TblArticulo
+        //        .Where(x => x.Id.CompareTo(id)
+        //        .Select(x => new ArticuloModel
+        //         {
+        //             Id = x.Id,
+        //             Codigo = x.Codigo,
+        //             IdCategoria = x.IdCategoria,
+        //             Nombre = x.Nombre,
+        //             IdTalla = x.IdTalla,
+        //             IdMedida = x.IdMedida,
+        //             IdEtapa = x.IdEtapa,
+        //             IdGenero = x.IdGenero,
+        //             IdMaterial = x.IdMaterial,
+        //             Stock = x.Stock,
+        //             StockMinimo = x.StockMinimo,
+        //             Costo = x.Costo,
+        //             Precio = x.Precio,
+
+        //         }).FirstOrDefault();
+
+        //    return model;
+        //}
+
+
+
         public MsgResult Crear(ArticuloModel model)
         {
             var res = new MsgResult();

@@ -13,133 +13,133 @@ namespace TiendaArtesaniasMarielos.Pages.Ventas
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
+#line 1 "C:\Users\derek\OneDrive\Documentos\Seminario Aletas Michi 2021\AA\AA\AA\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
+#line 2 "C:\Users\derek\OneDrive\Documentos\Seminario Aletas Michi 2021\AA\AA\AA\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
+#line 3 "C:\Users\derek\OneDrive\Documentos\Seminario Aletas Michi 2021\AA\AA\AA\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
+#line 4 "C:\Users\derek\OneDrive\Documentos\Seminario Aletas Michi 2021\AA\AA\AA\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
+#line 5 "C:\Users\derek\OneDrive\Documentos\Seminario Aletas Michi 2021\AA\AA\AA\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
+#line 6 "C:\Users\derek\OneDrive\Documentos\Seminario Aletas Michi 2021\AA\AA\AA\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
+#line 7 "C:\Users\derek\OneDrive\Documentos\Seminario Aletas Michi 2021\AA\AA\AA\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
+#line 8 "C:\Users\derek\OneDrive\Documentos\Seminario Aletas Michi 2021\AA\AA\AA\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
+#line 11 "C:\Users\derek\OneDrive\Documentos\Seminario Aletas Michi 2021\AA\AA\AA\_Imports.razor"
 using TiendaArtesaniasMarielos;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
+#line 12 "C:\Users\derek\OneDrive\Documentos\Seminario Aletas Michi 2021\AA\AA\AA\_Imports.razor"
 using TiendaArtesaniasMarielos.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 13 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
+#line 13 "C:\Users\derek\OneDrive\Documentos\Seminario Aletas Michi 2021\AA\AA\AA\_Imports.razor"
 using TiendaArtesaniasMarielos.Pages.Modals;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 17 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
+#line 17 "C:\Users\derek\OneDrive\Documentos\Seminario Aletas Michi 2021\AA\AA\AA\_Imports.razor"
 using TiendaArtesaniasMarielos.Data.Services;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 19 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
+#line 19 "C:\Users\derek\OneDrive\Documentos\Seminario Aletas Michi 2021\AA\AA\AA\_Imports.razor"
 using TiendaArtesaniasMarielos.Data.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 21 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
+#line 21 "C:\Users\derek\OneDrive\Documentos\Seminario Aletas Michi 2021\AA\AA\AA\_Imports.razor"
 using TiendaArtesaniasMarielos.Data.Entities;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 26 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
+#line 26 "C:\Users\derek\OneDrive\Documentos\Seminario Aletas Michi 2021\AA\AA\AA\_Imports.razor"
 using CurrieTechnologies.Razor.SweetAlert2;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 27 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
+#line 27 "C:\Users\derek\OneDrive\Documentos\Seminario Aletas Michi 2021\AA\AA\AA\_Imports.razor"
 using Sotsera.Blazor.Toaster;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 29 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
+#line 29 "C:\Users\derek\OneDrive\Documentos\Seminario Aletas Michi 2021\AA\AA\AA\_Imports.razor"
 using BlazorStrap;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 32 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
+#line 32 "C:\Users\derek\OneDrive\Documentos\Seminario Aletas Michi 2021\AA\AA\AA\_Imports.razor"
 using Radzen;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 33 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\_Imports.razor"
+#line 33 "C:\Users\derek\OneDrive\Documentos\Seminario Aletas Michi 2021\AA\AA\AA\_Imports.razor"
 using Radzen.Blazor;
 
 #line default
@@ -155,7 +155,7 @@ using Radzen.Blazor;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 177 "D:\Usuarios\Alejandro Moraga\Escritorio\AA\AA\Pages\Ventas\VentasComponente.razor"
+#line 224 "C:\Users\derek\OneDrive\Documentos\Seminario Aletas Michi 2021\AA\AA\AA\Pages\Ventas\VentasComponente.razor"
        
 
     [Parameter]
@@ -164,10 +164,37 @@ using Radzen.Blazor;
     public VentaModel Model { get; set; }
     public ItemFacturaModel ItemFactura { get; set; } = new ItemFacturaModel();
 
+    int cantidadAnterior;
+    private bool buttonBand = false;
+
+    protected void cargarItemFactura(ItemFacturaModel articulo)
+    {
+        ItemFactura = articulo;
+        buttonBand = false;
+
+    }
+
+
+    private void editItem(ItemFacturaModel itemEdit)
+    {
+        ItemFactura = itemEdit;
+        ItemFactura.Stock = productoService.Articulo(itemEdit.IdArticulo).Stock;
+        cantidadAnterior = ItemFactura.Cantidad;
+        buttonBand = true;
+    }
+
+    private void ActualizarItemcancel()
+    {
+        buttonBand = false;
+        ItemFactura.Cantidad = cantidadAnterior;
+        ItemFactura = new ItemFacturaModel();
+
+    }
 
 
     //variable que guarda una lista de los items de la factura antes de que sean modificados
-    private List<ItemFacturaModel> listaAnteriorModificacion { get; set; }
+    private List<ItemFacturaModel> listaAnteriorModificacion { get; set; } = new List<ItemFacturaModel>();
+    private List<ItemFacturaModel> listaItemsNueva { get; set; } = new List<ItemFacturaModel>();
 
     public List<ClienteModel> ListaClientes { get; set; }
 
@@ -186,10 +213,10 @@ using Radzen.Blazor;
         if (IdFactura == null)
         {
             Model = new VentaModel()
-            {
-                Id = -1,
-                Fecha = DateTime.Now,
-            };
+                {
+                    Id = -1,
+                    Fecha = DateTime.Now,
+                };
             ItemFactura.IdVenta = -1;
         }
         else
@@ -198,6 +225,11 @@ using Radzen.Blazor;
             listaAnteriorModificacion = facturaService.Factura(Convert.ToInt32(IdFactura)).Items;
             ItemFactura.IdVenta = Convert.ToInt32(IdFactura);
         }
+    }
+
+    protected MsgResult CrearFactura()
+    {
+        return facturaService.Crear(Model);
     }
 
     protected void GuardarFactura()
@@ -222,6 +254,7 @@ using Radzen.Blazor;
         if (res.IsSuccess)
         {
             toaster.Success(res.Message, "OK");
+            listaAnteriorModificacion = facturaService.Factura(Convert.ToInt32(IdFactura)).Items;
 
         }
         else
@@ -230,16 +263,13 @@ using Radzen.Blazor;
         }
     }
 
-    protected MsgResult CrearFactura()
-    {
-        return facturaService.Crear(Model);
-    }
-
-
     protected MsgResult ModificarFactura()
     {
         //envio extra de una lista de items que el modelo tenia antes de que se modificara en la vista
+        listaItemsNueva.ForEach(itemNuevo => Model.Items.Add(itemNuevo));
+        listaItemsNueva = new List<ItemFacturaModel>();
         return facturaService.Modificar(Model, listaAnteriorModificacion);
+
     }
 
     protected void BuscarProducto(ChangeEventArgs e)
@@ -257,74 +287,134 @@ using Radzen.Blazor;
         }
 
         ItemFactura = new ItemFacturaModel
-        {
-            Id = producto.Id,
-            //asignacion del id al item producto
+            {
+                Id = producto.Id,
+                //asignacion del id al item producto
 
-            Cantidad = 1,
-            Costo = producto.Costo,
-            IdVenta = Model.Id,
-            IdArticulo = producto.Id,
-            NombreArticulo = producto.Nombre,
-            Precio = producto.Precio,
-            Codigo = producto.Codigo,
-            Stock = producto.Stock,
-        };
+                Cantidad = 1,
+                Costo = producto.Costo,
+                IdVenta = Model.Id,
+                IdArticulo = producto.Id,
+                NombreArticulo = producto.Nombre,
+                Precio = producto.Precio,
+                Codigo = producto.Codigo,
+                Stock = producto.Stock,
+            };
+        buttonBand = false;
     }
-
 
 
     //agrega item a la lista de items del modelo y por ello a la grid
     protected void AgregarItemFactura()
     {
-        //var res = facturaService.AgregarProducto(ItemFactura);
-        //if (res.IsSuccess)
-        //{
-        //ItemFactura.Id = res.Code;            --tambien asignacion de id al item producto
+        
 
-        Model.Items.Add(ItemFactura);
-        ItemFactura = new ItemFacturaModel();
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 378 "C:\Users\derek\OneDrive\Documentos\Seminario Aletas Michi 2021\AA\AA\AA\Pages\Ventas\VentasComponente.razor"
+          
+        if (!buttonBand)
+        {
+            if (listaItemsNueva.FirstOrDefault(x => x.Id == ItemFactura.Id) == null && Model.Items.FirstOrDefault(x => x.IdArticulo == ItemFactura.Id) == null)
+            {
+                
 
-        //    }
-        //else
-        //{
-        //    toaster.Error(res.Message, "Error");
-        //}
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 385 "C:\Users\derek\OneDrive\Documentos\Seminario Aletas Michi 2021\AA\AA\AA\Pages\Ventas\VentasComponente.razor"
+                  
+                listaItemsNueva.Add(ItemFactura);
+                ItemFactura = new ItemFacturaModel();
+
+            }
+            else
+            {
+                
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 395 "C:\Users\derek\OneDrive\Documentos\Seminario Aletas Michi 2021\AA\AA\AA\Pages\Ventas\VentasComponente.razor"
+                  
+            }
+
+        }
+        else
+        {
+            
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 403 "C:\Users\derek\OneDrive\Documentos\Seminario Aletas Michi 2021\AA\AA\AA\Pages\Ventas\VentasComponente.razor"
+              
+            Model.Items.FirstOrDefault(x => x.IdArticulo == ItemFactura.IdArticulo).Cantidad = ItemFactura.Cantidad;
+
+            ItemFactura = new ItemFacturaModel();
+            buttonBand = false;
+        }
     }
 
 
     protected async Task EliminarProducto(ItemFacturaModel item)
     {
+
+
+
         var confirm = await swal.FireAsync(new SweetAlertOptions
-        {
-            Title = "¿Confirma que desea eliminar este Artículo de la Factura?",
-            Text = "Si lo elimina, no podrá recuperarlo",
-            ShowConfirmButton = true,
-            ConfirmButtonText = "Si, eliminar",
-            ShowCancelButton = true,
-            CancelButtonText = "No, eliminar"
-        });
+            {
+                Title = "¿Confirma que desea eliminar este Artículo de la Factura?",
+                Text = "Si lo elimina, no podrá recuperarlo",
+                ShowConfirmButton = true,
+                ConfirmButtonText = "Si, eliminar",
+                ShowCancelButton = true,
+                CancelButtonText = "No, eliminar"
+            });
 
         if (!confirm.IsConfirmed)
         {
+            
             return;
         }
 
-        var res = facturaService.EliminarProducto(item);
-        if (res.IsSuccess)
-        {
-            toaster.Success(res.Message, "OK");
-            Model.Items.Remove(item);
-        }
-        else
-        {
-            toaster.Error(res.Message, "OK");
-        }
+        
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 439 "C:\Users\derek\OneDrive\Documentos\Seminario Aletas Michi 2021\AA\AA\AA\Pages\Ventas\VentasComponente.razor"
+          
+        if (buttonBand)
+            {
+                if (item.IdArticulo == ItemFactura.IdArticulo)
+                {
+                    ItemFactura = new ItemFacturaModel();
+                    buttonBand = false;
+                }
+            }
+        listaItemsNueva.Remove(item);
+
+
+
+        //var res = facturaService.EliminarProducto(item);
+        //if (res.IsSuccess)
+        //{
+        //    toaster.Success(res.Message, "OK");
+
+        //}
+        //else
+        //{
+        //    toaster.Error(res.Message, "OK");
+        //}
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
 
     public ClienteModel Cliente { get; set; } = new ClienteModel();
 

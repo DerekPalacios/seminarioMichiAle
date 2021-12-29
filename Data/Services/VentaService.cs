@@ -212,7 +212,16 @@ namespace TiendaArtesaniasMarielos.Data.Services
 						}
 						else
 						{
-							AgregarProducto(itemModel);
+						var item = new DetalleVenta
+						{
+							IdVenta = itemModel.IdVenta,
+							IdArticulo = itemModel.IdArticulo,
+							Costo = itemModel.Costo,
+							Cantidad = itemModel.Cantidad,
+							Precio = itemModel.Precio,
+						};
+						entity.DetalleVentas.Add(item);
+						//AgregarProducto(itemModel);
 
 						}
 					}

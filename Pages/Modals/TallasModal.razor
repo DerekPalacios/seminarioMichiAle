@@ -1,0 +1,130 @@
+﻿@page "/ModalTallas"
+
+
+<BSButton Color="Color.Primary" @onclick="@onToggle">Agregar Talla</BSButton>
+<BSModal @ref="VerticallyCentered" IsCentered="true">
+    <BSModalHeader OnClick="@onToggle">Nueva Talla</BSModalHeader>
+    <BSModalBody>
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="input-group">
+                        <input type="text" class="form-control" @bind="Model.Nombre_Talla" />
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" @onclick="AgregarTalla">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </BSModalBody>
+    <BSModalFooter>
+        <BSButton Color="Color.Secondary" @onclick="@onToggle">Cerrar</BSButton>
+        @*<BSButton Color="Color.Primary" @onclick="@CrearCliente">Guardar</BSButton>*@
+    </BSModalFooter>
+</BSModal>
+<ToastContainer />
+
+
+
+
+
+@inject TallaService tallasService
+@inject IToaster toaster
+@inject SweetAlertService swal
+
+@code {
+
+    BSModal VerticallyCentered;
+
+    void onToggle(/*MouseEventArgs e*/)
+    {
+        VerticallyCentered.Toggle();
+        Model = new TallaModel();
+    }
+
+
+    public TallaModel Model { get; set; } = new TallaModel();
+
+    public List<TallaModel> ListaTalla { get; set; } = new List<TallaModel>();
+
+    protected override void OnInitialized()
+    {
+        CargarTalla();
+        //otros metodos
+    }
+
+    protected void CargarTalla()
+    {
+        var result = tallasService.ListaTalla();
+        ListaTalla = result;
+    }
+
+    protected void AgregarTalla()
+    {
+        var result = tallasService.Crear(Model);
+        if (result.IsSuccess)
+        {
+            Model.Id = result.Code;
+            Model.CantidadArticulos = 0;
+
+
+
+            ListaTalla.Add(Model);
+
+            Model = new TallaModel();
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+
+    }
+
+    protected void ModificarTalla(TallaModel tallaMedida)
+    {
+        var result = tallasService.Modificar(tallaMedida);
+        if (result.IsSuccess)
+        {
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+
+    }
+
+    protected async Task EliminarTalla(int idtalla)
+    {
+        var res = await swal.FireAsync(new SweetAlertOptions
+        {
+            Title = "¿Confirma que desea eliminar esta talla?",
+            Text = "Si la elimina, no podrá recuperarlo",
+            ShowConfirmButton = true,
+            ConfirmButtonText = "Si, eliminar",
+            ShowCancelButton = true,
+            CancelButtonText = "No, eliminar"
+        });
+
+        if (!res.IsConfirmed)
+        {
+            return;
+        }
+
+        var result = tallasService.Eliminar(idtalla);
+
+        if (result.IsSuccess)
+        {
+            CargarTalla();
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+
+
+    }
+}

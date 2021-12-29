@@ -1,6 +1,6 @@
 ﻿@page "/articulos"
 
-<div class="container-fluid">
+<!--<div class="container-fluid">
     <div class="card">
         <div class="card-header">
             <h4>Artículos</h4>
@@ -25,9 +25,9 @@
                     </div>
                     <div class="col-4">
                         <label>Talla</label>
-                        <select class="form-control" @bind="Articulo.IdTalla">
+                        <select class="form-control" @bind="Articulo.IdTalla">-->
                             @*<option value="">Ninguno</option>*@
-                            @if (ListaTalla != null)
+                            <!--@if (ListaTalla != null)
                             {
                                 @foreach (var cat in ListaTalla)
                                 {
@@ -39,9 +39,9 @@
                     </div>
                     <div class="col-4">
                         <label>Tamaño</label>
-                        <select class="form-control" @bind="Articulo.IdMedida">
+                        <select class="form-control" @bind="Articulo.IdMedida">-->
                             @*<option value="">Ninguno</option>*@
-                            @if (ListaMedida != null)
+                            <!--@if (ListaMedida != null)
                             {
                                 @foreach (var cat in ListaMedida)
                                 {
@@ -53,9 +53,9 @@
                     </div>
                     <div class="col-4">
                         <label>Género</label>
-                        <select class="form-control" @bind="Articulo.IdGenero">
+                        <select class="form-control" @bind="Articulo.IdGenero">-->
                             @*<option value="">Ninguno</option>*@
-                            @if (ListaGeneros != null)
+                            <!--@if (ListaGeneros != null)
                             {
                                 @foreach (var cat in ListaGeneros)
                                 {
@@ -67,9 +67,9 @@
                     </div>
                     <div class="col-4">
                         <label>Categoria Personas</label>
-                        <select class="form-control" @bind="Articulo.IdEtapa">
+                        <select class="form-control" @bind="Articulo.IdEtapa">-->
                             @*<option value="">Ninguno</option>*@
-                            @if (ListaEtapas != null)
+                            <!--@if (ListaEtapas != null)
                             {
                                 @foreach (var cat in ListaEtapas)
                                 {
@@ -81,9 +81,9 @@
                     </div>
                     <div class="col-4">
                         <label>Tipo de Material</label>
-                        <select class="form-control" @bind="Articulo.IdMaterial">
+                        <select class="form-control" @bind="Articulo.IdMaterial">-->
                             @*<option value="">Ninguno</option>*@
-                            @if (ListaMateriales != null)
+                            <!--@if (ListaMateriales != null)
                             {
                                 @foreach (var cat in ListaMateriales)
                                 {
@@ -131,7 +131,11 @@
                     </div>
                 </div>
 
-            </EditForm>
+            </EditForm>-->
+
+
+            <ArticuloModal/>
+
             <div class="row">
                 <div class="col-12">
                     <table class="table table-bordered table-sm">
@@ -190,10 +194,6 @@
 
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-
 <ToastContainer />
 
 @inject CategoriasService categoriaService

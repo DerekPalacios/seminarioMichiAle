@@ -1,0 +1,326 @@
+﻿@page   "/ModalArticuloVenta"
+
+
+<BSButton Color="Color.Primary" @onclick="@onToggle"> <i class='bx bx-search-alt'></i></BSButton>
+<BSModal @ref="SizeLarge" Size="Size.Large">
+    <BSModalHeader OnClick="@onToggle">Buscar Artículo</BSModalHeader>
+    
+    <BSModalBody>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-bordered table-sm">
+                    <thead>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Nombre</th>
+                            <th>Stock</th>
+                            <th>Stock Minimo</th>
+                            <th>Costo</th>
+                            <th>Precio</th>
+                            @*<th>Margen</th>*@
+                            <th>Accion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var producto in ListaArticulos)
+                        {
+
+                            <tr>
+                                <td>
+                                    <input type="text" class="form-control" @bind="producto.Codigo" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" @bind="producto.Nombre" />
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control" @bind="producto.Stock" />
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control" @bind="producto.StockMinimo" />
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control" @bind="producto.Costo" />
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control" @bind="producto.Precio" />
+                                </td>
+                                @*<td>@producto.Margen</td>*@
+                                <td>
+                                    
+                                    <BSButton Class="btn-success" @onclick="()=>registrarArticulo(producto)">
+                                        <i class='bx bx-check'></i>
+
+                                    </BSButton>
+                                    @*<button type="button" class="btn btn-danger"
+                                                @onclick="(() => EliminarProducto(producto))">
+                                            <i class='bx bx-trash'></i>
+                                        </button>*@
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+             </div>
+        </div>
+        <ToastContainer />
+    </BSModalBody>
+    <BSModalFooter>
+        <BSButton Color="Color.Secondary" @onclick="@(() => SizeLarge.Hide())">Close</BSButton>
+        @*<BSButton Color="Color.Primary" @onclick="@(() => SizeLarge.Hide())">Save Changes</BSButton>*@
+    </BSModalFooter>
+</BSModal>
+
+
+
+@inject CategoriasService categoriaService
+@inject TallaService tallaService
+@inject MedidaService medidaService
+@inject GeneroService generoService
+@inject MaterialesService materialService
+@inject EtapasService etapaService
+@inject ArticuloService articuloService
+
+@inject VentaService facturaService
+@inject ClienteService clientesService
+@inject ArticuloService productoService
+
+
+@inject IToaster toaster
+@inject SweetAlertService swal
+
+
+@code {
+    [Parameter]
+    public EventCallback<ItemFacturaModel> cargarArticulo { get; set; }
+
+
+    public void registrarArticulo(ArticuloModel articulo)
+    {
+        cargarArticulo.InvokeAsync(new ItemFacturaModel
+        {
+            Id = articulo.Id,
+            //asignacion del id al item producto
+
+            Cantidad = 1,
+            Costo = articulo.Costo,
+            IdVenta = articulo.Id,
+            IdArticulo = articulo.Id,
+            NombreArticulo = articulo.Nombre,
+            Precio = articulo.Precio,
+            Codigo = articulo.Codigo,
+            Stock = articulo.Stock,
+        }
+    );
+        onToggle();
+    }
+
+    void onToggle(/*MouseEventArgs e*/)
+    {
+        SizeLarge.Toggle();
+        Articulo = new ArticuloModel();
+        CargarProductos();
+    }
+
+    BSModal SizeLarge { get; set; }
+    BSModal SizeSmall { get; set; }
+
+
+    public ArticuloModel Articulo { get; set; } = new ArticuloModel();
+
+    public List<CategoriaModel> ListaCategorias { get; set; }
+
+    //public int IdMedida { get; set; }
+    public List<TallaModel> ListaTalla { get; set; }
+    public List<MedidaModel> ListaMedida { get; set; }
+    public List<GeneroModel> ListaGeneros { get; set; }
+    public List<EtapaModel> ListaEtapas { get; set; }
+    public List<MaterialModel> ListaMateriales { get; set; }
+    public VentaModel Model { get; set; }
+    public ItemFacturaModel ItemFactura { get; set; } = new ItemFacturaModel();
+
+    public List<ArticuloModel> ListaArticulos { get; set; } = new List<ArticuloModel>();
+
+    protected override void OnInitialized()
+    {
+        ListaCategorias = categoriaService.ListaCategorias();
+        ListaTalla = tallaService.ListaTalla();
+        ListaMedida = medidaService.ListaMedidas();
+        ListaGeneros = generoService.ListaGeneros();
+        ListaEtapas = etapaService.ListaEtapas();
+        ListaMateriales = materialService.ListaMateriales();
+
+        CargarProductos();
+    }
+
+    protected void CargarProductos()
+    {
+        var result = articuloService.ListaArticulos();
+        ListaArticulos = result;
+
+    }
+
+
+
+    protected void AgregarProducto()
+    {
+        var res = articuloService.Crear(Articulo);
+
+        if (res.IsSuccess)
+        {
+            Articulo.Id = res.Code;
+
+            //var prod = (ArticuloModel)res.Objeto;
+            //var prod = res.Objeto as ProductoModel;
+
+            ListaArticulos.Add(Articulo);
+
+            Articulo = new ArticuloModel();
+            toaster.Success(res.Message, "OK");
+
+            //CargarProductos(); No recomendada
+
+        }
+        else
+        {
+            toaster.Error(res.Message, "Error");
+        }
+    }
+
+    //protected void AlcambiarCategoriaSeleccionada(ChangeEventArgs e)
+    //{
+    //    Articulo.TA_IdCategoria = Convert.ToInt32(e.Value);
+
+    //    CargarProductos(Articulo.TA_IdCategoria
+    //        );
+
+
+    //}
+
+
+    protected async Task EliminarProducto(ArticuloModel producto)
+    {
+        var confirm = await swal.FireAsync(new SweetAlertOptions
+        {
+            Title = "¿Confirma que desea eliminar este articulo?",
+            Text = "No podrá revertir esta operación",
+            ShowConfirmButton = true,
+            ShowCancelButton = true,
+            ConfirmButtonText = "De acuerdo",
+            CancelButtonText = "Cancelar"
+        });
+
+        if (!confirm.IsConfirmed)
+        {
+            return;
+        }
+
+        var res = articuloService.Eliminar(producto.Id);
+
+        if (res.IsSuccess)
+        {
+            toaster.Success(res.Message, "OK");
+            ListaArticulos.Remove(producto);
+        }
+        else
+        {
+            toaster.Error(res.Message, "Error");
+        }
+    }
+
+    protected void GuardarProducto(ArticuloModel producto)
+    {
+        if (string.IsNullOrEmpty(producto.Codigo))
+        {
+            toaster.Error("Debe escribir el codigo del producto", "Error");
+            return;
+        }
+
+        if (string.IsNullOrEmpty(producto.Nombre) || producto.Nombre.Length < 5)
+        {
+            toaster.Error("El nombre del articulo debe ser mayor a 5 caracteres", "Error");
+            return;
+        }
+
+        if (string.IsNullOrEmpty(producto.Stock.ToString()))
+        {
+            toaster.Error("Debe escribir el nombre valor del stock", "Error");
+            return;
+        }
+
+        if (string.IsNullOrEmpty(producto.Costo.ToString()))
+        {
+            toaster.Error("Debe escribir el costo del producto", "Error");
+            return;
+        }
+
+        if (string.IsNullOrEmpty(producto.Precio.ToString()))
+        {
+            toaster.Error("Debe escribir el precio del producto", "Error");
+            return;
+        }
+
+
+        var res = articuloService.Modificar(producto);
+
+        if (res.IsSuccess)
+        {
+            toaster.Success(res.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(res.Message, "Error");
+
+        }
+    }
+
+    protected void AgregarItemFactura()
+    {
+        //var res = facturaService.AgregarProducto(ItemFactura);
+        //if (res.IsSuccess)
+        //{
+        //ItemFactura.Id = res.Code;            --tambien asignacion de id al item producto
+
+        Model.Items.Add(ItemFactura);
+        ItemFactura = new ItemFacturaModel();
+
+        //    }
+        //else
+        //{
+        //    toaster.Error(res.Message, "Error");
+        //}
+    }
+
+    protected void BuscarArticulo(ArticuloModel producto)
+    {
+        //if (string.IsNullOrEmpty(e.Value.ToString()))
+        //{
+        //    return;
+        //}
+
+        //var producto = productoService.Articulo(e.Value.ToString());
+        //if (producto == null)
+        //{
+        //    toaster.Info("Producto no encontrado", "Info");
+        //    return;
+        //}
+
+        //ItemFactura = new ItemFacturaModel
+        //{
+        //    Id = producto.Id,
+        //    //asignacion del id al item producto
+
+        //    Cantidad = 1,
+        //    Costo = producto.Costo,
+        //    IdVenta = Model.Id,
+        //    IdArticulo = producto.Id,
+        //    NombreArticulo = producto.Nombre,
+        //    Precio = producto.Precio,
+        //    Codigo = producto.Codigo,
+        //    Stock = producto.Stock,
+        //};
+
+    }
+
+
+}
+

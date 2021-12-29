@@ -1,0 +1,131 @@
+﻿@page "/ModalEtapas"
+
+
+
+<BSButton Color="Color.Primary" @onclick="@onToggle">Agregar Categoria Persona</BSButton>
+<BSModal @ref="VerticallyCentered" IsCentered="true">
+    <BSModalHeader OnClick="@onToggle">Nueva Categoria Persona</BSModalHeader>
+    <BSModalBody>
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="input-group">
+                        <input type="text" class="form-control" @bind="Model.Nombre_Etapa" />
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" @onclick="AgregarEtapa">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </BSModalBody>
+    <BSModalFooter>
+        <BSButton Color="Color.Secondary" @onclick="@onToggle">Cerrar</BSButton>
+        @*<BSButton Color="Color.Primary" @onclick="@CrearCliente">Guardar</BSButton>*@
+    </BSModalFooter>
+</BSModal>
+<ToastContainer />
+
+
+
+
+
+@inject EtapasService etapaService
+@inject IToaster toaster
+@inject SweetAlertService swal
+
+@code {
+
+
+    BSModal VerticallyCentered;
+
+    void onToggle(/*MouseEventArgs e*/)
+    {
+        VerticallyCentered.Toggle();
+        Model = new EtapaModel();
+    }
+
+    public EtapaModel Model { get; set; } = new EtapaModel();
+
+    public List<EtapaModel> ListaEtapas { get; set; } = new List<EtapaModel>();
+
+    protected override void OnInitialized()
+    {
+        CargarEtapa();
+        //otros metodos
+    }
+
+    protected void CargarEtapa()
+    {
+        var result = etapaService.ListaEtapas();
+        ListaEtapas = result;
+    }
+
+    protected void AgregarEtapa()
+    {
+        var result = etapaService.Crear(Model);
+        if (result.IsSuccess)
+        {
+            Model.Id = result.Code;
+            Model.CantidadArticulos = 0;
+
+
+
+            ListaEtapas.Add(Model);
+
+            Model = new EtapaModel();
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+
+    }
+
+    protected void ModificarEtapa(EtapaModel etapa)
+    {
+        var result = etapaService.Modificar(etapa);
+        if (result.IsSuccess)
+        {
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+
+    }
+
+    protected async Task EliminarEtapa(int idetapa)
+    {
+        var res = await swal.FireAsync(new SweetAlertOptions
+        {
+            Title = "¿Confirma que desea eliminar este dato?",
+            Text = "Si la elimina, no podrá recuperarlo",
+            ShowConfirmButton = true,
+            ConfirmButtonText = "Si, eliminar",
+            ShowCancelButton = true,
+            CancelButtonText = "No, eliminar"
+        });
+
+        if (!res.IsConfirmed)
+        {
+            return;
+        }
+
+        var result = etapaService.Eliminar(idetapa);
+
+        if (result.IsSuccess)
+        {
+            CargarEtapa();
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+
+
+    }
+}

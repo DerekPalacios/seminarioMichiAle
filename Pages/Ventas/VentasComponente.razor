@@ -5,10 +5,10 @@
     <div class="card">
         <div class="card-header">
             <div class="float-right">
-                <ClienteModal/>
+                <ClienteModal />
                 <a href="/facturas" class="btn btn-secondary">Volver</a>
             </div>
-            <h4>Factura</h4>
+            <h4>Facturas</h4>
         </div>
         <div class="card-body">
 
@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label>Dirección</label>
                         <span class="form-control">@ListaClientes.FirstOrDefault(x => x.Id == Model.IdCliente)?.Direccion</span>
                     </div>
@@ -47,13 +47,13 @@
                         <span class="form-control">@ListaClientes.FirstOrDefault(x => x.Id == Model.IdCliente)?.Telefono</span>
                     </div>
 
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                         <label>Email</label>
                         <div class="input-group">
                             <span class="form-control">@ListaClientes.FirstOrDefault(x => x.Id == Model.IdCliente)?.Correo</span>
-                            <div class="input-group-append">
-                                @*<button type="submit" class="btn btn-primary ">Crear Factura</button>*@
-                                <button type="submit" class="btn btn-success">Guardar Factura</button>
+                            <div class="float-right">
+                                @*<button type="submit" class="btn btn-primary" value="CrearFactura">Crear Factura</button>*@
+                                <button type="submit" class="btn btn-success" value="Guardar">Guardar Factura</button>
                             </div>
                         </div>
                     </div>
@@ -65,9 +65,12 @@
             {
                 <div class="row mb-3">
                     <div class="col-md-2">
-                        <label>Buscar</label>
-                        <input type="text" style="text-transform:uppercase" class="form-control"  @onchange="BuscarProducto" />
+                        <label>Código del Artículo</label>
+                        <input type="text" style="text-transform:uppercase" class="form-control" @onchange="BuscarProducto" />
                     </div>
+
+                    <ArticuloModalVenta cargarArticulo="@cargarItemFactura" />
+
                     <div class="col-md-12">
 
                         <EditForm Model="ItemFactura" OnValidSubmit="AgregarItemFactura">
@@ -75,34 +78,46 @@
 
                                 <DataAnnotationsValidator></DataAnnotationsValidator>
 
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <label>Referencia</label>
                                     <span class="form-control">@ItemFactura.Codigo</span>
                                     <ValidationMessage For="(() => ItemFactura.Codigo)" />
                                 </div>
                                 <div class="col-md-4">
-                                    <label>Artículo</label>
+                                    <label>Nombre del Artículo</label>
                                     <span class="form-control">@ItemFactura.NombreArticulo</span>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <label>Stock</label>
                                     <input type="text" placeholder="Stock" class="form-control" @bind="ItemFactura.Stock" />
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <label>Cantidad</label>
-                                    <input type="number" min="1" pattern="^[0-9]+" class="form-control" @bind="ItemFactura.Cantidad" />
+                                    <input type="number" min="1" max="@ItemFactura.Stock" pattern="^[0-9]+" class="form-control" @bind="ItemFactura.Cantidad" />
                                 </div>
-                                <div class="col-md-2">
-                                    <label>Resultado</label>
-                                    <span class="form-control"> @ItemFactura.Resultado.ToString()</span>
-                                </div>
-
                                 <div class="col-md-4">
                                     <label>Precio</label>
                                     <div class="input-group">
                                         <input type="number" class="form-control" @bind="ItemFactura.Precio" />
                                         <div class="input-group-append">
-                                            <button type="submit" class="btn btn-primary">Agregar</button>
+                                            @if (!buttonBand)
+                                            {
+
+                                                <BSButton ButtonType="BlazorStrap.ButtonType.Submit" Class="btn btn-primary">Agregar</BSButton>
+
+
+                                            }
+                                            else
+                                            {
+                                                <BSButton ButtonType="BlazorStrap.ButtonType.Submit" Class="btn btn-primary">Actualizar</BSButton>
+                                                <BSButton Class="btn btn-primary ml-1" OnClick="ActualizarItemcancel">Cancelar</BSButton>
+
+                                            }
+
+
+
+
+                                            @*<button type="submit" class="btn btn-primary">Agregar</button>*@
                                         </div>
                                     </div>
                                 </div>
@@ -123,7 +138,7 @@
                                     <th>Cantidad</th>
                                     <th>Precio</th>
                                     <th>SubTotal</th>
-                                    <th>Margen</th>
+                                    @*<th>Margen</th>*@
                                     <th>Opciones</th>
                                 </tr>
                             </thead>
@@ -134,16 +149,48 @@
                                         <td>@item.Codigo</td>
                                         <td>@item.NombreArticulo</td>
                                         <td class="text-right">
-                                            <input type="number" class="form-control" @bind="item.Cantidad" />
+                                            @item.Cantidad.ToString()
                                         </td>
                                         <td class="text-right">
                                             @item.Precio.ToString("c2")
                                         </td>
                                         <td class="text-right">@item.Subtotal.ToString("c2")</td>
-                                        <td class="text-right">@item.Margen.ToString("c2")</td>
+                                        @*<td class="text-right">@item.Margen.ToString("c2")</td>*@
                                         <th>
                                             <div class="input-group-append">
+                                                @*@onclick="(() => EliminarProducto(item))"*@
+
+                                                <button disabled class="btn btn-danger"><i class='bx bx-trash'></i></button>
+                                                <span>      |       </span>
+                                                <BSButton Class="btn btn-success" @onclick="()=>editItem(item)">
+                                                    <i class='bx bxs-edit'></i>
+                                                </BSButton>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                }
+                                @foreach (var item in listaItemsNueva)
+                                {
+                                    <tr>
+                                        <td>@item.Codigo</td>
+                                        <td>@item.NombreArticulo</td>
+
+                                        <td class="text-right">@item.Cantidad.ToString()</td>
+
+                                        <td class="text-right">
+                                            @item.Precio.ToString("c2")
+                                        </td>
+                                        <td class="text-right">@item.Subtotal.ToString("c2")</td>
+                                        @*<td class="text-right">@item.Margen.ToString("c2")</td>*@
+                                        <th>
+                                            <div class="input-group-append">
+
+
                                                 <button class="btn btn-danger" @onclick="(() => EliminarProducto(item))"><i class='bx bx-trash'></i></button>
+                                                <span>      |       </span>
+                                                <BSButton Class="btn btn-success" @onclick="()=>editItem(item)">
+                                                    <i class='bx bxs-edit'></i>
+                                                </BSButton>
                                             </div>
                                         </th>
                                     </tr>
@@ -153,7 +200,7 @@
                                 <tr>
                                     <th colspan="4" class="text-right">TOTAL</th>
                                     <th class="text-right">@Model.Total.ToString("c2")</th>
-                                    <th class="text-right">@Model.Ganancia.ToString("c2")</th>
+                                    @*<th class="text-right">@Model.Ganancia.ToString("c2")</th>*@
 
                                 </tr>
                             </tfoot>
@@ -182,10 +229,37 @@
     public VentaModel Model { get; set; }
     public ItemFacturaModel ItemFactura { get; set; } = new ItemFacturaModel();
 
+    int cantidadAnterior;
+    private bool buttonBand = false;
+
+    protected void cargarItemFactura(ItemFacturaModel articulo)
+    {
+        ItemFactura = articulo;
+        buttonBand = false;
+
+    }
+
+
+    private void editItem(ItemFacturaModel itemEdit)
+    {
+        ItemFactura = itemEdit;
+        ItemFactura.Stock = productoService.Articulo(itemEdit.IdArticulo).Stock;
+        cantidadAnterior = ItemFactura.Cantidad;
+        buttonBand = true;
+    }
+
+    private void ActualizarItemcancel()
+    {
+        buttonBand = false;
+        ItemFactura.Cantidad = cantidadAnterior;
+        ItemFactura = new ItemFacturaModel();
+
+    }
 
 
     //variable que guarda una lista de los items de la factura antes de que sean modificados
-    private List<ItemFacturaModel> listaAnteriorModificacion { get; set; }
+    private List<ItemFacturaModel> listaAnteriorModificacion { get; set; } = new List<ItemFacturaModel>();
+    private List<ItemFacturaModel> listaItemsNueva { get; set; } = new List<ItemFacturaModel>();
 
     public List<ClienteModel> ListaClientes { get; set; }
 
@@ -204,10 +278,10 @@
         if (IdFactura == null)
         {
             Model = new VentaModel()
-            {
-                Id = -1,
-                Fecha = DateTime.Now,
-            };
+                {
+                    Id = -1,
+                    Fecha = DateTime.Now,
+                };
             ItemFactura.IdVenta = -1;
         }
         else
@@ -216,6 +290,11 @@
             listaAnteriorModificacion = facturaService.Factura(Convert.ToInt32(IdFactura)).Items;
             ItemFactura.IdVenta = Convert.ToInt32(IdFactura);
         }
+    }
+
+    protected MsgResult CrearFactura()
+    {
+        return facturaService.Crear(Model);
     }
 
     protected void GuardarFactura()
@@ -240,6 +319,7 @@
         if (res.IsSuccess)
         {
             toaster.Success(res.Message, "OK");
+            listaAnteriorModificacion = facturaService.Factura(Convert.ToInt32(IdFactura)).Items;
 
         }
         else
@@ -248,16 +328,13 @@
         }
     }
 
-    protected MsgResult CrearFactura()
-    {
-        return facturaService.Crear(Model);
-    }
-
-
     protected MsgResult ModificarFactura()
     {
         //envio extra de una lista de items que el modelo tenia antes de que se modificara en la vista
+        listaItemsNueva.ForEach(itemNuevo => Model.Items.Add(itemNuevo));
+        listaItemsNueva = new List<ItemFacturaModel>();
         return facturaService.Modificar(Model, listaAnteriorModificacion);
+
     }
 
     protected void BuscarProducto(ChangeEventArgs e)
@@ -275,74 +352,115 @@
         }
 
         ItemFactura = new ItemFacturaModel
-        {
-            Id = producto.Id,
-            //asignacion del id al item producto
+            {
+                Id = producto.Id,
+                //asignacion del id al item producto
 
-            Cantidad = 1,
-            Costo = producto.Costo,
-            IdVenta = Model.Id,
-            IdArticulo = producto.Id,
-            NombreArticulo = producto.Nombre,
-            Precio = producto.Precio,
-            Codigo = producto.Codigo,
-            Stock = producto.Stock,
-        };
+                Cantidad = 1,
+                Costo = producto.Costo,
+                IdVenta = Model.Id,
+                IdArticulo = producto.Id,
+                NombreArticulo = producto.Nombre,
+                Precio = producto.Precio,
+                Codigo = producto.Codigo,
+                Stock = producto.Stock,
+            };
+        buttonBand = false;
     }
-
 
 
     //agrega item a la lista de items del modelo y por ello a la grid
     protected void AgregarItemFactura()
     {
-        //var res = facturaService.AgregarProducto(ItemFactura);
-        //if (res.IsSuccess)
-        //{
-        //ItemFactura.Id = res.Code;            --tambien asignacion de id al item producto
+        @* Por aca se comprueba si lo que se va a hacer es a actualizar o a agregar un item a la factura, todo constatandose de la variabale bandera
+            que si es false, obviamente se agregara un item nuevo, sino, si es true, entonces actualizara un item de la factura en su cantidad nada mas
+            izi pizi
+        *@
+        if (!buttonBand)
+        {
+            if (listaItemsNueva.FirstOrDefault(x => x.Id == ItemFactura.Id) == null && Model.Items.FirstOrDefault(x => x.IdArticulo == ItemFactura.Id) == null)
+            {
+                @*
+                    si el item no esta en la lista de items factura y no esta la variable bandera en true, entonces simplemente se agrega e nuevo item
+                *@
+                listaItemsNueva.Add(ItemFactura);
+                ItemFactura = new ItemFacturaModel();
 
-        Model.Items.Add(ItemFactura);
-        ItemFactura = new ItemFacturaModel();
+            }
+            else
+            {
+                @*
+                    sino
+                    poer aca un mensaje que diga que ya esta agregdo el item en la lista
+                *@
+            }
 
-        //    }
-        //else
-        //{
-        //    toaster.Error(res.Message, "Error");
-        //}
+        }
+        else
+        {
+            @*
+                en este caso, se actualizaraun item de la factura en su cantidad nada mas, porq la variable banderaa esta en true
+            *@
+            Model.Items.FirstOrDefault(x => x.IdArticulo == ItemFactura.IdArticulo).Cantidad = ItemFactura.Cantidad;
+
+            ItemFactura = new ItemFacturaModel();
+            buttonBand = false;
+        }
     }
 
 
     protected async Task EliminarProducto(ItemFacturaModel item)
     {
+
+
+
         var confirm = await swal.FireAsync(new SweetAlertOptions
-        {
-            Title = "¿Confirma que desea eliminar este Artículo de la Factura?",
-            Text = "Si lo elimina, no podrá recuperarlo",
-            ShowConfirmButton = true,
-            ConfirmButtonText = "Si, eliminar",
-            ShowCancelButton = true,
-            CancelButtonText = "No, eliminar"
-        });
+            {
+                Title = "¿Confirma que desea eliminar este Artículo de la Factura?",
+                Text = "Si lo elimina, no podrá recuperarlo",
+                ShowConfirmButton = true,
+                ConfirmButtonText = "Si, eliminar",
+                ShowCancelButton = true,
+                CancelButtonText = "No, eliminar"
+            });
 
         if (!confirm.IsConfirmed)
         {
+            
             return;
         }
 
-        var res = facturaService.EliminarProducto(item);
-        if (res.IsSuccess)
-        {
-            toaster.Success(res.Message, "OK");
-            Model.Items.Remove(item);
-        }
-        else
-        {
-            toaster.Error(res.Message, "OK");
-        }
+        @*
+            se eliminan los items q que aun no estan guardados, asi que al darle [editar] a uno, se cargaban los datos
+            en el formulario para editar, pero se podia eliminar mientras se editaba, por lo que al darle [actualizar]
+            sucedian errores al intenrtar actualizar un item que ya NO estaba en la lista debidoa la eliminacion
+            con el codigo de aca se comprueba si se estaba actualizando algun item de la lista, de ser asi, si el item que se estaba actualizando 
+            es el que se elimino, ent9onces el formulario se limpia y deja de estar en modo [actualizar]
+        *@
+        if (buttonBand)
+            {
+                if (item.IdArticulo == ItemFactura.IdArticulo)
+                {
+                    ItemFactura = new ItemFacturaModel();
+                    buttonBand = false;
+                }
+            }
+        listaItemsNueva.Remove(item);
+
+
+
+        //var res = facturaService.EliminarProducto(item);
+        //if (res.IsSuccess)
+        //{
+        //    toaster.Success(res.Message, "OK");
+
+        //}
+        //else
+        //{
+        //    toaster.Error(res.Message, "OK");
+        //}
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
 
     public ClienteModel Cliente { get; set; } = new ClienteModel();
 

@@ -3,7 +3,7 @@
 
 @attribute [Authorize]
 
-<div class="container">
+@*<div class="container">
     <div class="row mb-3">
         <div class="col">
             <div class="input-group">
@@ -13,7 +13,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
+
+    <CategoriasModal/>
 
     <div class="row">
         <div class="col">
@@ -44,7 +46,6 @@
             </table>
         </div>
     </div>
-</div>
 <ToastContainer />
 
 @inject CategoriasService categoriaService
@@ -53,6 +54,7 @@
 @inject SweetAlertService swal
 
 @code {
+
 
     public CategoriaModel Model { get; set; } = new CategoriaModel();
 

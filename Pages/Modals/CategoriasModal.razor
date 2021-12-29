@@ -1,0 +1,127 @@
+﻿@page "/ModalCategorias"
+
+<BSButton Color="Color.Primary" @onclick="@onToggle">Agregar Categoria</BSButton>
+<BSModal @ref="VerticallyCentered" IsCentered="true">
+    <BSModalHeader OnClick="@onToggle">Nueva Categoria</BSModalHeader>
+    <BSModalBody>
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="input-group">
+                        <input type="text" class="form-control" @bind="Model.Nombre_Categoria" />
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" @onclick="AgregarCategoria">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </BSModalBody>
+    <BSModalFooter>
+        <BSButton Color="Color.Secondary" @onclick="@onToggle">Cerrar</BSButton>
+        @*<BSButton Color="Color.Primary" @onclick="@CrearCliente">Guardar</BSButton>*@
+    </BSModalFooter>
+</BSModal>
+<ToastContainer />
+
+
+
+
+@inject CategoriasService categoriaService
+
+@inject IToaster toaster
+@inject SweetAlertService swal
+
+@code {
+
+    BSModal VerticallyCentered;
+
+    void onToggle(/*MouseEventArgs e*/)
+    {
+        VerticallyCentered.Toggle();
+        Model = new CategoriaModel();
+    }
+
+    public CategoriaModel Model { get; set; } = new CategoriaModel();
+
+    public List<CategoriaModel> ListaCategorias { get; set; } = new List<CategoriaModel>();
+
+    protected override void OnInitialized()
+    {
+        CargarCategorias();
+        //otros metodos
+    }
+
+    protected void CargarCategorias()
+    {
+        var result = categoriaService.ListaCategorias();
+        ListaCategorias = result;
+    }
+
+    protected void AgregarCategoria()
+    {
+        var result = categoriaService.Crear(Model);
+        if (result.IsSuccess)
+        {
+            Model.Id = result.Code;
+            Model.CantidadProductos = 0;
+
+            ListaCategorias.Add(Model);
+
+            Model = new CategoriaModel();
+            toaster.Success(result.Message, "OK");
+            onToggle();
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+
+    }
+
+
+
+    protected void ModificarCategoria(CategoriaModel categoria)
+    {
+        var result = categoriaService.Modificar(categoria);
+        if (result.IsSuccess)
+        {
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+
+    }
+
+    protected async Task EliminarCategoria(int idCategoria)
+    {
+        var res = await swal.FireAsync(new SweetAlertOptions
+        {
+            Title = "¿Confirma que desea eliminar esta categoría?",
+            Text = "Si la elimina, no podrá recuperarla",
+            ShowConfirmButton = true,
+            ConfirmButtonText = "Si, eliminar",
+            ShowCancelButton = true,
+            CancelButtonText = "No, eliminar"
+        });
+
+        if (!res.IsConfirmed)
+        {
+            return;
+        }
+
+        var result = categoriaService.Eliminar(idCategoria);
+
+        if (result.IsSuccess)
+        {
+            CargarCategorias();
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+    }
+}

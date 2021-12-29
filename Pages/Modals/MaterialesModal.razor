@@ -1,0 +1,132 @@
+﻿@page "/ModalMateriales"
+
+
+
+
+<BSButton Color="Color.Primary" @onclick="@onToggle">Agregar Material</BSButton>
+<BSModal @ref="VerticallyCentered" IsCentered="true">
+    <BSModalHeader OnClick="@onToggle">Nuevo Material</BSModalHeader>
+    <BSModalBody>
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="input-group">
+                        <input type="text" class="form-control" @bind="Model.Nombre_Material" />
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" @onclick="AgregarMaterial">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </BSModalBody>
+    <BSModalFooter>
+        <BSButton Color="Color.Secondary" @onclick="@onToggle">Cerrar</BSButton>
+        @*<BSButton Color="Color.Primary" @onclick="@CrearCliente">Guardar</BSButton>*@
+    </BSModalFooter>
+</BSModal>
+<ToastContainer />
+
+
+
+
+@inject MaterialesService materialesService
+
+@inject IToaster toaster
+
+@inject SweetAlertService swal
+
+@code {
+
+
+    BSModal VerticallyCentered;
+
+    void onToggle(/*MouseEventArgs e*/)
+    {
+        VerticallyCentered.Toggle();
+        Model = new MaterialModel();
+    }
+
+
+    public MaterialModel Model { get; set; } = new MaterialModel();
+
+    public List<MaterialModel> ListaMateriales { get; set; } = new List<MaterialModel>();
+
+    protected override void OnInitialized()
+    {
+        CargarMateriales();
+        //otros metodos
+    }
+
+    protected void CargarMateriales()
+    {
+        var result = materialesService.ListaMateriales();
+        ListaMateriales = result;
+    }
+
+    protected void AgregarMaterial()
+    {
+        var result = materialesService.Crear(Model);
+        if (result.IsSuccess)
+        {
+            Model.Id = result.Code;
+            Model.CantidadProductos = 0;
+
+            ListaMateriales.Add(Model);
+
+            Model = new MaterialModel();
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+
+    }
+
+
+
+    protected void ModificarMaterial(MaterialModel material)
+    {
+        var result = materialesService.Modificar(material);
+        if (result.IsSuccess)
+        {
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+
+    }
+
+    protected async Task EliminarMaterial(int idMaterial)
+    {
+        var res = await swal.FireAsync(new SweetAlertOptions
+        {
+            Title = "¿Confirma que desea eliminar este material?",
+            Text = "Si lo elimina, no podrá recuperarlo",
+            ShowConfirmButton = true,
+            ConfirmButtonText = "Si, eliminar",
+            ShowCancelButton = true,
+            CancelButtonText = "No, eliminar"
+        });
+
+        if (!res.IsConfirmed)
+        {
+            return;
+        }
+
+        var result = materialesService.Eliminar(idMaterial);
+
+        if (result.IsSuccess)
+        {
+            CargarMateriales();
+            toaster.Success(result.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(result.Message, "Error");
+        }
+    }
+}

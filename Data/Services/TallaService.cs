@@ -69,13 +69,13 @@ namespace TiendaArtesaniasMarielos.Data.Services
                 _context.SaveChanges();
 
                 res.IsSuccess = true;
-                res.Message = "Dato registrado correctamente";
+                res.Message = "Talla registrada correctamente";
                 res.Code = entity.Id;
             }
             catch (Exception ex)
             {
                 res.IsSuccess = false;
-                res.Message = "Error al registrar datos";
+                res.Message = "Error al registrar talla";
                 res.Error = ex;
             }
             return res;
@@ -99,12 +99,12 @@ namespace TiendaArtesaniasMarielos.Data.Services
                 _context.SaveChanges();
 
                 res.IsSuccess = true;
-                res.Message = "Dato modificado correctamente";
+                res.Message = "Talla modificada correctamente";
             }
             catch (Exception ex)
             {
                 res.IsSuccess = false;
-                res.Message = "Error al modificar datos";
+                res.Message = "Error al modificar talla";
                 res.Error = ex;
             }
             return res;

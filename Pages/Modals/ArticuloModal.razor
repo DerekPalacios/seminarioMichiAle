@@ -1,5 +1,343 @@
-﻿<h3>ArticuloModal</h3>
+﻿@page "/ModalArticulo"
+
+
+
+<BSButton Color="Color.Primary" @onclick="@onToggle">Agregar Artículo</BSButton>
+<BSModal @ref="VerticallyCentered" IsCentered="true">
+    <BSModalHeader OnClick="@onToggle">Nuevo Artículo</BSModalHeader>
+    <BSModalBody>
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Artículos</h4>
+                </div>
+                <div class="card-body">
+                    <EditForm Model="Articulo" OnValidSubmit="AgregarProducto">
+                        <DataAnnotationsValidator />
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Categoría</label>
+                                <select class="form-control" @bind="Articulo.IdCategoria">
+                                    @if (ListaCategorias != null)
+                                    {
+                                        @foreach (var cat in ListaCategorias)
+                                        {
+
+                                            <option value="@cat.Id">@cat.Nombre_Categoria</option>
+                                        }
+                                    }
+                                </select>
+                                <ValidationMessage For="(() => Articulo.IdCategoria)" />
+                            </div>
+
+                            <div class="col-6">
+                                <label>Talla</label>
+                                <select class="form-control" @bind="Articulo.IdTalla">
+                                    @*<option value="">Ninguno</option>*@
+                                    @if (ListaTalla != null)
+                                    {
+                                        @foreach (var cat in ListaTalla)
+                                        {
+
+                                            <option value="@cat.Id">@cat.Nombre_Talla</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Tamaño</label>
+                                <select class="form-control" @bind="Articulo.IdMedida">
+                                    @*<option value="">Ninguno</option>*@
+                                    @if (ListaMedida != null)
+                                    {
+                                        @foreach (var cat in ListaMedida)
+                                        {
+
+                                            <option value="@cat.Id">@cat.Nombre_Medida</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="col-6">
+                                <label>Género</label>
+                                <select class="form-control" @bind="Articulo.IdGenero">
+                                    @*<option value="">Ninguno</option>*@
+                                    @if (ListaGeneros != null)
+                                    {
+                                        @foreach (var cat in ListaGeneros)
+                                        {
+
+                                            <option value="@cat.Id">@cat.Nombre_Genero</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Categoria Personas</label>
+                                <select class="form-control" @bind="Articulo.IdEtapa">
+                                    @*<option value="">Ninguno</option>*@
+                                    @if (ListaEtapas != null)
+                                    {
+                                        @foreach (var cat in ListaEtapas)
+                                        {
+
+                                            <option value="@cat.Id">@cat.Nombre_Etapa</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="col-6">
+                                <label>Tipo de Material</label>
+                                <select class="form-control" @bind="Articulo.IdMaterial">
+                                    @*<option value="">Ninguno</option>*@
+                                    @if (ListaMateriales != null)
+                                    {
+                                        @foreach (var cat in ListaMateriales)
+                                        {
+
+                                            <option value="@cat.Id">@cat.Nombre_Material</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <label>Nombre</label>
+                                <input type="text" class="form-control" @bind="Articulo.Nombre" />
+                                <ValidationMessage For="(() => Articulo.Nombre)" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4">
+                                <label>Codigo</label>
+                                <input type="text" class="form-control" @bind="Articulo.Codigo" />
+                                <ValidationMessage For="(() => Articulo.Codigo)" />
+                            </div>
+                            <div class="col-4">
+                                <label>Stock</label>
+                                <input type="number" class="form-control" @bind="Articulo.Stock" />
+                            </div>
+                            <div class="col-4">
+                                <label>Stock Minimo</label>
+                                <input type="number" class="form-control" @bind="Articulo.StockMinimo" />
+                            </div>
+                        </div>
+
+                           
+                        <div class="row">
+                                <div class="col-6">
+                                    <label>Costo</label>
+                                    <input type="number" class="form-control" @bind="Articulo.Costo" />
+                                    <ValidationMessage For="(() => Articulo.Costo)" />
+                                </div>
+                                <div class="col-6">
+                                    <label>Precio</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" @bind="Articulo.Precio" />
+                                        <ValidationMessage For="(() => Articulo.Precio)" />
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-primary">Agregar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+</EditForm>
+                </div>
+            </div>
+        </div>
+    </BSModalBody>
+    <BSModalFooter>
+        <BSButton Color="Color.Secondary" @onclick="@onToggle">Cerrar</BSButton>
+        @*<BSButton Color="Color.Primary" @onclick="@CrearCliente">Guardar</BSButton>*@
+    </BSModalFooter>
+</BSModal>
+<ToastContainer />
+
+
+
+
+
+
+@inject CategoriasService categoriaService
+@inject TallaService tallaService
+@inject MedidaService medidaService
+@inject GeneroService generoService
+@inject MaterialesService materialService
+@inject EtapasService etapaService
+@inject ArticuloService articuloService
+
+@inject IToaster toaster
+@inject SweetAlertService swal
 
 @code {
+
+    BSModal VerticallyCentered;
+
+    void onToggle(/*MouseEventArgs e*/)
+    {
+        VerticallyCentered.Toggle();
+        Articulo = new ArticuloModel();
+    }
+
+
+    public ArticuloModel Articulo { get; set; } = new ArticuloModel();
+
+    public List<CategoriaModel> ListaCategorias { get; set; }
+
+    //public int IdMedida { get; set; }
+    public List<TallaModel> ListaTalla { get; set; }
+    public List<MedidaModel> ListaMedida { get; set; }
+    public List<GeneroModel> ListaGeneros { get; set; }
+    public List<EtapaModel> ListaEtapas { get; set; }
+    public List<MaterialModel> ListaMateriales { get; set; }
+
+    public List<ArticuloModel> ListaArticulos { get; set; } = new List<ArticuloModel>();
+
+    protected override void OnInitialized()
+    {
+        ListaCategorias = categoriaService.ListaCategorias();
+        ListaTalla = tallaService.ListaTalla();
+        ListaMedida = medidaService.ListaMedidas();
+        ListaGeneros = generoService.ListaGeneros();
+        ListaEtapas = etapaService.ListaEtapas();
+        ListaMateriales = materialService.ListaMateriales();
+
+        CargarProductos();
+    }
+
+    protected void CargarProductos()
+    {
+
+
+        var result = articuloService.ListaArticulos();
+        ListaArticulos = result;
+
+
+    }
+
+
+
+    protected void AgregarProducto()
+    {
+        var res = articuloService.Crear(Articulo);
+
+        if (res.IsSuccess)
+        {
+            Articulo.Id = res.Code;
+
+            //var prod = (ArticuloModel)res.Objeto;
+            //var prod = res.Objeto as ProductoModel;
+
+            ListaArticulos.Add(Articulo);
+
+            Articulo = new ArticuloModel();
+            toaster.Success(res.Message, "OK");
+
+            //CargarProductos(); No recomendada
+
+        }
+        else
+        {
+            toaster.Error(res.Message, "Error");
+        }
+    }
+
+    //protected void AlcambiarCategoriaSeleccionada(ChangeEventArgs e)
+    //{
+    //    Articulo.TA_IdCategoria = Convert.ToInt32(e.Value);
+
+    //    CargarProductos(Articulo.TA_IdCategoria
+    //        );
+
+
+    //}
+
+
+    protected async Task EliminarProducto(ArticuloModel producto)
+    {
+        var confirm = await swal.FireAsync(new SweetAlertOptions
+        {
+            Title = "¿Confirma que desea eliminar este articulo?",
+            Text = "No podrá revertir esta operación",
+            ShowConfirmButton = true,
+            ShowCancelButton = true,
+            ConfirmButtonText = "De acuerdo",
+            CancelButtonText = "Cancelar"
+        });
+
+        if (!confirm.IsConfirmed)
+        {
+            return;
+        }
+
+        var res = articuloService.Eliminar(producto.Id);
+
+        if (res.IsSuccess)
+        {
+            toaster.Success(res.Message, "OK");
+            ListaArticulos.Remove(producto);
+        }
+        else
+        {
+            toaster.Error(res.Message, "Error");
+        }
+    }
+
+    protected void GuardarProducto(ArticuloModel producto)
+    {
+        if (string.IsNullOrEmpty(producto.Codigo))
+        {
+            toaster.Error("Debe escribir el codigo del producto", "Error");
+            return;
+        }
+
+        if (string.IsNullOrEmpty(producto.Nombre) || producto.Nombre.Length < 5)
+        {
+            toaster.Error("El nombre del articulo debe ser mayor a 5 caracteres", "Error");
+            return;
+        }
+
+        if (string.IsNullOrEmpty(producto.Stock.ToString()))
+        {
+            toaster.Error("Debe escribir el nombre valor del stock", "Error");
+            return;
+        }
+
+        if (string.IsNullOrEmpty(producto.Costo.ToString()))
+        {
+            toaster.Error("Debe escribir el costo del producto", "Error");
+            return;
+        }
+
+        if (string.IsNullOrEmpty(producto.Precio.ToString()))
+        {
+            toaster.Error("Debe escribir el precio del producto", "Error");
+            return;
+        }
+
+
+        var res = articuloService.Modificar(producto);
+
+        if (res.IsSuccess)
+        {
+            toaster.Success(res.Message, "OK");
+        }
+        else
+        {
+            toaster.Error(res.Message, "Error");
+
+        }
+    }
 
 }

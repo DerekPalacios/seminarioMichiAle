@@ -1,8 +1,7 @@
 ﻿@page "/clientes"
 
 @attribute [Authorize]
-
-<div class="container-fluid">
+<!--<div class="container-fluid">
     <div class="card">
         <div class="card-header">
             <div class="card-title">
@@ -33,82 +32,158 @@
                 <div class="row">
                     <div class="col-md-4">
                         <label>Dirección</label>
-                        <input type="text" class="form-control" @bind="Cliente.Direccion" />
-                        @*<ValidationMessage For="(()=>Cliente.Direccion)" />*@
-                    </div>
-                    <div class="col-md-4">
-                        <label>Teléfono</label>
-                        <input type="tel" class="form-control" @bind="Cliente.Telefono" />
-                        @*<ValidationMessage For="(()=>Cliente.Telefono)" />*@
-                    </div>
-                    <div class="col-md-4">
-                        <label>Email</label>
-                        <div class="input-group">
-                            <input type="email" class="form-control" @bind="Cliente.Correo" />
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-primary">Agregar</button>
-                            </div>
-                        </div>
-                        <ValidationMessage For="(()=>Cliente.Correo)" />
-                    </div>
-                </div>
-            </EditForm>
-
-            <div class="row mt-3">
-                <div class="col-md-12">
-                    <table class="table table-bordered table-sm">
-                        <thead>
-                            <tr>
-                                <th>Nombres</th>
-                                <th>Apellidos</th>
-                                <th>Identifacion</th>
-                                <th>Direccion</th>
-                                <th>Telefono</th>
-                                <th>Email</th>
-                                @*<th>Compras</th>
-                                <th>Utilidad</th>*@
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in ListaClientes)
-                            {
-                                <tr>
-                                    <td>
-                                        <input type="text" class="form-control" @bind="item.Nombres" />
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control" @bind="item.Apellidos" />
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control" @bind="item.Identificacion" />
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control" @bind="item.Direccion" />
-                                    </td>
-                                    <td>
-                                        <input type="tel" class="form-control" @bind="item.Telefono" />
-                                    </td>
-                                    <td>
-                                        <input type="email" class="form-control" @bind="item.Correo" />
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-success"
-                                                @onclick="(()=>ModificarCliente(item))">
-                                                <i class='bx bxs-save' ></i>
-                                        </button>
-                                        <button class="btn btn-danger" style="float:left;"
-                                                @onclick="(()=>EliminarCliente(item.Id))">
-                                                <i class='bx bx-trash'></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
+                        <input type="text" class="form-control" @bind="Cliente.Direccion" />-->
+@*<ValidationMessage For="(()=>Cliente.Direccion)" />*@
+<!--</div>
+<div class="col-md-4">
+    <label>Teléfono</label>
+    <input type="tel" class="form-control" @bind="Cliente.Telefono" />-->
+@*<ValidationMessage For="(()=>Cliente.Telefono)" />*@
+<!--</div>
+        <div class="col-md-4">
+            <label>Email</label>
+            <div class="input-group">
+                <input type="email" class="form-control" @bind="Cliente.Correo" />
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary">Agregar</button>
                 </div>
             </div>
+            <ValidationMessage For="(()=>Cliente.Correo)" />
         </div>
+    </div>
+</EditForm>-->
+
+
+
+
+
+@*modal prueba sin componente*@
+<BSButton Color="Color.Primary" @onclick="@onToggle">Agregar Cliente</BSButton>
+
+<BSModal @ref="VerticallyCentered" IsCentered="true">
+    <BSModalHeader OnClick="@onToggle">Nuevo Cliente</BSModalHeader>
+    <BSModalBody>
+        <EditForm Model="Cliente" OnValidSubmit="CrearCliente">
+            <DataAnnotationsValidator></DataAnnotationsValidator>
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Nombres</label>
+                    <input type="text" class="form-control" @bind="Cliente.Nombres" />
+                    <ValidationMessage For="(()=>Cliente.Nombres)" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Apellidos</label>
+                    <input type="text" class="form-control" @bind="Cliente.Apellidos" />
+                    <ValidationMessage For="(()=>Cliente.Apellidos)" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Identificación</label>
+                    <input type="text" class="form-control" @bind="Cliente.Identificacion" />
+                    <ValidationMessage For="(()=>Cliente.Identificacion)" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Dirección</label>
+                    <input type="text" class="form-control" @bind="Cliente.Direccion" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Teléfono</label>
+                    <input type="tel" class="form-control" @bind="Cliente.Telefono" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Email</label>
+                    <div class="input-group">
+                        <input type="email" class="form-control" @bind="Cliente.Correo" />
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
+                    <ValidationMessage For="(()=>Cliente.Correo)" />
+                </div>
+            </div>
+        </EditForm>
+    </BSModalBody>
+    <BSModalFooter>
+        <BSButton Color="Color.Secondary" @onclick="@onToggle">Cerrar</BSButton>
+    </BSModalFooter>
+</BSModal>
+<ToastContainer />
+
+
+@*hasta aca la prueba*@
+
+
+
+
+
+@*<ClienteModal ActualizarCliente="@CargarClientes" />*@
+
+<div class="row mt-3">
+    <div class="col-md-12">
+        <table class="table table-bordered table-sm">
+            <thead>
+                <tr>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Identifacion</th>
+                    <th>Direccion</th>
+                    <th>Telefono</th>
+                    <th>Email</th>
+                    @*<th>Compras</th>
+                        <th>Utilidad</th>*@
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ListaClientes)
+                {
+                    <tr>
+                        <td>
+                            <input type="text" class="form-control" @bind="item.Nombres" />
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" @bind="item.Apellidos" />
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" @bind="item.Identificacion" />
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" @bind="item.Direccion" />
+                        </td>
+                        <td>
+                            <input type="tel" class="form-control" @bind="item.Telefono" />
+                        </td>
+                        <td>
+                            <input type="email" class="form-control" @bind="item.Correo" />
+                        </td>
+                        <td>
+                             | 
+                            <BSButton Class="btn btn-success" @onclick="()=>onToggle(item)">
+                                <i class='bx bxs-edit'></i>
+                            </BSButton>
+
+
+                            <button class="btn btn-danger" style="float:left;"
+                                    @onclick="(()=>EliminarCliente(item.Id))">
+                                <i class='bx bx-trash'></i>
+                            </button>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 </div>
 <ToastContainer />
@@ -119,6 +194,19 @@
 @inject SweetAlertService swal
 
 @code {
+    //modal parametros 
+    BSModal VerticallyCentered;
+    void onToggle(ClienteModel cleinteEdit)
+    {
+        VerticallyCentered.Toggle();
+        Cliente = cleinteEdit;
+    }
+
+    void onToggle()
+    {
+        VerticallyCentered.Toggle();
+        Cliente = new ClienteModel();
+    }
 
 
     public ClienteModel Cliente { get; set; } = new ClienteModel();
@@ -137,19 +225,29 @@
 
     protected void CrearCliente()
     {
-        var res = clientesService.Crear(Cliente);
-        if (res.IsSuccess)
+        if (Cliente.Id == 0)
         {
-            toaster.Success(res.Message, "OK");
+            var res = clientesService.Crear(Cliente);
+            if (res.IsSuccess)
+            {
+                toaster.Success(res.Message, "OK");
 
-            Cliente.Id = res.Code;
-            ListaClientes.Add(Cliente);
-            Cliente = new ClienteModel();
+                Cliente.Id = res.Code;
+                ListaClientes.Add(Cliente);
+                Cliente = new ClienteModel();
+                onToggle();
+            }
+            else
+            {
+                toaster.Error(res.Message, "Error");
+            }
+
         }
         else
         {
-            toaster.Error(res.Message, "Error");
+            ModificarCliente(Cliente);
         }
+        CargarClientes();
     }
 
     protected void ModificarCliente(ClienteModel model)
@@ -158,6 +256,7 @@
         if (res.IsSuccess)
         {
             toaster.Success(res.Message, "OK");
+            onToggle();
         }
         else
         {
