@@ -1,5 +1,5 @@
 ﻿<StaticWebAssets Version="1.0">
-  <ContentRoot BasePath="/" Path="C:\Users\derek\OneDrive\Documentos\Seminario Aletas Michi 2021\AA\AA\AA\obj\Debug\net5.0\scopedcss\bundle\" />
+  <ContentRoot BasePath="/" Path="C:\Users\derek\OneDrive\Documentos\Seminario Aletas Michi 2021\AA\obj\Debug\net5.0\scopedcss\bundle\" />
   <ContentRoot BasePath="_content/BlazorStrap" Path="C:\Users\derek\.nuget\packages\blazorstrap\1.5.1\build\..\staticwebassets\" />
   <ContentRoot BasePath="_content/CurrieTechnologies.Razor.SweetAlert2" Path="C:\Users\derek\.nuget\packages\currietechnologies.razor.sweetalert2\5.1.0\build\..\staticwebassets\" />
   <ContentRoot BasePath="_content/Radzen.Blazor" Path="C:\Users\derek\.nuget\packages\radzen.blazor\3.13.3\build\..\staticwebassets\" />

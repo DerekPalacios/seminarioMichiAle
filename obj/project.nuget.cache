@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JJCd7A7HNSzp58T7gNYVuKAbH4rtUD3SR2AB7wyUSDaX3LVB0L8VJspcBRNwatpLXVoOoIvT4W8A9UP5AbeJ7w==",
+  "dgSpecHash": "5OIT3LIKBfA4wiX/Mgt4CLEDzOmMSKEsoTbdx8yixjC6qpOfuJxL3T4trs+YRZdeF2rKSub0noYf5w+qkLvVnw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\derek\\OneDrive\\Documentos\\Seminario Aletas Michi 2021\\AA\\AA\\AA\\TiendaArtesaniasMarielos.csproj",
+  "projectFilePath": "C:\\Users\\derek\\OneDrive\\Documentos\\Seminario Aletas Michi 2021\\AA\\TiendaArtesaniasMarielos.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\derek\\.nuget\\packages\\blazorcomponentutilities\\1.6.0\\blazorcomponentutilities.1.6.0.nupkg.sha512",
     "C:\\Users\\derek\\.nuget\\packages\\blazorstrap\\1.5.1\\blazorstrap.1.5.1.nupkg.sha512",

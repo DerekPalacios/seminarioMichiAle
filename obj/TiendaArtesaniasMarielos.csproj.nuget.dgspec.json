@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\derek\\OneDrive\\Documentos\\Seminario Aletas Michi 2021\\AA\\AA\\AA\\TiendaArtesaniasMarielos.csproj": {}
+    "C:\\Users\\derek\\OneDrive\\Documentos\\Seminario Aletas Michi 2021\\AA\\TiendaArtesaniasMarielos.csproj": {}
   },
   "projects": {
-    "C:\\Users\\derek\\OneDrive\\Documentos\\Seminario Aletas Michi 2021\\AA\\AA\\AA\\TiendaArtesaniasMarielos.csproj": {
+    "C:\\Users\\derek\\OneDrive\\Documentos\\Seminario Aletas Michi 2021\\AA\\TiendaArtesaniasMarielos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\derek\\OneDrive\\Documentos\\Seminario Aletas Michi 2021\\AA\\AA\\AA\\TiendaArtesaniasMarielos.csproj",
+        "projectUniqueName": "C:\\Users\\derek\\OneDrive\\Documentos\\Seminario Aletas Michi 2021\\AA\\TiendaArtesaniasMarielos.csproj",
         "projectName": "TiendaArtesaniasMarielos",
-        "projectPath": "C:\\Users\\derek\\OneDrive\\Documentos\\Seminario Aletas Michi 2021\\AA\\AA\\AA\\TiendaArtesaniasMarielos.csproj",
+        "projectPath": "C:\\Users\\derek\\OneDrive\\Documentos\\Seminario Aletas Michi 2021\\AA\\TiendaArtesaniasMarielos.csproj",
         "packagesPath": "C:\\Users\\derek\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\derek\\OneDrive\\Documentos\\Seminario Aletas Michi 2021\\AA\\AA\\AA\\obj\\",
+        "outputPath": "C:\\Users\\derek\\OneDrive\\Documentos\\Seminario Aletas Michi 2021\\AA\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\derek\\AppData\\Roaming\\NuGet\\NuGet.Config",
